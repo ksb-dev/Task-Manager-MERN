@@ -63,6 +63,50 @@ const getInompletedTasks = async (req, res, next) => {
   }
 }
 
+const getTasksA_Z = async (req, res, next) => {
+  const { page = 1, limit = 10 } = req.query
+
+  try {
+    const tasks = await Task.find({})
+      .sort({ name: 1 })
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec()
+
+    const count = await Task.countDocuments()
+
+    res.json({
+      tasks,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page
+    })
+  } catch (error) {
+    next({ status: 500, msg: 'Failed to fetch tasks!' })
+  }
+}
+
+const getTasksZ_A = async (req, res, next) => {
+  const { page = 1, limit = 10 } = req.query
+
+  try {
+    const tasks = await Task.find({})
+      .sort({ name: -1 })
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec()
+
+    const count = await Task.countDocuments()
+
+    res.json({
+      tasks,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page
+    })
+  } catch (error) {
+    next({ status: 500, msg: 'Failed to fetch tasks!' })
+  }
+}
+
 const createNewTask = async (req, res, next) => {
   const { name } = req.body
 
@@ -140,6 +184,8 @@ module.exports = {
   getAllTasks,
   getCompletedTasks,
   getInompletedTasks,
+  getTasksA_Z,
+  getTasksZ_A,
   createNewTask,
   getSingleTask,
   updateTask,
