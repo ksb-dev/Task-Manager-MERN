@@ -1,22 +1,29 @@
-// REST --> Representational state transfer
+require('dotenv').config()
 
 const express = require('express')
 const app = express()
-const tasks = require('./routes/tasks')
-const connectToDataBase = require('./db/mongoDB')
-require('dotenv').config()
-const notFound = require('./middlewares/notFound')
-const errorHandlerMiddleware = require('./middlewares/errorHandler')
 
-// middleware
-app.use(express.static('./public'))
+const cors = require('cors')
+app.use(cors())
+
+const connectToDataBase = require('./db/mongoDB')
+
+// Routers
+const authenticationRouter = require('./routes/authenticationRouter')
+const taskRouter = require('./routes/taskRouter')
+
+//  Middleware
+const authenticationMiddleware = require('./middlewares/authenticationMiddleware')
+const notFoundMiddleware = require('./middlewares/notFoundMiddleware')
+const errorHandlerMiddleware = require('./middlewares/errorHandlerMiddleware')
+
 app.use(express.json())
 
-// routes
-app.use('/api/v1/tasks', tasks)
+app.use('/api/v1/tasks/auth', authenticationRouter)
+//app.use('/api/v1/tasks', taskRouter)
+app.use('/api/v1/tasks', authenticationMiddleware, taskRouter)
 
-app.use(notFound)
-
+app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 3000

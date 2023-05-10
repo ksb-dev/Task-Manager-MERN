@@ -11,7 +11,7 @@ const {
   getSingleTask,
   updateTask,
   deleteTask
-} = require('../controllers/tasks')
+} = require('../controllers/taskController')
 
 router.get('/', getAllTasks)
 router.get('/completed', getCompletedTasks)

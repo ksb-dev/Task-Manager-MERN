@@ -29,8 +29,8 @@ const getAllTasks = async (req, res, next) => {
     handleRequest(req, res)
   } catch (error) {
     next({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: 'Failed to fetch tasks!'
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      message: 'Failed to fetch tasks!'
     })
   }
 }
@@ -41,8 +41,8 @@ const getCompletedTasks = async (req, res, next) => {
     handleRequest(req, res, { completed: true })
   } catch (error) {
     next({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: 'Failed to fetch tasks!'
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      message: 'Failed to fetch tasks!'
     })
   }
 }
@@ -53,20 +53,20 @@ const getInompletedTasks = async (req, res, next) => {
     handleRequest(req, res, { completed: false })
   } catch (error) {
     next({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: 'Failed to fetch tasks!'
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      message: 'Failed to fetch tasks!'
     })
   }
 }
 
-// 4. Get sorted (a-z) tasks
+// 4. Get sorted  (a-z) tasks
 const getTasksA_Z = async (req, res, next) => {
   try {
     handleRequest(req, res, {}, { name: 1 })
   } catch (error) {
     next({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: 'Failed to fetch tasks!'
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      message: 'Failed to fetch tasks!'
     })
   }
 }
@@ -77,8 +77,8 @@ const getTasksZ_A = async (req, res, next) => {
     handleRequest(req, res, {}, { name: -1 })
   } catch (error) {
     next({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: 'Failed to fetch tasks!'
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      message: 'Failed to fetch tasks!'
     })
   }
 }
@@ -91,34 +91,45 @@ const getSingleTask = async (req, res, next) => {
 
     if (!task) {
       next({
-        status: StatusCodes.NOT_FOUND,
-        msg: `No task with ID : ${taskID}`
+        statusCode: StatusCodes.NOT_FOUND,
+        message: `No task with ID : ${taskID}`
       })
       return
     }
 
     res.status(201).json({ task })
   } catch (error) {
-    next({ status: StatusCodes.BAD_REQUEST, msg: 'Failed to fetch a task' })
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to fetch a task'
+    })
   }
 }
 
-// POST Request
+// POST Request (Create ne task)
 const createNewTask = async (req, res, next) => {
   const { name } = req.body
 
   if (name === undefined || name === '') {
     next({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: 'Please provide a task name'
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Please provide a task name'
+    })
+    return
+  }
+
+  if (name.length < 3) {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Task name should be minimum 3 characters'
     })
     return
   }
 
   if (name.length > 20) {
     next({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: 'Task name can not be more than 20 characters'
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Task name can not be more than 20 characters'
     })
     return
   }
@@ -127,11 +138,14 @@ const createNewTask = async (req, res, next) => {
     const task = await Task.create(req.body)
     res.status(StatusCodes.CREATED).json({ task })
   } catch (error) {
-    next({ status: StatusCodes.BAD_REQUEST, msg: 'Failed to create task' })
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to create task'
+    })
   }
 }
 
-// PATCH Request
+// PATCH Request (Update task)
 const updateTask = async (req, res) => {
   try {
     const { id: taskID } = req.params
@@ -143,19 +157,22 @@ const updateTask = async (req, res) => {
 
     if (!task) {
       next({
-        status: StatusCodes.NOT_FOUND,
-        msg: `No task with ID : ${taskID}`
+        statusCode: StatusCodes.NOT_FOUND,
+        message: `No task with ID : ${taskID}`
       })
       return
     }
 
     res.status(200).json({ task })
   } catch (error) {
-    next({ status: StatusCodes.BAD_REQUEST, msg: 'Failed to update a task' })
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to update a task'
+    })
   }
 }
 
-// DELETE Request
+// DELETE Request (Delete task)
 const deleteTask = async (req, res) => {
   try {
     const { id: taskID } = req.params
@@ -163,15 +180,18 @@ const deleteTask = async (req, res) => {
 
     if (!task) {
       next({
-        status: StatusCodes.NOT_FOUND,
-        msg: `No task with ID : ${taskID}`
+        statusCode: StatusCodes.NOT_FOUND,
+        message: `No task with ID : ${taskID}`
       })
       return
     }
 
     res.status(201).json({ msg: 'Deleted Successfully' })
   } catch (error) {
-    next({ status: StatusCodes.BAD_REQUEST, msg: 'Failed to delete a task' })
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to delete a task'
+    })
   }
 }
 
