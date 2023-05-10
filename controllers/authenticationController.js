@@ -14,18 +14,16 @@ const register = async (req, res, next) => {
   }
 
   if (name.length < 3) {
-    next({
-      statusCode: StatusCodes.BAD_REQUEST,
-      message: 'User name should be minimum 3 characters'
-    })
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: 'User name should be minimum 3 characters' })
     return
   }
 
   if (name.length > 15) {
-    next({
-      statusCode: StatusCodes.BAD_REQUEST,
-      message: 'User name can not be more than 15 characters'
-    })
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: 'User name can not be more than 15 characters' })
     return
   }
 
@@ -33,18 +31,16 @@ const register = async (req, res, next) => {
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
   if (!email.match(validRegex)) {
-    next({
-      statusCode: StatusCodes.BAD_REQUEST,
-      message: 'Please provide an valid email'
-    })
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: 'Please provide an valid email' })
     return
   }
 
   if (password === undefined || password === '' || password.length < 6) {
-    next({
-      statusCode: StatusCodes.BAD_REQUEST,
-      message: 'Password length should be minimum 6 characters'
-    })
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: 'Password length should be minimum 6 characters' })
     return
   }
 
