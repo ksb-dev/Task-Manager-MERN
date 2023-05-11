@@ -38,7 +38,7 @@ const getAllTasks = async (req, res, next) => {
 // 2. Get completed tasks
 const getCompletedTasks = async (req, res, next) => {
   try {
-    handleRequest(req, res, { completed: true })
+    handleRequest(req, res, { createdBy: req.user.userId, completed: true })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -50,7 +50,7 @@ const getCompletedTasks = async (req, res, next) => {
 // 3. Get incompleted tasks
 const getInompletedTasks = async (req, res, next) => {
   try {
-    handleRequest(req, res, { completed: false })
+    handleRequest(req, res, { createdBy: req.user.userId, completed: false })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -62,7 +62,7 @@ const getInompletedTasks = async (req, res, next) => {
 // 4. Get sorted  (a-z) tasks
 const getTasksA_Z = async (req, res, next) => {
   try {
-    handleRequest(req, res, {}, { name: 1 })
+    handleRequest(req, res, { createdBy: req.user.userId }, { name: 1 })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -74,7 +74,7 @@ const getTasksA_Z = async (req, res, next) => {
 // 5. Get sorted (z-a) tasks
 const getTasksZ_A = async (req, res, next) => {
   try {
-    handleRequest(req, res, {}, { name: -1 })
+    handleRequest(req, res, { createdBy: req.user.userId }, { name: -1 })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -87,7 +87,7 @@ const getTasksZ_A = async (req, res, next) => {
 const getSingleTask = async (req, res, next) => {
   try {
     const { id: taskID } = req.params
-    const task = await Task.findOne({ _id: taskID })
+    const task = await Task.findOne({ createdBy: req.user.userId, _id: taskID })
 
     if (!task) {
       next({
@@ -151,10 +151,14 @@ const updateTask = async (req, res, next) => {
   try {
     const { id: taskID } = req.params
 
-    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
-      new: true,
-      runValidators: true
-    })
+    const task = await Task.findOneAndUpdate(
+      { createdBy: req.user.userId, _id: taskID },
+      req.body,
+      {
+        new: true,
+        runValidators: true
+      }
+    )
 
     if (!task) {
       next({
@@ -177,7 +181,10 @@ const updateTask = async (req, res, next) => {
 const deleteTask = async (req, res) => {
   try {
     const { id: taskID } = req.params
-    const task = await Task.findOneAndDelete({ _id: taskID })
+    const task = await Task.findOneAndDelete({
+      createdBy: req.user.userId,
+      _id: taskID
+    })
 
     if (!task) {
       next({
