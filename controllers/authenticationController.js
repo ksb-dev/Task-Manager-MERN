@@ -27,10 +27,11 @@ const register = async (req, res, next) => {
     return
   }
 
-  let validRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-
-  if (!email.match(validRegex)) {
+  if (
+    !email.match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )
+  ) {
     res
       .status(StatusCodes.BAD_REQUEST)
       .json({ message: 'Please provide an valid email' })

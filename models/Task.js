@@ -8,7 +8,8 @@ const TaskSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      trim: true
+      trim: true,
+      default: ''
     },
     priority: {
       type: String,

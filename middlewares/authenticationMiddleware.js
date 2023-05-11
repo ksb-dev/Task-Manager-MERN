@@ -10,6 +10,7 @@ const authenticationMiddleware = async (req, res, next) => {
     res
       .status(StatusCodes.UNAUTHORIZED)
       .json({ message: 'Authentication Invalid' })
+    return
   }
 
   const token = authHeader.split(' ')[1]
@@ -17,7 +18,9 @@ const authenticationMiddleware = async (req, res, next) => {
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET)
 
-    // Attatch the user to the job routes
+    console.log(payload)
+
+    // Attatch the user to the task routes
     req.user = { userId: payload.id, name: payload.name }
     next()
   } catch (error) {

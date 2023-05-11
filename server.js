@@ -20,7 +20,6 @@ const errorHandlerMiddleware = require('./middlewares/errorHandlerMiddleware')
 app.use(express.json())
 
 app.use('/api/v1/tasks/auth', authenticationRouter)
-//app.use('/api/v1/tasks', taskRouter)
 app.use('/api/v1/tasks', authenticationMiddleware, taskRouter)
 
 app.use(notFoundMiddleware)

@@ -26,7 +26,7 @@ const handleRequest = async (req, res, findQuery, sortQuery) => {
 // 1. Get all tasks
 const getAllTasks = async (req, res, next) => {
   try {
-    handleRequest(req, res)
+    handleRequest(req, res, { createdBy: req.user.userId })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -135,6 +135,7 @@ const createNewTask = async (req, res, next) => {
   }
 
   try {
+    req.body.createdBy = req.user.userId
     const task = await Task.create(req.body)
     res.status(StatusCodes.CREATED).json({ task })
   } catch (error) {
@@ -146,7 +147,7 @@ const createNewTask = async (req, res, next) => {
 }
 
 // PATCH Request (Update task)
-const updateTask = async (req, res) => {
+const updateTask = async (req, res, next) => {
   try {
     const { id: taskID } = req.params
 
