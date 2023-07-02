@@ -13,7 +13,7 @@ import Task from '../../components/Task/Task'
 
 const Complete = () => {
   const { isLoading, error, data } = useQuery({
-    queryKey: ['tasks'],
+    queryKey: ['complete'],
     queryFn: getCompletedTasks
   })
 
@@ -36,14 +36,9 @@ const Complete = () => {
       {isLoading && handleLoading()}
       {error && handleError()}
 
-      {/* <ul>
-        {data &&
-          data.tasks.map(task => (
-            <li key={task._id}>
-              <Task task={task} />
-            </li>
-          ))}
-      </ul> */}
+      <div className='task-list'>
+        {data && data.tasks.map(task => <Task task={task} key={task._id} />)}
+      </div>
     </div>
   )
 }
