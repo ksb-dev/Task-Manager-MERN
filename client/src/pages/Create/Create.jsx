@@ -9,7 +9,7 @@ import { BiArrowBack } from 'react-icons/bi'
 import { HiOutlinePlusSmall } from 'react-icons/hi2'
 
 // tanstack-query
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 // api
 import { createTask } from '../../services/tasks'
@@ -30,10 +30,17 @@ const Create = () => {
   const { mode } = useTaskivityContext()
   const navigate = useNavigate()
 
+  const queryClient = useQueryClient()
+
   const createMutation = useMutation({
     mutationFn: createTask,
     onSuccess: () => {
       toast.success(`Task created.`)
+
+      queryClient.invalidateQueries({
+        queryKey: ['tasks']
+      })
+
       navigate('/')
     },
     onError: () => {
