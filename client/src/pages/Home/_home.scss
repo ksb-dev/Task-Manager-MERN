@@ -2,10 +2,10 @@
   max-width: 750px;
   margin: 0 auto;
 
-  ul {
-    li {
-      list-style: none;
-    }
+  .task-list {
+    // display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    // gap: 1rem;
   }
 }
 

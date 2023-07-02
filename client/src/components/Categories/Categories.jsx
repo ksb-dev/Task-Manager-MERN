@@ -15,11 +15,11 @@ const Categories = () => {
             to='/'
             className={mode ? 'darkColor darkActive' : 'lightColor lightActive'}
           >
-            All
+            Tasks
           </Link>
         ) : (
           <Link to='/' className={mode ? 'darkColor' : 'lightColor'}>
-            All
+            Tasks
           </Link>
         )}
 

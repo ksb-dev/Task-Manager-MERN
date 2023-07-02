@@ -24,6 +24,7 @@ import { LiaEdit } from 'react-icons/lia'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { BsChevronDown, BsCheckCircle } from 'react-icons/bs'
 import { MdOutlineCancel } from 'react-icons/md'
+import { SlCalender } from 'react-icons/sl'
 
 // components
 import Description from '../Description/Description'
@@ -84,7 +85,22 @@ const Task = ({ task }) => {
       className={'task ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')}
     >
       <div className='container-1'>
-        <span className='date'>{moment(date).format('Do MMM, YYYY')}</span>
+        {completed ? (
+          <p className='complete'>
+            <span className='check'>
+              <BsCheckCircle />
+            </span>
+            <span>Completed</span>
+          </p>
+        ) : (
+          <p className='complete'>
+            <span className='cancel'>
+              <MdOutlineCancel />
+            </span>{' '}
+            <span>Incompleted</span>
+          </p>
+        )}
+
         <div className='edit-delete'>
           <Link to={`/edit/${_id}`} className='editBtn'>
             <span>
@@ -127,21 +143,12 @@ const Task = ({ task }) => {
         />
       </div>
 
-      {completed ? (
-        <p className='complete'>
-          <span className='check'>
-            <BsCheckCircle />
-          </span>
-          <span>Completed</span>
-        </p>
-      ) : (
-        <p className='complete'>
-          <span className='cancel'>
-            <MdOutlineCancel />
-          </span>{' '}
-          <span>Incompleted</span>
-        </p>
-      )}
+      <div className='date'>
+        <span>
+          <SlCalender />
+        </span>
+        <span>{moment(date).format('Do MMMM, YYYY')}</span>
+      </div>
     </div>
   )
 }

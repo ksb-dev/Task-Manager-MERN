@@ -25,6 +25,10 @@
 @media screen and (max-width: 640px) {
   .general-info {
     .image-search-progress-container {
+      img {
+        width: 75px;
+        height: 75px;
+      }
       .search-container-1 {
         display: none;
       }
