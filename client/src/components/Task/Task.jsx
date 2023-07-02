@@ -90,14 +90,14 @@ const Task = ({ task }) => {
             <span className='check'>
               <BsCheckCircle />
             </span>
-            <span>Completed</span>
+            <span>Complete</span>
           </p>
         ) : (
           <p className='complete'>
             <span className='cancel'>
               <MdOutlineCancel />
             </span>{' '}
-            <span>Incompleted</span>
+            <span>Incomplete</span>
           </p>
         )}
 

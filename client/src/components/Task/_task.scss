@@ -28,7 +28,7 @@
       }
 
       .cancel {
-        color: tomato;
+        color: rgb(255, 128, 105);
         font-size: 1.65rem;
       }
 
@@ -71,7 +71,7 @@
       }
 
       .deleteBtn {
-        background: red;
+        background: rgb(255, 34, 34);
         margin-left: 1rem;
       }
 
@@ -92,7 +92,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 1rem;
-      //height: 40px;
+      min-height: 46px;
       margin-top: 1rem;
       border-radius: var(--border-radius);
       color: #fff;
@@ -144,5 +144,5 @@
 }
 
 .highPriority {
-  background: tomato;
+  background: rgb(255, 128, 105);
 }
