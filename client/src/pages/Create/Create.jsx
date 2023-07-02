@@ -30,7 +30,7 @@ const Create = () => {
   const { mode } = useTaskivityContext()
   const navigate = useNavigate()
 
-  const mutation = useMutation({
+  const createMutation = useMutation({
     mutationFn: createTask,
     onSuccess: () => {
       toast.success(`Task created.`)
@@ -46,18 +46,18 @@ const Create = () => {
     if (title === '') {
       toast.error('You must enter title.')
     } else {
-      mutation.mutate({ name: title, description, priority })
+      createMutation.mutate({ name: title, description, priority })
     }
   }
 
   return (
-    <div className='create'>
+    <div className='create-page'>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
       <form
         onSubmit={handleSubmit}
         className={mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor'}
       >
-        <div className='title'>
+        <div className='title-field'>
           <span>Title</span>
           <input
             type='text'
@@ -67,7 +67,7 @@ const Create = () => {
           />
         </div>
 
-        <div className='description'>
+        <div className='description-field'>
           <span>Description</span>
           <textarea
             id='w3review'
@@ -80,7 +80,7 @@ const Create = () => {
           />
         </div>
 
-        <div className='priority'>
+        <div className='priorities'>
           <span id='title'>Priority</span>
           <div className={'options ' + (mode ? 'lightBg1' : 'darkBg2')}>
             <div className='option' onClick={() => setPriority('low')}>

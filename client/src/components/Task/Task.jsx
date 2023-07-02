@@ -22,8 +22,8 @@ import { useTaskivityContext } from '../../context/context'
 // react-icons
 import { LiaEdit } from 'react-icons/lia'
 import { RiDeleteBin6Line } from 'react-icons/ri'
-import { BsChevronDown } from 'react-icons/bs'
-import { HiOutlinePlusSmall, HiOutlineMinusSmall } from 'react-icons/hi2'
+import { BsChevronDown, BsCheckCircle } from 'react-icons/bs'
+import { MdOutlineCancel } from 'react-icons/md'
 
 // components
 import Description from '../Description/Description'
@@ -68,7 +68,6 @@ const Task = ({ task }) => {
   }
 
   const showDescription = () => {
-    //console.log('show')
     setShow(!show)
 
     if (show) {
@@ -87,7 +86,7 @@ const Task = ({ task }) => {
       <div className='container-1'>
         <span className='date'>{moment(date).format('Do MMM, YYYY')}</span>
         <div className='edit-delete'>
-          <Link to={`/update/${_id}`} className='editBtn'>
+          <Link to={`/edit/${_id}`} className='editBtn'>
             <span>
               <LiaEdit />
             </span>
@@ -127,6 +126,22 @@ const Task = ({ task }) => {
           downBtnRef={downBtnRef}
         />
       </div>
+
+      {completed ? (
+        <p className='complete'>
+          <span className='check'>
+            <BsCheckCircle />
+          </span>
+          <span>Completed</span>
+        </p>
+      ) : (
+        <p className='complete'>
+          <span className='cancel'>
+            <MdOutlineCancel />
+          </span>{' '}
+          <span>Incompleted</span>
+        </p>
+      )}
     </div>
   )
 }

@@ -20,8 +20,6 @@ import Incomplete from './pages/Incomplete/Incomplete'
 
 // components
 import Navbar from './components/Navbar/Navbar'
-//import GeneralInfo from './components/GeneralInfo/GeneralInfo'
-//import Categories from './components/Categories/Categories'
 
 import './app.css'
 

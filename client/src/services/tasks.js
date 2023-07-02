@@ -32,7 +32,13 @@ export const createTask = async ({ name, description, priority }) => {
   return response.data
 }
 
-export const editTask = async ({ id, name }) => {
+export const editTask = async ({
+  id,
+  name,
+  description,
+  priority,
+  completed
+}) => {
   // const response = await fetch(`/url/api/v1/tasks/${id}`, {
   //   method: 'PATCH',
   //   headers: {
@@ -44,7 +50,12 @@ export const editTask = async ({ id, name }) => {
 
   // return data
 
-  const response = await axios.patch(`/url/api/v1/tasks/${id}`, { name })
+  const response = await axios.patch(`/url/api/v1/tasks/${id}`, {
+    name,
+    description,
+    priority,
+    completed
+  })
   return response.data
 }
 

@@ -1,6 +1,7 @@
 .app {
   padding-top: 68.8px;
-  min-height: 150vh;
+  min-height: 100vh;
+  /* padding-bottom: 1rem; */
 }
 
 @media screen and (max-width: 640px) {

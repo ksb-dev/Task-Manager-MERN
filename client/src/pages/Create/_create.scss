@@ -1,4 +1,4 @@
-.create {
+.create-page {
   max-width: 750px;
   margin: 0 auto;
 
@@ -7,8 +7,8 @@
     border-radius: var(--border-radius);
     padding: 2rem;
 
-    .title,
-    .description {
+    .title-field,
+    .description-field {
       display: flex;
       flex-direction: column;
       margin-bottom: 1rem;
@@ -36,11 +36,8 @@
       }
     }
 
-    .priority {
+    .priorities {
       margin: 1rem 0;
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
 
       #title {
         display: inline-block;
@@ -80,7 +77,7 @@
 }
 
 @media screen and (max-width: 786px) {
-  .create {
+  .create-page {
     margin: 0 1rem;
   }
 }
