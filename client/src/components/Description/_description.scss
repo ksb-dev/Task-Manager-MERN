@@ -1,0 +1,12 @@
+.description {
+  padding: 1rem;
+  margin-top: 0.5rem;
+  color: #fff;
+  border-radius: var(--border-radius);
+  display: none;
+  transition: all 0.3s ease;
+
+  span {
+    display: block;
+  }
+}

@@ -1,0 +1,10 @@
+.complete {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 786px) {
+  .complete {
+    margin: 0 1rem;
+  }
+}

@@ -1,0 +1,111 @@
+.task {
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+
+  .container-1 {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+
+    .date {
+      font-size: 0.9rem;
+      //font-weight: 500;
+      color: #878787;
+    }
+
+    .edit-delete {
+      display: flex;
+      align-items: center;
+
+      .editBtn,
+      .deleteBtn,
+      .completeBtn {
+        position: relative;
+        border-radius: 50%;
+        cursor: pointer;
+        color: white;
+        height: 40px;
+        width: 40px;
+
+        span {
+          font-size: 1.25rem;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .deleteIcon {
+          font-size: 1.05rem;
+        }
+      }
+
+      .editBtn {
+        text-decoration: none;
+        background: var(--blue-2);
+        margin-right: 1rem;
+      }
+
+      .deleteBtn {
+        background: red;
+        //margin-left: 1rem;
+      }
+
+      .editBtn:hover,
+      .deleteBtn:hover {
+        filter: brightness(90%);
+      }
+    }
+  }
+
+  .container-2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0rem 1rem;
+      height: 40px;
+      margin-top: 2rem;
+      border-radius: var(--border-radius);
+      color: #fff;
+
+      .down-icon {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+
+        span {
+          font-size: 1rem;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -45%);
+        }
+      }
+
+      .down-icon:hover {
+        filter: brightness(90%);
+      }
+    }
+  }
+}
+
+.lowPriority {
+  background: #1db954;
+}
+
+.mediumPriority {
+  background: orange;
+}
+
+.highPriority {
+  background: tomato;
+}

@@ -1,0 +1,106 @@
+.create {
+  max-width: 750px;
+  margin: 0 auto;
+
+  form {
+    margin-top: 1rem;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+
+    .title,
+    .description {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+
+      span {
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        height: 40px;
+      }
+
+      input,
+      textarea {
+        padding: 0.5rem;
+        border-radius: var(--border-radius);
+        outline: none;
+        border: none;
+        color: #999;
+      }
+
+      input:focus,
+      textarea:focus {
+        box-shadow: 0 0 5px var(--blue-2);
+      }
+    }
+
+    .priority {
+      margin: 1rem 0;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
+
+      #title {
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+
+      .options {
+        display: flex;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+
+        .option {
+          margin-right: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          span {
+            font-weight: 400;
+          }
+
+          .check {
+            height: 17.5px;
+            width: 17.5px;
+            border-radius: 50%;
+            margin-right: 0.25rem;
+          }
+        }
+
+        .option:hover {
+          color: var(--blue-2);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .create {
+    margin: 0 1rem;
+  }
+}
+
+.lightCheckBorder {
+  border: 1px solid var(--light-1);
+}
+
+.darkCheckBorder {
+  border: 1px solid var(--dark-1);
+}
+
+.lowActive {
+  background: #1db954;
+}
+
+.mediumActive {
+  background: orange;
+}
+
+.highActive {
+  background: tomato;
+}

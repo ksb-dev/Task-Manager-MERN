@@ -1,0 +1,38 @@
+.general-info {
+  margin: 0 auto 0 auto;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  max-width: 750px;
+
+  .image-search-progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+
+  .search-container-2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .general-info {
+    .image-search-progress-container {
+      .search-container-1 {
+        display: none;
+      }
+    }
+
+    .search-container-2 {
+      margin: 1rem 0;
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.edit-page {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 786px) {
+  .edit-page {
+    margin: 0 1rem;
+  }
+}

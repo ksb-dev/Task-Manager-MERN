@@ -1,0 +1,82 @@
+#root {
+  --light-1: #fff;
+  --light-2: rgb(230, 230, 230);
+  //--dark-1: #23272f;
+  --dark-1: #2e3238;
+  --dark-2: #181a20;
+  //--dark-2: #222831;
+  --blue-1: #0d253f;
+  --blue-2: #01b4e4;
+  --green-1: #90cea1;
+  --green-2: #7dd56f;
+  --green-3: #28b487;
+  --grey-1: #555;
+
+  --border-radius: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.lightBg1 {
+  background: var(--light-1);
+}
+
+.darkBg1 {
+  background: var(--dark-1);
+}
+
+.lightBg2 {
+  background: var(--light-2);
+}
+
+.darkBg2 {
+  background: var(--dark-2);
+}
+
+.lightColor {
+  color: var(--light-1);
+}
+
+.darkColor {
+  color: var(--dark-1);
+}
+
+// pages
+@import '../pages/Home/home';
+@import '../pages/Create/create';
+@import '../pages/Edit/edit';
+@import '../pages/Complete/complete';
+@import '../pages/Incomplete/incomplete';
+
+// components
+@import '../components/Task/task';
+@import '../components/Navbar/navbar';
+@import '../components/Loading/loading';
+@import '../components/GeneralInfo/generalInfo';
+@import '../components/SearchBar/searchBar';
+@import '../components/ProgressBar/progressBar';
+@import '../components/Categories/categories';
+@import '../components/PrimaryBtn/primaryBtn';
+@import '../components/Description/description';

@@ -1,0 +1,16 @@
+.home {
+  max-width: 750px;
+  margin: 0 auto;
+
+  ul {
+    li {
+      list-style: none;
+    }
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .home {
+    margin: 0 1rem;
+  }
+}

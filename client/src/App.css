@@ -1,0 +1,10 @@
+.app {
+  padding-top: 68.8px;
+  min-height: 150vh;
+}
+
+@media screen and (max-width: 640px) {
+  .app {
+    padding-top: 63.2px;
+  }
+}
