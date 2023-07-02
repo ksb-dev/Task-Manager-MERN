@@ -180,7 +180,7 @@ const Edit = () => {
         <PrimaryBtn
           path={'#'}
           icon={<LiaEdit />}
-          text={'Edit'}
+          text={'Edit Task'}
           value='btn'
           fn={handleEdit}
         />

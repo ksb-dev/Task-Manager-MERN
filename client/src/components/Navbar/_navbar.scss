@@ -18,7 +18,8 @@
     padding: 0.5rem 0 1rem 0;
 
     .title {
-      p {
+      a {
+        text-decoration: none;
         margin: 0;
         display: flex;
         align-items: center;
@@ -38,6 +39,10 @@
           // -webkit-background-clip: text;
           // -webkit-text-fill-color: transparent;
         }
+      }
+
+      a:hover {
+        filter: brightness(90%);
       }
     }
 

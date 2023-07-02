@@ -3,10 +3,13 @@ import { useRef } from 'react'
 
 // react-icons
 import { BsSun, BsMoonStars } from 'react-icons/bs'
-import { VscTasklist } from 'react-icons/vsc'
+import { MdOutlineAddTask } from 'react-icons/md'
 
 // context
 import { useTaskivityContext } from '../../context/context'
+
+// react-router-dom
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const { mode, setMode } = useTaskivityContext()
@@ -42,12 +45,12 @@ const Navbar = () => {
     <div className={'nav ' + (mode ? 'lightBg1' : 'darkBg2')}>
       <div className='inner' ref={navInnerRef}>
         <div className='title'>
-          <p>
+          <Link to='/'>
             <span>
-              <VscTasklist />
+              <MdOutlineAddTask />
             </span>
             <span>Taskivity</span>
-          </p>
+          </Link>
         </div>
         <div className={'options ' + (mode ? 'darkColor' : 'lightColor')}>
           <span className='option'>Login</span>

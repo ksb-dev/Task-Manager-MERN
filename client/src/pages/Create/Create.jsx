@@ -135,7 +135,7 @@ const Create = () => {
         <PrimaryBtn
           path={'#'}
           icon={<HiOutlinePlusSmall />}
-          text={'Create'}
+          text={'Create Task'}
           value='btn'
           fn={handleSubmit}
         />
