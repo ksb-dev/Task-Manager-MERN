@@ -1,6 +1,134 @@
 .home {
   max-width: 750px;
   margin: 0 auto;
+
+  .main {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    border-top: 1px solid var(--blue-2);
+
+    .about {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+
+      p:first-child {
+        margin-bottom: 1rem;
+        text-align: center;
+        //font-weight: 500;
+
+        span {
+          color: var(--blue-2);
+          letter-spacing: 1px;
+          font-weight: 500;
+        }
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .stack {
+      display: flex;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        //font-weight: 500;
+
+        .mongo,
+        .express,
+        .react,
+        .node {
+          position: relative;
+          border-radius: 50%;
+          padding: 0;
+          height: 50px;
+          width: 50px;
+          margin: 0 1.5rem;
+          margin-bottom: 0.5rem;
+
+          .mongo-icon,
+          .express-icon,
+          .react-icon,
+          .node-icon {
+            position: absolute;
+            font-size: 2rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+          }
+        }
+
+        .mongo {
+          background: #116149;
+          //margin-left: 0;
+
+          .mongo-icon {
+            color: #00ed64;
+          }
+        }
+
+        .express {
+          background: #e5e5e5;
+
+          .express-icon {
+            color: #000;
+            font-size: 1.75rem;
+          }
+        }
+
+        .react {
+          background: #23272f;
+
+          .react-icon {
+            color: #61dafb;
+            font-size: 2rem;
+          }
+        }
+
+        .node {
+          background: #090c15;
+          //margin-right: 0;
+
+          .node-icon {
+            color: #43853d;
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+
+    .functionalities > p {
+      //text-align: center;
+      margin: 1rem 0;
+      margin-top: 2rem;
+      color: var(--blue-2);
+      font-weight: 500;
+      border-bottom: 1px solid var(--blue-2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-bottom: 0.5rem;
+    }
+
+    .functionalities {
+      .functions {
+        p {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 786px) {

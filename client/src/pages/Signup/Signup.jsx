@@ -26,23 +26,27 @@ const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { mode } = useTaskivityContext()
+  const { mode, rerenderNavBar, setRerenderNavBar } = useTaskivityContext()
   const navigate = useNavigate()
 
   //const queryClient = useQueryClient()
 
   const registerMutation = useMutation({
     mutationFn: signup,
+
     onSuccess: data => {
+      localStorage.setItem('userName', data.user.name)
+      localStorage.setItem('token', data.token)
+
+      setRerenderNavBar(!rerenderNavBar)
+
       toast.success(`Registration Successful.`)
 
       //   queryClient.invalidateQueries({
       //     queryKey: ['tasks']
       //   })
 
-      //navigate('/')
-
-      console.log(data.token)
+      navigate('/')
     },
     onError: data => {
       toast.error(data.response.data.message)
@@ -51,11 +55,7 @@ const Signup = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    // if (title === '') {
-    //   toast.error('You must enter title.')
-    // } else {
-    //   createMutation.mutate({ name: title, description, priority })
-    // }
+
     registerMutation.mutate({ name, email, password })
   }
 
