@@ -23,6 +23,9 @@ import { HiOutlinePlusSmall } from 'react-icons/hi2'
 // context
 import { useTaskivityContext } from '../../context/context'
 
+// react-router-dom
+import { Link } from 'react-router-dom'
+
 const Home = () => {
   const token = localStorage.getItem('token')
   const user = localStorage.getItem('userName')
@@ -50,7 +53,8 @@ const Home = () => {
     <div className='home'>
       {!token && (
         <div className={'main ' + (mode ? 'darkColor' : 'lightColor')}>
-          <p>Login / Signup to start using app</p>
+          <Link to='/login'>Login / Signup </Link>
+
           <div className='about'>
             <p>
               Taskivity is a basic task manager web app, built using popular
@@ -111,9 +115,9 @@ const Home = () => {
       )}
 
       {data && data.tasks.length === 0 && (
-        <div className={'main-2 ' + (mode ? 'darkColor' : 'lightColor')}>
-          <p>Welcome {user} </p>
-          <p>Start using this web app by clicking below</p>
+        <div className='main-2'>
+          <p>Welcome {user}. </p>
+          <p>Start using this web app by clicking below.</p>
           <PrimaryBtn
             path={'/create'}
             icon={<HiOutlinePlusSmall />}
