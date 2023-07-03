@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 // react-icons
 import { BiArrowBack, BiLogOutCircle } from 'react-icons/bi'
+import { RiDeleteBin6Line } from 'react-icons/ri'
 
 // components
 import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
@@ -15,7 +16,7 @@ import { toast } from 'react-hot-toast'
 import { useTaskivityContext } from '../../context/context'
 
 const Logout = () => {
-  const { rerenderNavBar, setRerenderNavBar } = useTaskivityContext()
+  const { rerenderNavBar, setRerenderNavBar, mode } = useTaskivityContext()
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -26,22 +27,27 @@ const Logout = () => {
 
     toast.success('User logged out')
 
-    //window.location.reload()
-
     navigate('/')
   }
 
   return (
-    <div className='logout-page'>
+    <div className={'logout-page ' + (mode ? 'darkColor' : 'lightColor')}>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
-      <br />
-      <PrimaryBtn
-        path={'#'}
-        icon={<BiLogOutCircle />}
-        text={'Logout'}
-        value='btn'
-        fn={handleLogout}
-      />
+      <p>Logout / Delete Account</p>
+
+      <div className='logoutBtn-1' onClick={handleLogout}>
+        <span className='logout-icon-1'>
+          <BiLogOutCircle />
+        </span>
+        Logout
+      </div>
+
+      <div className='logoutBtn-2'>
+        <span className='logout-icon-2'>
+          <RiDeleteBin6Line />
+        </span>
+        Delete Account
+      </div>
     </div>
   )
 }
