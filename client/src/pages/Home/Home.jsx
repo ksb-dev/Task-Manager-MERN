@@ -12,17 +12,20 @@ import GeneralInfo from '../../components/GeneralInfo/GeneralInfo'
 import Task from '../../components/Task/Task'
 import Loading from '../../components/Loading/Loading'
 import Categories from '../../components/Categories/Categories'
+import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
 
 // react-icons
 import { BiLogoMongodb } from 'react-icons/bi'
 import { SiExpress } from 'react-icons/si'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
+import { HiOutlinePlusSmall } from 'react-icons/hi2'
 
 // context
 import { useTaskivityContext } from '../../context/context'
 
 const Home = () => {
   const token = localStorage.getItem('token')
+  const user = localStorage.getItem('userName')
 
   const { mode } = useTaskivityContext()
 
@@ -43,26 +46,9 @@ const Home = () => {
     return <div className='loading'>Failed to fetch tasks</div>
   }
 
-  const noTasks = () => {
-    return <div className='loading'>Please Add Tasks</div>
-  }
-
   return (
     <div className='home'>
-      {token ? (
-        <>
-          <GeneralInfo />
-          <Categories />
-          {isLoading && handleLoading()}
-          {isError && handleError()}
-          {data && data.tasks.length === 0 && noTasks()}
-
-          <div className='task-list'>
-            {data &&
-              data.tasks.map(task => <Task task={task} key={task._id} />)}
-          </div>
-        </>
-      ) : (
+      {!token && (
         <div className={'main ' + (mode ? 'darkColor' : 'lightColor')}>
           <p>Login / Signup to start using app</p>
           <div className='about'>
@@ -122,6 +108,32 @@ const Home = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {data && data.tasks.length === 0 && (
+        <div className={'main-2 ' + (mode ? 'darkColor' : 'lightColor')}>
+          <p>Welcome {user} </p>
+          <p>Start using this web app by clicking below</p>
+          <PrimaryBtn
+            path={'/create'}
+            icon={<HiOutlinePlusSmall />}
+            text={'Create New Task'}
+          />
+        </div>
+      )}
+
+      {data && data.tasks.length !== 0 && (
+        <>
+          <GeneralInfo />
+          <Categories />
+          {isLoading && handleLoading()}
+          {isError && handleError()}
+
+          <div className='task-list'>
+            {data &&
+              data.tasks.map(task => <Task task={task} key={task._id} />)}
+          </div>
+        </>
       )}
     </div>
   )

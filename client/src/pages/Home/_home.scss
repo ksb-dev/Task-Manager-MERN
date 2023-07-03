@@ -107,7 +107,7 @@
           //margin-right: 0;
 
           .node-icon {
-            color: #43853d;
+            color: #469041;
             font-size: 2rem;
           }
         }
@@ -133,6 +133,12 @@
       }
     }
   }
+
+  .main-2 {
+    p {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 @media screen and (max-width: 786px) {
@@ -140,15 +146,3 @@
     margin: 0 1rem;
   }
 }
-
-// @media screen and (max-width: 640px) {
-//   .home {
-//     margin: 0 1rem;
-
-//     .main {
-//       .about > p {
-//         text-align: center;
-//       }
-//     }
-//   }
-// }

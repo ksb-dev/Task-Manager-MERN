@@ -26,6 +26,7 @@ const ProgressBar = () => {
       <CircularProgressbar
         value={
           all.data &&
+          all.data.tasks.length !== 0 &&
           completed.data &&
           ((completed.data.tasks.length / all.data.tasks.length) * 100).toFixed(
             2
@@ -36,14 +37,19 @@ const ProgressBar = () => {
           pathColor: '#fff'
         })}
       />
-      <span>
-        {all.data &&
-          completed.data &&
-          ((completed.data.tasks.length / all.data.tasks.length) * 100).toFixed(
-            1
-          )}
-        %
-      </span>
+      <div>
+        {all.data && all.data.tasks.length !== 0 && completed.data ? (
+          <span>
+            {(
+              (completed.data.tasks.length / all.data.tasks.length) *
+              100
+            ).toFixed(1)}
+            %
+          </span>
+        ) : (
+          <span>0%</span>
+        )}
+      </div>
     </div>
   )
 }

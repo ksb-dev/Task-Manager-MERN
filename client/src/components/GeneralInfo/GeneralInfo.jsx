@@ -29,26 +29,21 @@ const GeneralInfo = () => {
         <img src={profileImg} alt='profile-img' />
 
         <div className='search-container-1'>
-          {window.location.pathname !== '/create' &&
-            !window.location.pathname.includes('/edit') && <SearchBar />}
+          <SearchBar />
         </div>
 
         <ProgressBar />
       </div>
 
       <div className='search-container-2'>
-        {window.location.pathname !== '/create' &&
-          !window.location.pathname.includes('/edit') && <SearchBar />}
+        <SearchBar />
       </div>
 
-      {window.location.pathname !== '/create' &&
-        !window.location.pathname.includes('/edit') && (
-          <PrimaryBtn
-            path={'/create'}
-            icon={<HiOutlinePlusSmall />}
-            text={'Create New Task'}
-          />
-        )}
+      <PrimaryBtn
+        path={'/create'}
+        icon={<HiOutlinePlusSmall />}
+        text={'Create New Task'}
+      />
     </div>
   )
 }
