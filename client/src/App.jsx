@@ -17,6 +17,8 @@ import Create from './pages/Create/Create'
 import Edit from './pages/Edit/Edit'
 import Complete from './pages/Complete/Complete'
 import Incomplete from './pages/Incomplete/Incomplete'
+import Login from './pages/Login/Login'
+import Signup from './pages/Signup/Signup'
 
 // components
 import Navbar from './components/Navbar/Navbar'
@@ -46,6 +48,8 @@ const App = () => {
             <Route path='/edit/:id' element={<Edit />} />
             <Route path='/complete' element={<Complete />} />
             <Route path='/Incomplete' element={<Incomplete />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
           </Routes>
         </BrowserRouter>
 

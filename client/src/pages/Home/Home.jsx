@@ -14,9 +14,18 @@ import Loading from '../../components/Loading/Loading'
 import Categories from '../../components/Categories/Categories'
 
 const Home = () => {
-  const { isLoading, error, data } = useQuery({
+  const token = localStorage.getItem('token')
+
+  const { isLoading, isError, data } = useQuery({
     queryKey: ['tasks'],
-    queryFn: getAllTasks
+    queryFn: () => token && getAllTasks(token),
+
+    onSuccess: data => {
+      //console.log(data)
+    },
+    onError: data => {
+      //console.log(data)
+    }
   })
 
   const handleLoading = () => {
@@ -28,7 +37,11 @@ const Home = () => {
   }
 
   const handleError = () => {
-    return <div className='loading'>Error</div>
+    return <div className='loading'>Failed to fetch tasks</div>
+  }
+
+  const noTasks = () => {
+    return <div className='loading'>Please Add Tasks</div>
   }
 
   return (
@@ -36,7 +49,8 @@ const Home = () => {
       <GeneralInfo />
       <Categories />
       {isLoading && handleLoading()}
-      {error && handleError()}
+      {isError && handleError()}
+      {data && data.tasks.length === 0 && noTasks()}
 
       <div className='task-list'>
         {data && data.tasks.map(task => <Task task={task} key={task._id} />)}

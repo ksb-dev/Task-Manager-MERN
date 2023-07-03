@@ -12,9 +12,11 @@ import GeneralInfo from '../../components/GeneralInfo/GeneralInfo'
 import Categories from '../../components/Categories/Categories'
 
 const Incomplete = () => {
+  const token = localStorage.getItem('token')
+
   const { isLoading, error, data } = useQuery({
     queryKey: ['incompleted'],
-    queryFn: getIncompletedTasks
+    queryFn: () => token && getIncompletedTasks(token)
   })
 
   const handleLoading = () => {
@@ -29,12 +31,17 @@ const Incomplete = () => {
     return <div className='loading'>Error</div>
   }
 
+  const noTasks = () => {
+    return <div className='loading'>No Incompleted Tasks Found!</div>
+  }
+
   return (
     <div className='incomplete'>
       <GeneralInfo />
       <Categories />
       {isLoading && handleLoading()}
       {error && handleError()}
+      {data && data.tasks.length === 0 && noTasks()}
 
       <div className='task-list'>
         {data && data.tasks.map(task => <Task task={task} key={task._id} />)}

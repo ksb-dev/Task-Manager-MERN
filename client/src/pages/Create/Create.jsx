@@ -24,6 +24,8 @@ import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
 import { useTaskivityContext } from '../../context/context'
 
 const Create = () => {
+  const token = localStorage.getItem('token')
+
   const [title, setTitle] = useState('')
   const [priority, setPriority] = useState('low')
   const [description, setDescription] = useState('')
@@ -43,8 +45,8 @@ const Create = () => {
 
       navigate('/')
     },
-    onError: () => {
-      toast.error('Failed to create task.')
+    onError: data => {
+      toast.error(data.response.data.message)
     }
   })
 
@@ -53,7 +55,7 @@ const Create = () => {
     if (title === '') {
       toast.error('You must enter title.')
     } else {
-      createMutation.mutate({ name: title, description, priority })
+      createMutation.mutate({ title, description, priority, token })
     }
   }
 

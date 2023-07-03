@@ -12,9 +12,11 @@ import Loading from '../../components/Loading/Loading'
 import Task from '../../components/Task/Task'
 
 const Complete = () => {
+  const token = localStorage.getItem('token')
+
   const { isLoading, error, data } = useQuery({
     queryKey: ['complete'],
-    queryFn: getCompletedTasks
+    queryFn: () => token && getCompletedTasks(token)
   })
 
   const handleLoading = () => {
@@ -29,12 +31,17 @@ const Complete = () => {
     return <div className='loading'>Error</div>
   }
 
+  const noTasks = () => {
+    return <div className='loading'>No Completed Tasks Found!</div>
+  }
+
   return (
     <div className='complete'>
       <GeneralInfo />
       <Categories />
       {isLoading && handleLoading()}
       {error && handleError()}
+      {data && data.tasks.length === 0 && noTasks()}
 
       <div className='task-list'>
         {data && data.tasks.map(task => <Task task={task} key={task._id} />)}

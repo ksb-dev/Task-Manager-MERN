@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // circular progress bar
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 
@@ -8,14 +9,16 @@ import { useQuery } from '@tanstack/react-query'
 import { getAllTasks, getCompletedTasks } from '../../services/tasks'
 
 const ProgressBar = () => {
+  const token = localStorage.getItem('token')
+
   const all = useQuery({
     queryKey: ['tasks'],
-    queryFn: getAllTasks
+    queryFn: () => token && getAllTasks(token)
   })
 
   const completed = useQuery({
     queryKey: ['completed'],
-    queryFn: getCompletedTasks
+    queryFn: () => token && getCompletedTasks(token)
   })
 
   return (

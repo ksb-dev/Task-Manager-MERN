@@ -53,8 +53,18 @@ const Navbar = () => {
           </Link>
         </div>
         <div className={'options ' + (mode ? 'darkColor' : 'lightColor')}>
-          <span className='option'>Login</span>
-          <span className='option'>Signup</span>
+          <Link
+            to='/login'
+            className={'option ' + (mode ? 'darkColor' : 'lightColor')}
+          >
+            Login
+          </Link>
+          <Link
+            to='/signup'
+            className={'option ' + (mode ? 'darkColor' : 'lightColor')}
+          >
+            Signup
+          </Link>
           {mode ? (
             <span className='option moon' onClick={() => toggleMode()}>
               <BsMoonStars />

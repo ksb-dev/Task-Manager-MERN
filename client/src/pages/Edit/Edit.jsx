@@ -24,6 +24,8 @@ import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
 import { useTaskivityContext } from '../../context/context'
 
 const Edit = () => {
+  const token = localStorage.getItem('token')
+
   const { id } = useParams()
   const navigate = useNavigate()
   const { mode } = useTaskivityContext()
@@ -34,15 +36,15 @@ const Edit = () => {
   const [isCompleted, setIsCompleted] = useState('')
 
   useEffect(() => {
-    const res = getSingleTask(id)
+    const res = getSingleTask(id, token)
 
     res.then(data => {
-      setTitle(data && data.task.name)
+      setTitle(data && data.task.title)
       setPriority(data && data.task.priority)
       setDescription(data && data.task.description)
       setIsCompleted(data && data.task.completed)
     })
-  }, [id])
+  }, [id, token])
 
   const editMutation = useMutation({
     mutationFn: editTask,
@@ -62,10 +64,11 @@ const Edit = () => {
     } else {
       editMutation.mutate({
         id,
-        name: title,
+        title,
         description,
         priority,
-        completed: isCompleted
+        completed: isCompleted,
+        token
       })
     }
   }

@@ -26,9 +26,7 @@ const handleRequest = async (req, res, findQuery, sortQuery) => {
 // 1. Get all tasks
 const getAllTasks = async (req, res, next) => {
   try {
-    //handleRequest(req, res, { createdBy: req.user.userId })
-    const tasks = await Task.find({})
-    res.status(200).json({ tasks })
+    handleRequest(req, res, { createdBy: req.user.userId })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -40,9 +38,7 @@ const getAllTasks = async (req, res, next) => {
 // 2. Get completed tasks
 const getCompletedTasks = async (req, res, next) => {
   try {
-    //handleRequest(req, res, { createdBy: req.user.userId, completed: true })
-    const tasks = await Task.find({ completed: true })
-    res.status(200).json({ tasks })
+    handleRequest(req, res, { createdBy: req.user.userId, completed: true })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -54,9 +50,7 @@ const getCompletedTasks = async (req, res, next) => {
 // 3. Get incompleted tasks
 const getInompletedTasks = async (req, res, next) => {
   try {
-    //handleRequest(req, res, { createdBy: req.user.userId, completed: false })
-    const tasks = await Task.find({ completed: false })
-    res.status(200).json({ tasks })
+    handleRequest(req, res, { createdBy: req.user.userId, completed: false })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -68,7 +62,7 @@ const getInompletedTasks = async (req, res, next) => {
 // 4. Get sorted (a-z) tasks
 const getTasksA_Z = async (req, res, next) => {
   try {
-    handleRequest(req, res, { createdBy: req.user.userId }, { name: 1 })
+    handleRequest(req, res, { createdBy: req.user.userId }, { title: 1 })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -80,7 +74,7 @@ const getTasksA_Z = async (req, res, next) => {
 // 5. Get sorted (z-a) tasks
 const getTasksZ_A = async (req, res, next) => {
   try {
-    handleRequest(req, res, { createdBy: req.user.userId }, { name: -1 })
+    handleRequest(req, res, { createdBy: req.user.userId }, { title: -1 })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -92,21 +86,9 @@ const getTasksZ_A = async (req, res, next) => {
 // 6. Get single task (by "id")
 const getSingleTask = async (req, res, next) => {
   try {
-    // const { id: taskID } = req.params
-    // const task = await Task.findOne({ createdBy: req.user.userId, _id: taskID })
-
-    // if (!task) {
-    //   next({
-    //     statusCode: StatusCodes.NOT_FOUND,
-    //     message: `No task with ID : ${taskID}`
-    //   })
-    //   return
-    // }
-
-    // res.status(201).json({ task })
     const { id: taskID } = req.params
+    const task = await Task.findOne({ createdBy: req.user.userId, _id: taskID })
 
-    const task = await Task.findOne({ _id: taskID })
     if (!task) {
       next({
         statusCode: StatusCodes.NOT_FOUND,
@@ -115,7 +97,7 @@ const getSingleTask = async (req, res, next) => {
       return
     }
 
-    res.status(200).json({ task })
+    res.status(201).json({ task })
   } catch (error) {
     next({
       statusCode: StatusCodes.BAD_REQUEST,
@@ -126,38 +108,36 @@ const getSingleTask = async (req, res, next) => {
 
 // POST Request (Create task)
 const createNewTask = async (req, res, next) => {
-  //const { name } = req.body
+  const { title } = req.body
 
-  // if (name === undefined || name === '') {
-  //   next({
-  //     statusCode: StatusCodes.BAD_REQUEST,
-  //     message: 'Please provide a task name'
-  //   })
-  //   return
-  // }
+  if (title === undefined || title === '') {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Please provide a task title'
+    })
+    return
+  }
 
-  // if (name.length < 3) {
-  //   next({
-  //     statusCode: StatusCodes.BAD_REQUEST,
-  //     message: 'Task name should be minimum 3 characters'
-  //   })
-  //   return
-  // }
+  if (title.length < 3) {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Task title should be minimum 3 characters'
+    })
+    return
+  }
 
-  // if (name.length > 20) {
-  //   next({
-  //     statusCode: StatusCodes.BAD_REQUEST,
-  //     message: 'Task name can not be more than 20 characters'
-  //   })
-  //   return
-  // }
+  if (title.length > 20) {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Task title can not be more than 20 characters'
+    })
+    return
+  }
 
   try {
-    // req.body.createdBy = req.user.userId
-    // const task = await Task.create(req.body)
-    // res.status(StatusCodes.CREATED).json({ task })
+    req.body.createdBy = req.user.userId
     const task = await Task.create(req.body)
-    res.status(201).json({ task })
+    res.status(StatusCodes.CREATED).json({ task })
   } catch (error) {
     next({
       statusCode: StatusCodes.BAD_REQUEST,
@@ -169,32 +149,16 @@ const createNewTask = async (req, res, next) => {
 // PATCH Request (Update task)
 const updateTask = async (req, res, next) => {
   try {
-    // const { id: taskID } = req.params
-
-    // const task = await Task.findOneAndUpdate(
-    //   { createdBy: req.user.userId, _id: taskID },
-    //   req.body,
-    //   {
-    //     new: true,
-    //     runValidators: true
-    //   }
-    // )
-
-    // if (!task) {
-    //   next({
-    //     statusCode: StatusCodes.NOT_FOUND,
-    //     message: `No task with ID : ${taskID}`
-    //   })
-    //   return
-    // }
-
-    // res.status(200).json({ task })
     const { id: taskID } = req.params
 
-    const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
-      new: true,
-      runValidators: true
-    })
+    const task = await Task.findOneAndUpdate(
+      { createdBy: req.user.userId, _id: taskID },
+      req.body,
+      {
+        new: true,
+        runValidators: true
+      }
+    )
 
     if (!task) {
       next({
@@ -214,29 +178,24 @@ const updateTask = async (req, res, next) => {
 }
 
 // DELETE Request (Delete task)
-const deleteTask = async (req, res) => {
+const deleteTask = async (req, res, next) => {
   try {
-    // const { id: taskID } = req.params
-    // const task = await Task.findOneAndDelete({
-    //   createdBy: req.user.userId,
-    //   _id: taskID
-    // })
-
-    // if (!task) {
-    //   next({
-    //     statusCode: StatusCodes.NOT_FOUND,
-    //     message: `No task with ID : ${taskID}`
-    //   })
-    //   return
-    // }
-
-    // res.status(201).json({ msg: 'Deleted Successfully' })
     const { id: taskID } = req.params
-    const task = await Task.findOneAndDelete({ _id: taskID })
+
+    const task = await Task.findOneAndDelete({
+      createdBy: req.user.userId,
+      _id: taskID
+    })
+
     if (!task) {
-      return next(createCustomError(`No task with id : ${taskID}`, 404))
+      next({
+        statusCode: StatusCodes.NOT_FOUND,
+        message: `No task with ID : ${taskID}`
+      })
+      return
     }
-    res.status(200).json({ task })
+
+    res.status(201).json({ msg: 'Deleted Successfully' })
   } catch (error) {
     next({
       statusCode: StatusCodes.BAD_REQUEST,

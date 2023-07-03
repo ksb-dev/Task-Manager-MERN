@@ -18,8 +18,6 @@ const authenticationMiddleware = async (req, res, next) => {
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET)
 
-    console.log(payload)
-
     // Attatch the user to the task routes
     req.user = { userId: payload.id, name: payload.name }
     next()

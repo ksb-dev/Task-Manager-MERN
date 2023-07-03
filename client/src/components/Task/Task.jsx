@@ -31,17 +31,19 @@ import Description from '../Description/Description'
 
 /* eslint-disable react/prop-types */
 const Task = ({ task }) => {
+  const token = localStorage.getItem('token')
+
   const [show, setShow] = useState(false)
-  const { _id, name, description, priority, completed, date } = task
+  const { _id, title, description, priority, completed, date } = task
   const { mode } = useTaskivityContext()
   const descRef = useRef(null)
   const downBtnRef = useRef(null)
 
   const queryClient = useQueryClient()
 
-  const { isLoading, mutate } = useMutation({
-    mutationFn: deleteTask,
-    onSuccess: data => {
+  const deleteMutation = useMutation({
+    mutationFn: () => deleteTask(_id, token),
+    onSuccess: () => {
       toast.success(`Task deleted`)
 
       queryClient.invalidateQueries({
@@ -52,6 +54,10 @@ const Task = ({ task }) => {
       toast.error(`Failed to delete task`)
     }
   })
+
+  const handleDelete = () => {
+    deleteMutation.mutate()
+  }
 
   const getClass = priority => {
     if (priority === 'low') {
@@ -108,7 +114,7 @@ const Task = ({ task }) => {
             </span>
           </Link>
 
-          <p onClick={() => mutate(_id)} className='deleteBtn'>
+          <p onClick={handleDelete} className='deleteBtn'>
             <span className='deleteIcon'>
               <RiDeleteBin6Line />
             </span>
@@ -118,7 +124,7 @@ const Task = ({ task }) => {
 
       <div className='container-2'>
         <div className={'name ' + getClass(priority)}>
-          {name}
+          {title}
           {description && (
             <p
               ref={downBtnRef}
