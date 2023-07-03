@@ -1,9 +1,9 @@
 require('dotenv').config()
-
 const express = require('express')
-const app = express()
-
 const cors = require('cors')
+const path = require('path')
+
+const app = express()
 app.use(cors())
 
 const connectToDataBase = require('./db/mongoDB')
@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 const start = async () => {
   try {
