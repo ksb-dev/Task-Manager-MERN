@@ -15,11 +15,18 @@
   }
 
   .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     color: #777;
+
+    .about > p {
+      width: 100%;
+      text-align: start;
+
+      span {
+        color: var(--blue-2);
+        letter-spacing: 1px;
+        font-weight: 500;
+      }
+    }
 
     .about {
       width: 100%;
@@ -28,18 +35,6 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1rem;
-
-      p:first-child {
-        margin-bottom: 1rem;
-        text-align: center;
-        //font-weight: 500;
-
-        span {
-          color: var(--blue-2);
-          letter-spacing: 1px;
-          font-weight: 500;
-        }
-      }
 
       p {
         margin-bottom: 1rem;
@@ -145,3 +140,15 @@
     margin: 0 1rem;
   }
 }
+
+// @media screen and (max-width: 640px) {
+//   .home {
+//     margin: 0 1rem;
+
+//     .main {
+//       .about > p {
+//         text-align: center;
+//       }
+//     }
+//   }
+// }
