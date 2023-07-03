@@ -64,6 +64,7 @@ const Home = () => {
         </>
       ) : (
         <div className={'main ' + (mode ? 'darkColor' : 'lightColor')}>
+          <p>Login / Signup to start using app</p>
           <div className='about'>
             <p>
               Taskivity is a basic task manager web app, built using popular
