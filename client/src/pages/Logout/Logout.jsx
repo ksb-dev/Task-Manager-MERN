@@ -33,7 +33,7 @@ const Logout = () => {
   return (
     <div className={'logout-page ' + (mode ? 'darkColor' : 'lightColor')}>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
-      <p>Logout / Delete Account</p>
+      {/* <p>Logout / Delete</p> */}
 
       <div className='logoutBtn-1' onClick={handleLogout}>
         <span className='logout-icon-1'>
