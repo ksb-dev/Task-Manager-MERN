@@ -10,7 +10,11 @@ const PrimaryBtn = ({ path, icon, text, value = 'link', fn = () => {} }) => {
       {text}
     </Link>
   ) : (
-    <button to={path} className='primary-btn' onSubmit={fn}>
+    // <button to={path} className='primary-btn' onSubmit={fn}>
+    //   <span>{icon}</span>
+    //   {text}
+    // </button>
+    <button className='primary-btn' onClick={fn}>
       <span>{icon}</span>
       {text}
     </button>

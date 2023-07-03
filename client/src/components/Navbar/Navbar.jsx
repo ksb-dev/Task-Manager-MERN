@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 // react-icons
-import { BsSun, BsMoonStars } from 'react-icons/bs'
+import { BsSunFill } from 'react-icons/bs'
 import { MdOutlineAddTask } from 'react-icons/md'
+import { BiSolidMoon } from 'react-icons/bi'
 
 // context
 import { useTaskivityContext } from '../../context/context'
@@ -12,8 +13,11 @@ import { useTaskivityContext } from '../../context/context'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-  const { mode, setMode } = useTaskivityContext()
+  const user = localStorage.getItem('userName')
+  const { mode, setMode, rerenderNavBar } = useTaskivityContext()
   const navInnerRef = useRef(null)
+
+  useEffect(() => {}, [rerenderNavBar])
 
   //Window Scroll Function
   window.onscroll = () => {
@@ -34,7 +38,6 @@ const Navbar = () => {
         }
       }, 0)
     }
-    //prevScrollpos = currentScrollpos
   }
 
   const toggleMode = () => {
@@ -52,26 +55,38 @@ const Navbar = () => {
             <span>Taskivity</span>
           </Link>
         </div>
+
         <div className={'options ' + (mode ? 'darkColor' : 'lightColor')}>
-          <Link
-            to='/login'
-            className={'option ' + (mode ? 'darkColor' : 'lightColor')}
-          >
-            Login
-          </Link>
-          <Link
-            to='/signup'
-            className={'option ' + (mode ? 'darkColor' : 'lightColor')}
-          >
-            Signup
-          </Link>
+          {user ? (
+            <Link
+              to='/logout'
+              className={'option user ' + (mode ? 'darkColor' : 'lightColor')}
+            >
+              Logout
+            </Link>
+          ) : (
+            <>
+              <Link
+                to='/login'
+                className={'option ' + (mode ? 'darkColor' : 'lightColor')}
+              >
+                Login
+              </Link>
+              <Link
+                to='/signup'
+                className={'option ' + (mode ? 'darkColor' : 'lightColor')}
+              >
+                Signup
+              </Link>
+            </>
+          )}
           {mode ? (
             <span className='option moon' onClick={() => toggleMode()}>
-              <BsMoonStars />
+              <BiSolidMoon />
             </span>
           ) : (
             <span className='option sun' onClick={() => toggleMode()}>
-              <BsSun />
+              <BsSunFill />
             </span>
           )}
         </div>

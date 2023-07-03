@@ -56,6 +56,17 @@
         color: var(--blue-2);
       }
 
+      .user {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-top: 0.25rem;
+          margin-right: 0.25rem;
+          font-size: 1.25rem;
+        }
+      }
+
       .sun,
       .moon {
         font-size: 1.25rem;
@@ -78,7 +89,7 @@
   .nav {
     .inner {
       .title {
-        p {
+        a {
           span {
             font-size: 1.5rem;
           }

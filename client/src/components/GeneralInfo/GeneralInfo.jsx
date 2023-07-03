@@ -14,6 +14,7 @@ import profileImg from '../../images/profile.png'
 import { HiOutlinePlusSmall } from 'react-icons/hi2'
 
 const GeneralInfo = () => {
+  const user = localStorage.getItem('userName')
   const { mode } = useTaskivityContext()
 
   return (
@@ -22,6 +23,8 @@ const GeneralInfo = () => {
         'general-info ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')
       }
     >
+      <p className='user'>{user && <span>Welcome {user}</span>}</p>
+
       <div className='image-search-progress-container'>
         <img src={profileImg} alt='profile-img' />
 

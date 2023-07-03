@@ -22,8 +22,8 @@ import { useTaskivityContext } from '../../context/context'
 // react-icons
 import { LiaEdit } from 'react-icons/lia'
 import { RiDeleteBin6Line } from 'react-icons/ri'
-import { BsChevronDown, BsCheckCircle } from 'react-icons/bs'
-import { MdOutlineCancel } from 'react-icons/md'
+import { BsChevronDown, BsCheckCircleFill } from 'react-icons/bs'
+import { MdCancel } from 'react-icons/md'
 import { SlCalender } from 'react-icons/sl'
 
 // components
@@ -43,13 +43,27 @@ const Task = ({ task }) => {
 
   const deleteMutation = useMutation({
     mutationFn: () => deleteTask(_id, token),
-    onSuccess: () => {
-      toast.success(`Task deleted`)
+    // onSuccess: () => {
+    //   toast.success(`Task deleted`)
 
-      queryClient.invalidateQueries({
-        queryKey: ['tasks']
-      })
-    },
+    //   queryClient.invalidateQueries({
+    //     queryKey: ['tasks']
+    //   }),
+    //     queryClient.invalidateQueries({
+    //       queryKey: ['complete']
+    //     }),
+    //     queryClient.invalidateQueries({
+    //       queryKey: ['incomplete']
+    //     })
+    // },
+    onSuccess: () =>
+      Promise.all([
+        //toast.success(`Task deleted`)
+
+        queryClient.invalidateQueries(['tasks']),
+        queryClient.invalidateQueries(['complete']),
+        queryClient.invalidateQueries(['incomplete'])
+      ]),
     onError: () => {
       toast.error(`Failed to delete task`)
     }
@@ -94,14 +108,14 @@ const Task = ({ task }) => {
         {completed ? (
           <p className='complete'>
             <span className='check'>
-              <BsCheckCircle />
+              <BsCheckCircleFill />
             </span>
             <span>Complete</span>
           </p>
         ) : (
           <p className='complete'>
             <span className='cancel'>
-              <MdOutlineCancel />
+              <MdCancel />
             </span>{' '}
             <span>Incomplete</span>
           </p>

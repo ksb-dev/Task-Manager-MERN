@@ -17,7 +17,7 @@ const ProgressBar = () => {
   })
 
   const completed = useQuery({
-    queryKey: ['completed'],
+    queryKey: ['complete'],
     queryFn: () => token && getCompletedTasks(token)
   })
 

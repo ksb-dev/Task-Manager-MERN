@@ -18,14 +18,7 @@ const Home = () => {
 
   const { isLoading, isError, data } = useQuery({
     queryKey: ['tasks'],
-    queryFn: () => token && getAllTasks(token),
-
-    onSuccess: data => {
-      //console.log(data)
-    },
-    onError: data => {
-      //console.log(data)
-    }
+    queryFn: () => token && getAllTasks(token)
   })
 
   const handleLoading = () => {

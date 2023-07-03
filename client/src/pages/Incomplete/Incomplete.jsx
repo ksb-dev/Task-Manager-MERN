@@ -15,7 +15,7 @@ const Incomplete = () => {
   const token = localStorage.getItem('token')
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ['incompleted'],
+    queryKey: ['incomplete'],
     queryFn: () => token && getIncompletedTasks(token)
   })
 

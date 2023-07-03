@@ -25,7 +25,7 @@ import { useTaskivityContext } from '../../context/context'
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { mode } = useTaskivityContext()
+  const { mode, rerenderNavBar, setRerenderNavBar } = useTaskivityContext()
   const navigate = useNavigate()
 
   const queryClient = useQueryClient()
@@ -33,8 +33,11 @@ const Login = () => {
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: data => {
-      localStorage.setItem('name', data.user.name)
+      localStorage.setItem('userName', data.user.name)
       localStorage.setItem('token', data.token)
+
+      setRerenderNavBar(!rerenderNavBar)
+
       toast.success(`Login Successful`)
 
       //   queryClient.invalidateQueries({

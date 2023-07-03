@@ -1,0 +1,10 @@
+.logout-page {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 786px) {
+  .logout-page {
+    margin: 0 1rem;
+  }
+}

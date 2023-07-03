@@ -19,6 +19,7 @@ import Complete from './pages/Complete/Complete'
 import Incomplete from './pages/Incomplete/Incomplete'
 import Login from './pages/Login/Login'
 import Signup from './pages/Signup/Signup'
+import Logout from './pages/Logout/Logout'
 
 // components
 import Navbar from './components/Navbar/Navbar'
@@ -50,6 +51,7 @@ const App = () => {
             <Route path='/Incomplete' element={<Incomplete />} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
+            <Route path='/logout' element={<Logout />} />
           </Routes>
         </BrowserRouter>
 

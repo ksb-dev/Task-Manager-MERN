@@ -36,14 +36,16 @@ const Edit = () => {
   const [isCompleted, setIsCompleted] = useState('')
 
   useEffect(() => {
-    const res = getSingleTask(id, token)
+    const res = token && getSingleTask(id, token)
 
-    res.then(data => {
-      setTitle(data && data.task.title)
-      setPriority(data && data.task.priority)
-      setDescription(data && data.task.description)
-      setIsCompleted(data && data.task.completed)
-    })
+    if (res) {
+      res.then(data => {
+        setTitle(data && data.task.title)
+        setPriority(data && data.task.priority)
+        setDescription(data && data.task.description)
+        setIsCompleted(data && data.task.completed)
+      })
+    }
   }, [id, token])
 
   const editMutation = useMutation({
