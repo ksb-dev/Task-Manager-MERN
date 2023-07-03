@@ -2,8 +2,11 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 
+// const taskivity_url = '/url/api/v1/tasks'
+const taskivity_url = '/api/v1/tasks'
+
 export const getAllTasks = async token => {
-  const response = await axios.get('/url/api/v1/tasks', {
+  const response = await axios.get(taskivity_url, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -12,7 +15,7 @@ export const getAllTasks = async token => {
 }
 
 export const getCompletedTasks = async token => {
-  const response = await axios.get('/url/api/v1/tasks/completed', {
+  const response = await axios.get(taskivity_url + '/completed', {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -21,7 +24,7 @@ export const getCompletedTasks = async token => {
 }
 
 export const getIncompletedTasks = async token => {
-  const response = await axios.get('/url/api/v1/tasks/incompleted', {
+  const response = await axios.get(taskivity_url + '/incompleted', {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -30,7 +33,7 @@ export const getIncompletedTasks = async token => {
 }
 
 export const getSingleTask = async (id, token) => {
-  const response = await axios.get(`/url/api/v1/tasks/${id}`, {
+  const response = await axios.get(taskivity_url + `/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -40,7 +43,7 @@ export const getSingleTask = async (id, token) => {
 
 export const createTask = async ({ title, description, priority, token }) => {
   const response = await axios.post(
-    `/url/api/v1/tasks`,
+    taskivity_url,
     {
       title,
       description,
@@ -64,7 +67,7 @@ export const editTask = async ({
   token
 }) => {
   const response = await axios.patch(
-    `/url/api/v1/tasks/${id}`,
+    taskivity_url + `/${id}`,
     {
       title,
       description,
@@ -81,7 +84,7 @@ export const editTask = async ({
 }
 
 export const deleteTask = async (id, token) => {
-  const response = await axios.delete(`/url/api/v1/tasks/${id}`, {
+  const response = await axios.delete(taskivity_url + `/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
