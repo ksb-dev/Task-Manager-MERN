@@ -19,6 +19,7 @@ import { LiaEdit } from 'react-icons/lia'
 
 // components
 import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
+import Loading from '../../components/Loading/Loading'
 
 // context
 import { useTaskivityContext } from '../../context/context'
@@ -51,11 +52,11 @@ const Edit = () => {
   const editMutation = useMutation({
     mutationFn: editTask,
     onSuccess: () => {
-      toast.success(`Task updated`)
+      toast.success(`Task edited successfully`)
       navigate('/')
     },
     onError: () => {
-      toast.error('Failed to update task')
+      toast.error('Failed to edit task')
     }
   })
 
@@ -78,118 +79,126 @@ const Edit = () => {
   return (
     <div className='edit-page'>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
-      <form
-        onSubmit={handleEdit}
-        className={mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor'}
-      >
-        <div className='title-field'>
-          <span>Title</span>
-          <input
-            type='text'
-            className={mode ? 'lightBg1' : 'darkBg2'}
-            value={title}
-            onChange={e => setTitle(e.target.value)}
-          />
-        </div>
+      {!title && (
+        <p>
+          <Loading />
+        </p>
+      )}
+      {title && (
+        <form
+          onSubmit={handleEdit}
+          className={mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor'}
+        >
+          <div className='title-field'>
+            <span>Title</span>
+            <input
+              type='text'
+              className={mode ? 'lightBg1' : 'darkBg2'}
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+          </div>
 
-        <div className='description-field'>
-          <span>Description</span>
-          <textarea
-            id='w3review'
-            rows='7'
-            cols='50'
-            type='text'
-            className={mode ? 'lightBg1' : 'darkBg2'}
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-          />
-        </div>
+          <div className='description-field'>
+            <span>Description</span>
+            <textarea
+              id='w3review'
+              rows='7'
+              cols='50'
+              type='text'
+              className={mode ? 'lightBg1' : 'darkBg2'}
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+            />
+          </div>
 
-        <div className='priorities'>
-          <span id='title'>Priority</span>
-          <div className={'options ' + (mode ? 'lightBg1' : 'darkBg2')}>
-            <div className='option' onClick={() => setPriority('low')}>
-              {priority === 'low' ? (
-                <span className='check lowActive'></span>
-              ) : (
-                <span
-                  className={
-                    'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                  }
-                ></span>
-              )}
-              <span className='text'>Low</span>
-            </div>
+          <div className='priorities'>
+            <span id='title'>Priority</span>
+            <div className={'options ' + (mode ? 'lightBg1' : 'darkBg2')}>
+              <div className='option' onClick={() => setPriority('low')}>
+                {priority === 'low' ? (
+                  <span className='check lowActive'></span>
+                ) : (
+                  <span
+                    className={
+                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
+                    }
+                  ></span>
+                )}
+                <span className='text'>Low</span>
+              </div>
 
-            <div className='option' onClick={() => setPriority('medium')}>
-              {priority === 'medium' ? (
-                <span className='check mediumActive'></span>
-              ) : (
-                <span
-                  className={
-                    'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                  }
-                ></span>
-              )}
+              <div className='option' onClick={() => setPriority('medium')}>
+                {priority === 'medium' ? (
+                  <span className='check mediumActive'></span>
+                ) : (
+                  <span
+                    className={
+                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
+                    }
+                  ></span>
+                )}
 
-              <span className='text'>Medium</span>
-            </div>
+                <span className='text'>Medium</span>
+              </div>
 
-            <div className='option' onClick={() => setPriority('high')}>
-              {priority === 'high' ? (
-                <span className='check highActive'></span>
-              ) : (
-                <span
-                  className={
-                    'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                  }
-                ></span>
-              )}
-              <span className='text'>High</span>
+              <div className='option' onClick={() => setPriority('high')}>
+                {priority === 'high' ? (
+                  <span className='check highActive'></span>
+                ) : (
+                  <span
+                    className={
+                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
+                    }
+                  ></span>
+                )}
+                <span className='text'>High</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className='priorities'>
-          <span id='title'>Progress</span>
-          <div className={'options ' + (mode ? 'lightBg1' : 'darkBg2')}>
-            <div className='option' onClick={() => setIsCompleted(true)}>
-              {isCompleted === true ? (
-                <span className='check lowActive'></span>
-              ) : (
-                <span
-                  className={
-                    'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                  }
-                ></span>
-              )}
-              <span className='text'>Complete</span>
-            </div>
+          <div className='priorities'>
+            <span id='title'>Progress</span>
+            <div className={'options ' + (mode ? 'lightBg1' : 'darkBg2')}>
+              <div className='option' onClick={() => setIsCompleted(true)}>
+                {isCompleted === true ? (
+                  <span className='check lowActive'></span>
+                ) : (
+                  <span
+                    className={
+                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
+                    }
+                  ></span>
+                )}
+                <span className='text'>Complete</span>
+              </div>
 
-            <div className='option' onClick={() => setIsCompleted(false)}>
-              {isCompleted === false ? (
-                <span className='check highActive'></span>
-              ) : (
-                <span
-                  className={
-                    'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                  }
-                ></span>
-              )}
+              <div className='option' onClick={() => setIsCompleted(false)}>
+                {isCompleted === false ? (
+                  <span className='check highActive'></span>
+                ) : (
+                  <span
+                    className={
+                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
+                    }
+                  ></span>
+                )}
 
-              <span className='text'>Incomplete</span>
+                <span className='text'>Incomplete</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <PrimaryBtn
-          path={'#'}
-          icon={<LiaEdit />}
-          text={'Edit Task'}
-          value='btn'
-          fn={handleEdit}
-        />
-      </form>
+          <PrimaryBtn
+            path={'#'}
+            icon={<LiaEdit />}
+            text={'Edit Task'}
+            value='btn'
+            fn={handleEdit}
+            isLoading={editMutation.isLoading}
+          />
+        </form>
+      )}
     </div>
   )
 }

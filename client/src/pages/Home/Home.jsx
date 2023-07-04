@@ -51,6 +51,7 @@ const Home = () => {
 
   return (
     <div className='home'>
+      {isLoading && handleLoading()}
       {!token && (
         <div className={'main ' + (mode ? 'darkColor' : 'lightColor')}>
           <Link to='/login'>Login / Signup </Link>

@@ -3,17 +3,27 @@
 // react-router-dom
 import { Link } from 'react-router-dom'
 
-const PrimaryBtn = ({ path, icon, text, value = 'link', fn = () => {} }) => {
+// components
+import Loading from '../Loading/Loading'
+
+const PrimaryBtn = ({
+  path,
+  icon,
+  text,
+  value = 'link',
+  fn = () => {},
+  isLoading
+}) => {
   return value === 'link' ? (
     <Link to={path} className='primary-btn'>
       <span id='icon-1'>{icon}</span>
       {text}
     </Link>
+  ) : isLoading ? (
+    <button className='primary-btn' onClick={fn}>
+      <Loading value={'light'} />
+    </button>
   ) : (
-    // <button to={path} className='primary-btn' onSubmit={fn}>
-    //   <span>{icon}</span>
-    //   {text}
-    // </button>
     <button className='primary-btn' onClick={fn}>
       <span>{icon}</span>
       {text}

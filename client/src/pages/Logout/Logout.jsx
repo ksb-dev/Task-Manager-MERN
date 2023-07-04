@@ -3,6 +3,12 @@
 import { BiArrowBack, BiLogOutCircle } from 'react-icons/bi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 
+// tanstack-query
+import { useMutation } from '@tanstack/react-query'
+
+// api
+import { deleteAccount } from '../../services/authentication'
+
 // components
 import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
 
@@ -16,8 +22,26 @@ import { toast } from 'react-hot-toast'
 import { useTaskivityContext } from '../../context/context'
 
 const Logout = () => {
+  const token = localStorage.getItem('token')
   const { rerenderNavBar, setRerenderNavBar, mode } = useTaskivityContext()
   const navigate = useNavigate()
+
+  const deleteAccountMutation = useMutation({
+    mutationFn: () => deleteAccount(token),
+    onSuccess: data => {
+      localStorage.removeItem('userName')
+      localStorage.removeItem('token')
+
+      setRerenderNavBar(!rerenderNavBar)
+
+      toast.success(`Account dleted successfully`)
+
+      navigate('/')
+    },
+    onError: data => {
+      toast.error(data.response.data.message)
+    }
+  })
 
   const handleLogout = () => {
     localStorage.removeItem('userName')
@@ -28,6 +52,12 @@ const Logout = () => {
     toast.success('User logged out')
 
     navigate('/')
+  }
+
+  const handleDeleteAccount = e => {
+    e.preventDefault()
+
+    deleteAccountMutation.mutate()
   }
 
   return (
@@ -42,7 +72,7 @@ const Logout = () => {
         Logout
       </div>
 
-      <div className='logoutBtn-2'>
+      <div className='logoutBtn-2' onClick={handleDeleteAccount}>
         <span className='logout-icon-2'>
           <RiDeleteBin6Line />
         </span>

@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast'
 import { BiArrowBack, BiLogInCircle } from 'react-icons/bi'
 
 // tanstack-query
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 
 // api
 import { login } from '../../services/authentication'
@@ -28,8 +28,6 @@ const Login = () => {
   const { mode, rerenderNavBar, setRerenderNavBar } = useTaskivityContext()
   const navigate = useNavigate()
 
-  const queryClient = useQueryClient()
-
   const loginMutation = useMutation({
     mutationFn: login,
     onSuccess: data => {
@@ -39,10 +37,6 @@ const Login = () => {
       setRerenderNavBar(!rerenderNavBar)
 
       toast.success(`Login Successful`)
-
-      //   queryClient.invalidateQueries({
-      //     queryKey: ['tasks']
-      //   })
 
       navigate('/')
     },
@@ -90,6 +84,7 @@ const Login = () => {
           text={'Login'}
           value='btn'
           fn={handleSubmit}
+          isLoading={loginMutation.isLoading}
         />
       </form>
     </div>

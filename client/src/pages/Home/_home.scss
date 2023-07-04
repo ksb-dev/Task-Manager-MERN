@@ -155,3 +155,30 @@
     margin: 0 1rem;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .home {
+    margin: 0 1rem;
+
+    .main {
+      .about > p {
+        text-align: center;
+      }
+
+      .stack {
+        div {
+          .mongo,
+          .express,
+          .react,
+          .node {
+            margin: 0 1.25rem;
+          }
+        }
+      }
+
+      .functionalities {
+        margin: 0 1rem;
+      }
+    }
+  }
+}

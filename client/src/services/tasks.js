@@ -2,8 +2,8 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 
-// const taskivity_url = '/url/api/v1/tasks'
-const taskivity_url = '/api/v1/tasks'
+const taskivity_url = '/url/api/v1/tasks'
+//const taskivity_url = '/api/v1/tasks'
 
 export const getAllTasks = async token => {
   const response = await axios.get(taskivity_url, {

@@ -37,7 +37,7 @@ const Create = () => {
   const createMutation = useMutation({
     mutationFn: createTask,
     onSuccess: () => {
-      toast.success(`Task created.`)
+      toast.success(`Task created successfully.`)
 
       queryClient.invalidateQueries({
         queryKey: ['tasks']
@@ -140,6 +140,7 @@ const Create = () => {
           text={'Create Task'}
           value='btn'
           fn={handleSubmit}
+          isLoading={createMutation.isLoading}
         />
       </form>
     </div>

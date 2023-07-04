@@ -2,6 +2,7 @@ const { StatusCodes } = require('http-status-codes')
 const jwt = require('jsonwebtoken')
 
 const authenticationMiddleware = async (req, res, next) => {
+  //console.log(req.headers.authorization)
   // Check Header
 
   const authHeader = req.headers.authorization
@@ -20,6 +21,7 @@ const authenticationMiddleware = async (req, res, next) => {
 
     // Attatch the user to the task routes
     req.user = { userId: payload.id, name: payload.name }
+
     next()
   } catch (error) {
     res

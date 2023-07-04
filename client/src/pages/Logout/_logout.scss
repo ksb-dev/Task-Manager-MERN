@@ -45,3 +45,12 @@
     margin: 0 1rem;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .logout-page {
+    min-height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+}

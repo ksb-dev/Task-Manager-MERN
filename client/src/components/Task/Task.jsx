@@ -58,7 +58,7 @@ const Task = ({ task }) => {
     // },
     onSuccess: () =>
       Promise.all([
-        //toast.success(`Task deleted`)
+        toast.success(`Task deleted successfully`),
 
         queryClient.invalidateQueries(['tasks']),
         queryClient.invalidateQueries(['complete']),

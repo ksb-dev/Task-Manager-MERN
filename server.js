@@ -11,6 +11,7 @@ const connectToDataBase = require('./db/mongoDB')
 // Routers
 const authenticationRouter = require('./routes/authenticationRouter')
 const taskRouter = require('./routes/taskRouter')
+const deleteAccountRouter = require('./routes/deleteAccountRouter')
 
 //  Middleware
 const authenticationMiddleware = require('./middlewares/authenticationMiddleware')
@@ -19,21 +20,30 @@ const errorHandlerMiddleware = require('./middlewares/errorHandlerMiddleware')
 
 app.use(express.json())
 
+app.get('/api/v1/tasks/hello', (req, res) => {
+  res.status(201).json({ msg: 'Hello' })
+})
+
 app.use('/api/v1/tasks/auth', authenticationRouter)
 //app.use('/api/v1/tasks', taskRouter)
 app.use('/api/v1/tasks', authenticationMiddleware, taskRouter)
+app.use(
+  '/api/v1/tasks/delete/account',
+  authenticationMiddleware,
+  deleteAccountRouter
+)
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client', 'dist')))
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, 'client', 'dist')))
 
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-  )
-} else {
-  app.get('/', (req, res) => {
-    res.send('API is running....')
-  })
-}
+//   app.get('*', (req, res) =>
+//     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
+//   )
+// } else {
+//   app.get('/', (req, res) => {
+//     res.send('API is running....')
+//   })
+// }
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)

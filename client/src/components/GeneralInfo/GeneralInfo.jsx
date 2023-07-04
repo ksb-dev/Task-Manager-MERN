@@ -23,7 +23,7 @@ const GeneralInfo = () => {
         'general-info ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')
       }
     >
-      <p className='user'>{user && <span>Welcome {user}</span>}</p>
+      <p className='user'>{user && <span>Welcome {user}!</span>}</p>
 
       <div className='image-search-progress-container'>
         <img src={profileImg} alt='profile-img' />
