@@ -28,13 +28,13 @@ const Logout = () => {
 
   const deleteAccountMutation = useMutation({
     mutationFn: () => deleteAccount(token),
-    onSuccess: data => {
+    onSuccess: () => {
       localStorage.removeItem('userName')
       localStorage.removeItem('token')
 
       setRerenderNavBar(!rerenderNavBar)
 
-      toast.success(`Account dleted successfully`)
+      toast.success(`Account deleted successfully`)
 
       navigate('/')
     },
