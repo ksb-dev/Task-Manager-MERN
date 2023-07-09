@@ -66,6 +66,14 @@ body {
   color: var(--dark-1);
 }
 
+.lightAlpha {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.darkAlpha {
+  background: rgb(24, 26, 32, 0.75);
+}
+
 // pages
 @import '../pages/Home/home';
 @import '../pages/Create/create';

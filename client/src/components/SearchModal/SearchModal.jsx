@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useTaskivityContext } from '../../context/context'
 
 const SearchModal = () => {
-  const { searchRef, searchModalRef, searchModalInnerRef } =
+  const { mode, searchRef, searchModalRef, searchModalInnerRef } =
     useTaskivityContext()
 
   useEffect(() => {
@@ -36,8 +36,17 @@ const SearchModal = () => {
   }, [])
 
   return (
-    <div className='search-modal' ref={searchModalRef}>
-      <div className='search-modal-inner' ref={searchModalInnerRef}>
+    <div
+      className={
+        'search-modal ' +
+        (mode ? 'lightAlpha darkColor' : 'darkAlpha lightColor')
+      }
+      ref={searchModalRef}
+    >
+      <div
+        className={'search-modal-inner ' + (mode ? 'lightBg2' : 'darkBg1')}
+        ref={searchModalInnerRef}
+      >
         <input type='text' />
         <div className='search-results'>Results</div>
       </div>

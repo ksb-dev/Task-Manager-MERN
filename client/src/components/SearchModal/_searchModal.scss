@@ -1,5 +1,4 @@
 .search-modal {
-  background: aqua;
   position: fixed;
   width: 100%;
   min-height: 100vh;
@@ -7,15 +6,23 @@
   left: 0;
   z-index: 2;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   transform: scaleY(0);
   transition: var(--transition);
 
   &-inner {
-    background: aquamarine;
+    width: 100%;
+    max-width: 750px;
+    margin: 4rem auto;
     padding: 2rem;
     border-radius: var(--border-radius);
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .search-modal {
+    &-inner {
+      max-width: unset;
+      margin: 4rem 2rem;
+    }
   }
 }
