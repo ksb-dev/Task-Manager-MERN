@@ -13,6 +13,7 @@ import Task from '../../components/Task/Task'
 import Loading from '../../components/Loading/Loading'
 import Categories from '../../components/Categories/Categories'
 import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
+import SearchModal from '../../components/SearchModal/SearchModal'
 
 // react-icons
 import { BiLogoMongodb } from 'react-icons/bi'
@@ -134,6 +135,7 @@ const Home = () => {
 
       {data && data.tasks.length !== 0 && (
         <>
+          <SearchModal />
           <GeneralInfo />
           <Categories />
           {isLoading && handleLoading()}

@@ -1,33 +1,17 @@
 .search-bar {
-  input {
-    border: none;
-    outline: none;
-    padding: 0.75rem;
-    width: 400px;
-    border-radius: var(--border-radius);
-    color: #999;
-  }
-
-  input::placeholder {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
-  }
-
-  input:focus {
-    box-shadow: 0 0 3px var(--blue-2);
-  }
-
-  input:focus::placeholder {
-    color: transparent;
-  }
+  height: 40px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  border-radius: var(--border-radius);
+  color: #999;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 786px) {
   .search-bar {
-    input {
-      width: 325px;
-    }
+    width: 325px;
   }
 }
 

@@ -1,13 +1,17 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useState, createContext, useContext, useEffect } from 'react'
+import { useState, createContext, useContext, useRef } from 'react'
 
 const TaskivityContext = createContext()
 
 const TaskivityProvider = ({ children }) => {
   const [mode, setMode] = useState(true)
   const [rerenderNavBar, setRerenderNavBar] = useState(false)
+
+  const searchRef = useRef(null)
+  const searchModalRef = useRef(null)
+  const searchModalInnerRef = useRef(null)
 
   return (
     <TaskivityContext.Provider
@@ -16,7 +20,11 @@ const TaskivityProvider = ({ children }) => {
         setMode,
 
         rerenderNavBar,
-        setRerenderNavBar
+        setRerenderNavBar,
+
+        searchRef,
+        searchModalRef,
+        searchModalInnerRef
       }}
     >
       {children}

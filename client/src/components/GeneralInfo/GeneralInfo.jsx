@@ -23,13 +23,14 @@ const GeneralInfo = () => {
         'general-info ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')
       }
     >
-      <p className='user'>
-        {user && (
-          <span style={{ fontWeight: '500' }}>
-            Welcome {user.charAt(0).toUpperCase() + user.substring(1)}!
+      {user && (
+        <p className='user'>
+          Welcome
+          <span style={{ fontWeight: '500', marginLeft: '0.25rem' }}>
+            {user.charAt(0).toUpperCase() + user.substring(1)}!
           </span>
-        )}
-      </p>
+        </p>
+      )}
 
       <div className='image-search-progress-container'>
         <img src={profileImg} alt='profile-img' />
