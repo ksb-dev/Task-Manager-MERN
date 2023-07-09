@@ -20,7 +20,10 @@ import { Link } from 'react-router-dom'
 import { useTaskivityContext } from '../../context/context'
 
 // react-icons
-import { LiaEdit } from 'react-icons/lia'
+import { LuClipboardEdit } from 'react-icons/lu'
+import { BiEditAlt } from 'react-icons/bi'
+import { CiEdit } from 'react-icons/ci'
+import { FiEdit } from 'react-icons/fi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { BsChevronDown, BsCheckCircleFill } from 'react-icons/bs'
 import { MdCancel } from 'react-icons/md'
@@ -34,7 +37,7 @@ const Task = ({ task }) => {
   const token = localStorage.getItem('token')
 
   const [show, setShow] = useState(false)
-  const { _id, title, description, priority, completed, date } = task
+  const { _id, title, description, priority, complete, date } = task
   const { mode } = useTaskivityContext()
   const descRef = useRef(null)
   const downBtnRef = useRef(null)
@@ -49,12 +52,7 @@ const Task = ({ task }) => {
     //   queryClient.invalidateQueries({
     //     queryKey: ['tasks']
     //   }),
-    //     queryClient.invalidateQueries({
-    //       queryKey: ['complete']
-    //     }),
-    //     queryClient.invalidateQueries({
-    //       queryKey: ['incomplete']
-    //     })
+
     // },
     onSuccess: () =>
       Promise.all([
@@ -105,7 +103,7 @@ const Task = ({ task }) => {
       className={'task ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')}
     >
       <div className='container-1'>
-        {completed ? (
+        {complete ? (
           <p className='complete'>
             <span className='check'>
               <BsCheckCircleFill />
@@ -124,7 +122,7 @@ const Task = ({ task }) => {
         <div className='edit-delete'>
           <Link to={`/edit/${_id}`} className='editBtn'>
             <span>
-              <LiaEdit />
+              <FiEdit />
             </span>
           </Link>
 

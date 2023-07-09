@@ -20,11 +20,11 @@
   }
 
   .main {
-    color: #999;
+    //color: #999;
 
     .about > p {
       width: 100%;
-      text-align: start;
+      text-align: center;
 
       span {
         color: var(--blue-2);
@@ -48,6 +48,8 @@
 
     .stack {
       display: flex;
+      align-items: center;
+      justify-content: center;
 
       div {
         display: flex;
@@ -67,6 +69,7 @@
           width: 50px;
           margin: 0 1.5rem;
           margin-bottom: 0.5rem;
+          //box-shadow: 0 0 5px #555;
 
           .mongo-icon,
           .express-icon,
@@ -90,7 +93,7 @@
         }
 
         .express {
-          background: #e5e5e5;
+          background: #eeeeee;
 
           .express-icon {
             color: #000;
@@ -140,9 +143,10 @@
   }
 
   .main-2 {
-    color: #999;
+    //color: #999;
     border-top: 1px solid var(--blue-2);
     padding-top: 1rem;
+    text-align: center;
 
     p {
       margin-bottom: 1rem;

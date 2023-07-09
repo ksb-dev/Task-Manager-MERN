@@ -6,6 +6,10 @@ const TaskSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
+    titleLowerCase: {
+      type: String,
+      trim: true
+    },
     description: {
       type: String,
       trim: true,
@@ -16,7 +20,7 @@ const TaskSchema = new mongoose.Schema(
       enum: ['low', 'medium', 'high'],
       default: 'low'
     },
-    completed: {
+    complete: {
       type: Boolean,
       default: false
     },

@@ -4,22 +4,30 @@ const router = express.Router()
 const {
   getAllTasks,
   getCompletedTasks,
-  getInompletedTasks,
+  getIncompletedTasks,
   getTasksA_Z,
   getTasksZ_A,
   createNewTask,
   getSingleTask,
   updateTask,
-  deleteTask
+  deleteTask,
+  getAllTaskaByName,
+  getCompletedTaskaByName,
+  getIncompletedTaskaByName
 } = require('../controllers/taskController')
 
 router.get('/', getAllTasks)
 router.get('/completed', getCompletedTasks)
-router.get('/incompleted', getInompletedTasks)
+router.get('/incompleted', getIncompletedTasks)
 router.get('/name/asc', getTasksA_Z)
 router.get('/name/desc', getTasksZ_A)
-router.post('/', createNewTask)
 router.get('/:id', getSingleTask)
+router.get('/search/title', getAllTaskaByName)
+router.get('/search/complete/title', getCompletedTaskaByName)
+router.get('/search/incomplete/title', getIncompletedTaskaByName)
+
+router.post('/', createNewTask)
+
 router.patch('/:id', updateTask)
 router.delete('/:id', deleteTask)
 

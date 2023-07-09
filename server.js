@@ -25,7 +25,6 @@ app.get('/api/v1/tasks/hello', (req, res) => {
 })
 
 app.use('/api/v1/tasks/auth', authenticationRouter)
-//app.use('/api/v1/tasks', taskRouter)
 app.use('/api/v1/tasks', authenticationMiddleware, taskRouter)
 app.use(
   '/api/v1/tasks/delete/account',

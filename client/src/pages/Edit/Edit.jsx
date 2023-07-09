@@ -44,7 +44,7 @@ const Edit = () => {
         setTitle(data && data.task.title)
         setPriority(data && data.task.priority)
         setDescription(data && data.task.description)
-        setIsCompleted(data && data.task.completed)
+        setIsCompleted(data && data.task.complete)
       })
     }
   }, [id, token])
@@ -70,7 +70,7 @@ const Edit = () => {
         title,
         description,
         priority,
-        completed: isCompleted,
+        complete: isCompleted,
         token
       })
     }

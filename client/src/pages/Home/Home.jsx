@@ -70,7 +70,7 @@ const Home = () => {
                   <BiLogoMongodb />
                 </span>
               </p>
-              MongoDB
+              {/* MongoDB */}
             </div>
             <div>
               <p className='express'>
@@ -78,7 +78,7 @@ const Home = () => {
                   <SiExpress />
                 </span>
               </p>
-              Express.js
+              {/* Express.js */}
             </div>
             <div>
               <p className='react'>
@@ -86,7 +86,7 @@ const Home = () => {
                   <FaReact />
                 </span>
               </p>
-              React.js
+              {/* React.js */}
             </div>
             <div>
               <p className='node'>
@@ -94,11 +94,11 @@ const Home = () => {
                   <FaNodeJs />
                 </span>
               </p>
-              Node.js
+              {/* Node.js */}
             </div>
           </div>
 
-          <div className='functionalities'>
+          {/* <div className='functionalities'>
             <p>Functionalities</p>
             <div className='functions'>
               <p>1. CRUD (Create, Read, Delete, Update) operations.</p>
@@ -111,13 +111,18 @@ const Home = () => {
               <p>8. Forgot password.</p>
               <p>& more...</p>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
 
       {data && data.tasks.length === 0 && (
-        <div className='main-2'>
-          <p>Welcome {user}. </p>
+        <div className={'main-2 ' + (mode ? 'darkColor' : 'lightColor')}>
+          <p>
+            Welcome{' '}
+            <span style={{ fontWeight: '500' }}>
+              {user.charAt(0).toUpperCase() + user.substring(1)}!
+            </span>{' '}
+          </p>
           <p>Start using this web app by clicking below.</p>
           <PrimaryBtn
             path={'/create'}

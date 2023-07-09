@@ -16,13 +16,14 @@ const handleRequest = async (req, res, findQuery, sortQuery) => {
   const length = await Task.find(findQuery)
 
   res.json({
-    tasks,
-    totalPages: Math.ceil(length.length / limit),
-    currentPage: page
+    tasks
+    // totalPages: Math.ceil(length.length / limit),
+    // currentPage: page
   })
 }
 
 // GET Requests
+
 // 1. Get all tasks
 const getAllTasks = async (req, res, next) => {
   try {
@@ -38,7 +39,7 @@ const getAllTasks = async (req, res, next) => {
 // 2. Get completed tasks
 const getCompletedTasks = async (req, res, next) => {
   try {
-    handleRequest(req, res, { createdBy: req.user.userId, completed: true })
+    handleRequest(req, res, { createdBy: req.user.userId, complete: true })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -48,9 +49,9 @@ const getCompletedTasks = async (req, res, next) => {
 }
 
 // 3. Get incompleted tasks
-const getInompletedTasks = async (req, res, next) => {
+const getIncompletedTasks = async (req, res, next) => {
   try {
-    handleRequest(req, res, { createdBy: req.user.userId, completed: false })
+    handleRequest(req, res, { createdBy: req.user.userId, complete: false })
   } catch (error) {
     next({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
@@ -106,6 +107,98 @@ const getSingleTask = async (req, res, next) => {
   }
 }
 
+// 7. Get all tasks by name
+const getAllTaskaByName = async (req, res, next) => {
+  const { name } = req.query
+
+  try {
+    const allTasks = await Task.find({
+      createdBy: req.user.userId
+    })
+
+    if (!allTasks) {
+      next({
+        statusCode: StatusCodes.NOT_FOUND,
+        message: `No tasks found!`
+      })
+      return
+    }
+
+    const tasks = allTasks.filter(
+      task => task.title.toLowerCase().indexOf(name) !== -1
+    )
+
+    res.status(201).json({ tasks })
+  } catch (error) {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to fetch a task'
+    })
+  }
+}
+
+// 8. Get completed tasks by name
+const getCompletedTaskaByName = async (req, res, next) => {
+  const { name } = req.query
+
+  try {
+    const tasks = await Task.find({
+      createdBy: req.user.userId,
+      complete: true
+    })
+
+    if (!tasks) {
+      next({
+        statusCode: StatusCodes.NOT_FOUND,
+        message: `No tasks found!`
+      })
+      return
+    }
+
+    const filteredTasks = tasks.filter(
+      task => task.title.toLowerCase().indexOf(name) !== -1
+    )
+
+    res.status(201).json({ filteredTasks })
+  } catch (error) {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to fetch a task'
+    })
+  }
+}
+
+// 9. Get incompleted tasks by name
+const getIncompletedTaskaByName = async (req, res, next) => {
+  const { name } = req.query
+
+  try {
+    const tasks = await Task.find({
+      createdBy: req.user.userId,
+      complete: false
+    })
+
+    if (!tasks) {
+      next({
+        statusCode: StatusCodes.NOT_FOUND,
+        message: `No tasks found!`
+      })
+      return
+    }
+
+    const filteredTasks = tasks.filter(
+      task => task.title.toLowerCase().indexOf(name) !== -1
+    )
+
+    res.status(201).json({ filteredTasks })
+  } catch (error) {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to fetch a task'
+    })
+  }
+}
+
 // POST Request (Create task)
 const createNewTask = async (req, res, next) => {
   const { title } = req.body
@@ -150,6 +243,7 @@ const createNewTask = async (req, res, next) => {
 const updateTask = async (req, res, next) => {
   try {
     const { id: taskID } = req.params
+    const { title } = req.body
 
     const task = await Task.findOneAndUpdate(
       { createdBy: req.user.userId, _id: taskID },
@@ -207,11 +301,14 @@ const deleteTask = async (req, res, next) => {
 module.exports = {
   getAllTasks,
   getCompletedTasks,
-  getInompletedTasks,
+  getIncompletedTasks,
   getTasksA_Z,
   getTasksZ_A,
   createNewTask,
   getSingleTask,
   updateTask,
-  deleteTask
+  deleteTask,
+  getAllTaskaByName,
+  getCompletedTaskaByName,
+  getIncompletedTaskaByName
 }

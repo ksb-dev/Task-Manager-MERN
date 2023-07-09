@@ -63,7 +63,7 @@ export const editTask = async ({
   title,
   description,
   priority,
-  completed,
+  complete,
   token
 }) => {
   const response = await axios.patch(
@@ -72,7 +72,7 @@ export const editTask = async ({
       title,
       description,
       priority,
-      completed
+      complete
     },
     {
       headers: {
