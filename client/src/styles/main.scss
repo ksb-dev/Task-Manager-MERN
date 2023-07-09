@@ -74,6 +74,42 @@ body {
   background: rgb(24, 26, 32, 0.75);
 }
 
+.lowPriority {
+  background: #1db954;
+}
+
+.mediumPriority {
+  background: orange;
+}
+
+.highPriority {
+  background: tomato;
+}
+
+.lightCheckBorder {
+  border: 1px solid var(--light-1);
+}
+
+.darkCheckBorder {
+  border: 1px solid var(--dark-1);
+}
+
+.active {
+  background: var(--blue-2);
+}
+
+.lowActive {
+  background: #1db954;
+}
+
+.mediumActive {
+  background: orange;
+}
+
+.highActive {
+  background: tomato;
+}
+
 // pages
 @import '../pages/Home/home';
 @import '../pages/Create/create';
