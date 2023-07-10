@@ -13,6 +13,9 @@ const TaskivityProvider = ({ children }) => {
   const searchModalRef = useRef(null)
   const searchModalInnerRef = useRef(null)
 
+  const [token, setToken] = useState('')
+  const [user, setUser] = useState('')
+
   return (
     <TaskivityContext.Provider
       value={{
@@ -24,7 +27,12 @@ const TaskivityProvider = ({ children }) => {
 
         searchRef,
         searchModalRef,
-        searchModalInnerRef
+        searchModalInnerRef,
+
+        token,
+        setToken,
+        user,
+        setUser
       }}
     >
       {children}

@@ -34,6 +34,9 @@ const Login = () => {
       localStorage.setItem('userName', data.user.name)
       localStorage.setItem('token', data.token)
 
+      // localStorage.setItem('userName', data.user.name)
+      // localStorage.setItem('token', data.token)
+
       setRerenderNavBar(!rerenderNavBar)
 
       toast.success(`Login Successful`)
