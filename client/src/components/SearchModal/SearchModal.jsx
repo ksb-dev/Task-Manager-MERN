@@ -8,11 +8,16 @@ import { useTaskivityContext } from '../../context/context'
 // hooks
 import { useSearchAll } from '../../hooks/useSearch'
 
+// components
+import Loading from '../Loading/Loading'
+
 const SearchModal = () => {
   const token = localStorage.getItem('token')
 
   const [query, setQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [progress, setProgress] = useState('all')
 
   const { mode, searchRef, searchModalRef, searchModalInnerRef } =
@@ -27,13 +32,25 @@ const SearchModal = () => {
   useEffect(() => {
     if (query !== '') {
       if (progress === 'all') {
-        getSearchResults(query, token, setSearchResults)
+        getSearchResults(query, token, setSearchResults, setLoading, setError)
       }
       if (progress === 'incomplete') {
-        getIncompletedSearchResults(query, token, setSearchResults)
+        getIncompletedSearchResults(
+          query,
+          token,
+          setSearchResults,
+          setLoading,
+          setError
+        )
       }
       if (progress === 'complete') {
-        getCompletedSearchResults(query, token, setSearchResults)
+        getCompletedSearchResults(
+          query,
+          token,
+          setSearchResults,
+          setLoading,
+          setError
+        )
       }
     } else {
       setSearchResults([])
@@ -78,6 +95,22 @@ const SearchModal = () => {
     if (priority === 'high') {
       return 'highPriority'
     }
+  }
+
+  const handleLoading = () => {
+    return (
+      <div className='search-loading'>
+        <Loading value={'blue'} />
+      </div>
+    )
+  }
+
+  const handleError = () => {
+    return (
+      <div className='search-error'>
+        <span>Failed to search</span>
+      </div>
+    )
   }
 
   return (
@@ -145,6 +178,7 @@ const SearchModal = () => {
             Complete
           </p>
         </div>
+
         <input
           type='text'
           placeholder='Enter title'
@@ -154,16 +188,24 @@ const SearchModal = () => {
         />
 
         {searchResults?.length > 0 && (
-          <div className={'search-results ' + (mode ? 'lightBg1' : 'darkBg2')}>
-            {searchResults.map(task => (
-              <span
-                className={`${getPriorityColor(task.priority)}`}
-                key={task._id}
-              >
-                {task.title}
-              </span>
-            ))}
-          </div>
+          <>
+            {loading && handleLoading()}
+            {!loading && error !== '' && handleError()}
+            <div
+              className={'search-results ' + (mode ? 'lightBg1' : 'darkBg2')}
+            >
+              {!loading &&
+                error === '' &&
+                searchResults.map(task => (
+                  <span
+                    className={`${getPriorityColor(task.priority)}`}
+                    key={task._id}
+                  >
+                    {task.title}
+                  </span>
+                ))}
+            </div>
+          </>
         )}
       </div>
     </div>
