@@ -76,12 +76,24 @@
       box-shadow: 0 0 5px var(--blue-2);
     }
 
+    .search-results p:first-child {
+      margin-bottom: 1rem;
+      padding: 0 !important ;
+      text-align: center;
+
+      span {
+        font-weight: 500;
+        color: var(--blue-2);
+        padding-left: 0.25rem !important;
+      }
+    }
+
     .search-results {
       border-radius: var(--border-radius);
       margin-top: 1rem;
       display: flex;
       flex-direction: column;
-      padding: 1rem;
+      // padding: 1rem;
 
       span {
         color: #fff;

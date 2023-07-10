@@ -191,12 +191,13 @@ const SearchModal = () => {
           <>
             {loading && handleLoading()}
             {!loading && error !== '' && handleError()}
-            <div
-              className={'search-results ' + (mode ? 'lightBg1' : 'darkBg2')}
-            >
-              {!loading &&
-                error === '' &&
-                searchResults.map(task => (
+            {!loading && error === '' && (
+              <div className={'search-results'}>
+                <p>
+                  Search Results <span>{searchResults.length}</span>
+                </p>
+
+                {searchResults.map(task => (
                   <span
                     className={`${getPriorityColor(task.priority)}`}
                     key={task._id}
@@ -204,7 +205,8 @@ const SearchModal = () => {
                     {task.title}
                   </span>
                 ))}
-            </div>
+              </div>
+            )}
           </>
         )}
       </div>
