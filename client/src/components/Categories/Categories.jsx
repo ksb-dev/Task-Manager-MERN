@@ -49,7 +49,6 @@ const Categories = () => {
           </Link>
         )}
       </div>
-      <div className='sort'>Sort</div>
     </div>
   )
 }

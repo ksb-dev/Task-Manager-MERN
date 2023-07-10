@@ -191,12 +191,17 @@ const SearchModal = () => {
           <>
             {loading && handleLoading()}
             {!loading && error !== '' && handleError()}
+            {
+              <p>
+                Search Results <span>{searchResults.length}</span>
+              </p>
+            }
             {!loading && error === '' && (
-              <div className={'search-results'}>
-                <p>
-                  Search Results <span>{searchResults.length}</span>
-                </p>
-
+              <div
+                className={
+                  'search-results scroll-1 ' + (mode ? 'lightBg1' : 'darkBg2')
+                }
+              >
                 {searchResults.map(task => (
                   <span
                     className={`${getPriorityColor(task.priority)}`}

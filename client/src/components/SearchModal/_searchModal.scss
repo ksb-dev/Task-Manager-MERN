@@ -19,10 +19,11 @@
 
   &-inner {
     width: 100%;
-    max-width: 750px;
-    margin: 4rem auto;
+    max-width: calc(750px - 12rem);
+    margin: 8rem auto;
     padding: 4rem;
     border-radius: var(--border-radius);
+    position: relative;
 
     .search-options {
       display: flex;
@@ -43,6 +44,10 @@
           border-radius: 50%;
           margin-right: 0.25rem;
         }
+      }
+
+      p:last-child {
+        margin-right: 0;
       }
 
       p:hover {
@@ -76,8 +81,8 @@
       box-shadow: 0 0 5px var(--blue-2);
     }
 
-    .search-results p:first-child {
-      margin-bottom: 1rem;
+    p {
+      margin: 1rem 0;
       padding: 0 !important ;
       text-align: center;
 
@@ -89,11 +94,12 @@
     }
 
     .search-results {
+      max-height: 300px;
       border-radius: var(--border-radius);
       margin-top: 1rem;
       display: flex;
       flex-direction: column;
-      // padding: 1rem;
+      padding: 1rem;
 
       span {
         color: #fff;
@@ -127,8 +133,9 @@
   .search-modal {
     &-inner {
       max-width: unset;
-      margin: 4rem 2rem;
-      padding: 2rem 1rem;
+      margin: 6rem 0rem;
+      padding: 4rem 2rem;
+      border-radius: 0;
 
       .search-options {
         p {

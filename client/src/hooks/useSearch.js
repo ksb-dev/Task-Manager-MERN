@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 
 import axios from 'axios'
 
-//const taskivity_url = '/url/api/v1/tasks'
-const taskivity_url = '/api/v1/tasks'
+const taskivity_url = '/url/api/v1/tasks'
+//const taskivity_url = '/api/v1/tasks'
 
 export const useSearchAll = () => {
   const getSearchResults = async (

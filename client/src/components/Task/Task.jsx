@@ -28,6 +28,7 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 import { BsChevronDown, BsCheckCircleFill } from 'react-icons/bs'
 import { MdCancel } from 'react-icons/md'
 import { SlCalender } from 'react-icons/sl'
+import { LiaArrowRightSolid } from 'react-icons/lia'
 
 // components
 import Description from '../Description/Description'
@@ -144,7 +145,7 @@ const Task = ({ task }) => {
               onClick={showDescription}
             >
               <span>
-                <BsChevronDown />
+                <LiaArrowRightSolid />
               </span>
             </p>
           )}
