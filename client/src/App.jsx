@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // react-query
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+//import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 // react-hot-toast
 import { Toaster } from 'react-hot-toast'
@@ -40,7 +40,7 @@ const App = () => {
   return (
     <div className={'app ' + (mode ? 'lightBg1' : 'darkBg2')}>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
 
         <BrowserRouter>
           <Navbar />

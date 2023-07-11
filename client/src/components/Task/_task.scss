@@ -14,11 +14,13 @@
     border-bottom-right-radius: var(--border-radius);
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     top: 0rem;
     left: 0rem;
     padding: 0.25rem 1rem;
     font-weight: 500;
+    //font-family: monospace;
+    //color: #999;
 
     .cancel,
     .check {
@@ -28,24 +30,30 @@
     }
 
     .cancel {
-      font-size: 1.25rem;
+      color: var(--red);
+      font-size: 1.45rem;
+      margin-bottom: 0.1rem;
     }
 
     .check {
+      color: var(--green);
       margin-right: 0.35rem;
+      font-size: 1.25rem;
+      margin-bottom: 0.1rem;
     }
   }
 
   .incomplete {
-    color: var(--red);
+    //color: var(--red);
     border-top: 2px solid var(--red);
     border-left: 2px solid var(--red);
   }
 
   .complete {
-    color: var(--green);
+    //color: var(--green);
     border-top: 2px solid var(--green);
     border-left: 2px solid var(--green);
+    padding-top: 0.35rem;
   }
 
   .container-1 {
@@ -136,15 +144,16 @@
   .date {
     display: flex;
     align-items: center;
-    font-size: 0.8rem;
-    color: #999;
+    //font-size: 1rem;
+    //color: #999;
     margin-top: 1rem;
-    letter-spacing: 1px;
+    //letter-spacing: 1px;
+    font-family: monospace;
 
     span:first-child {
       font-size: 1rem;
       margin-top: 0.05rem;
-      margin-right: 0.25rem;
+      margin-right: 0.5rem;
     }
   }
 }
