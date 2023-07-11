@@ -11,6 +11,9 @@ import { useSearchAll } from '../../hooks/useSearch'
 // components
 import Loading from '../Loading/Loading'
 
+// react-icons
+import { BiSearch } from 'react-icons/bi'
+
 const SearchModal = () => {
   const token = localStorage.getItem('token')
 
@@ -179,13 +182,18 @@ const SearchModal = () => {
           </p>
         </div>
 
-        <input
-          type='text'
-          placeholder='Enter title'
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          className={mode ? 'lightBg1' : 'darkBg2'}
-        />
+        <div className='input'>
+          <input
+            type='text'
+            placeholder='Enter title'
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className={mode ? 'lightBg1' : 'darkBg2'}
+          />
+          <span className='search-icon'>
+            <BiSearch />
+          </span>
+        </div>
 
         {searchResults?.length > 0 && (
           <>

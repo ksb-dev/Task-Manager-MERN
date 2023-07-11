@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 
 // moment
 import moment from 'moment'
@@ -20,27 +20,19 @@ import { Link } from 'react-router-dom'
 import { useTaskivityContext } from '../../context/context'
 
 // react-icons
-import { LuClipboardEdit } from 'react-icons/lu'
-import { BiEditAlt } from 'react-icons/bi'
-import { CiEdit } from 'react-icons/ci'
 import { FiEdit } from 'react-icons/fi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
-import { BsChevronDown, BsCheckCircleFill } from 'react-icons/bs'
+import { BsCheckCircleFill } from 'react-icons/bs'
 import { MdCancel } from 'react-icons/md'
 import { SlCalender } from 'react-icons/sl'
 import { LiaArrowRightSolid } from 'react-icons/lia'
-
-// components
-import Description from '../Description/Description'
 
 /* eslint-disable react/prop-types */
 const Task = ({ task }) => {
   const token = localStorage.getItem('token')
 
-  const [show, setShow] = useState(false)
-  const { _id, title, description, priority, complete, date } = task
+  const { _id, title, priority, complete, date } = task
   const { mode } = useTaskivityContext()
-  const descRef = useRef(null)
   const downBtnRef = useRef(null)
 
   const queryClient = useQueryClient()
@@ -79,23 +71,6 @@ const Task = ({ task }) => {
       return 'mediumPriority'
     } else {
       return 'highPriority'
-    }
-  }
-
-  const getDescription = description => {
-    const res = description.split('\n')
-    return res
-  }
-
-  const showDescription = () => {
-    setShow(!show)
-
-    if (show) {
-      descRef.current.style.display = 'block'
-      downBtnRef.current.style.transform = 'rotate(180deg)'
-    } else {
-      descRef.current.style.display = 'none'
-      downBtnRef.current.style.transform = 'rotate(0deg)'
     }
   }
 
@@ -138,28 +113,13 @@ const Task = ({ task }) => {
       <div className='container-2'>
         <div className={'name ' + getClass(priority)}>
           {title}
-          {description && (
-            <p
-              ref={downBtnRef}
-              className={'down-icon ' + getClass(priority)}
-              onClick={showDescription}
-            >
-              <span>
-                <LiaArrowRightSolid />
-              </span>
-            </p>
-          )}
+
+          <p ref={downBtnRef} className={'down-icon ' + getClass(priority)}>
+            <span>
+              <LiaArrowRightSolid />
+            </span>
+          </p>
         </div>
-        <Description
-          show={show}
-          setShow={setShow}
-          descRef={descRef}
-          getClass={getClass}
-          description={description}
-          getDescription={getDescription}
-          priority={priority}
-          downBtnRef={downBtnRef}
-        />
       </div>
 
       <div className='date'>

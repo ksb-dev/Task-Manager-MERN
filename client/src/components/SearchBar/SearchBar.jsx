@@ -4,6 +4,9 @@
 // context
 import { useTaskivityContext } from '../../context/context'
 
+// react-icons
+import { BiSearch } from 'react-icons/bi'
+
 const SearchBar = () => {
   const { mode, searchRef, searchModalRef } = useTaskivityContext()
 
@@ -18,6 +21,9 @@ const SearchBar = () => {
       ref={searchRef}
     >
       Search
+      <span className='search-icon'>
+        <BiSearch />
+      </span>
     </div>
   )
 }

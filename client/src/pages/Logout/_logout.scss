@@ -7,36 +7,85 @@
     text-align: center;
   }
 
-  .logoutBtn-1,
-  .logoutBtn-2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgb(255, 34, 34);
-    color: #fff;
-    height: 40px;
+  .logout-options {
+    padding: 1rem;
     border-radius: var(--border-radius);
-    margin-top: 0.5rem;
-    cursor: pointer;
+    margin-top: 1rem;
 
-    .logout-icon-1,
-    .logout-icon-2 {
-      font-size: 1.15rem;
-      margin-top: 0.35rem;
-      margin-right: 0.25rem;
+    .logoutBtn-1,
+    .logoutBtn-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgb(255, 34, 34);
+      color: #fff;
+      height: 40px;
+      border-radius: var(--border-radius);
+      margin-top: 0.5rem;
+      cursor: pointer;
+
+      .logout-icon-1,
+      .logout-icon-2 {
+        font-size: 1.15rem;
+        margin-top: 0.35rem;
+        margin-right: 0.25rem;
+      }
+
+      .logout-icon-1 {
+        font-size: 1.25rem;
+      }
     }
 
-    .logout-icon-1 {
-      font-size: 1.25rem;
+    .logoutBtn-1 {
+      background: #555;
+    }
+
+    .logoutBtn:hover {
+      filter: brightness(90%);
     }
   }
 
-  .logoutBtn-1 {
-    background: #555;
-  }
+  .confirm {
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-top: 1rem;
 
-  .logoutBtn:hover {
-    filter: brightness(90%);
+    p {
+      margin: 0;
+    }
+
+    .options {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+
+      .cancel-btn,
+      .delete-btn {
+        display: flex;
+        align-items: center;
+        margin: 0 1rem;
+        cursor: pointer;
+        color: #fff;
+        border-radius: var(--border-radius);
+        padding: 0.25rem 1rem;
+
+        span {
+          margin-right: 0.25rem;
+          font-size: 1.15rem;
+          margin-top: 0.35rem;
+        }
+      }
+
+      .cancel-btn {
+        background: var(--blue-2);
+        padding-left: 0.75rem;
+      }
+
+      .delete-btn {
+        background: rgb(255, 34, 34);
+      }
+    }
   }
 }
 

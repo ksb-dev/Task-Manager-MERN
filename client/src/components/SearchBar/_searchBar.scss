@@ -7,6 +7,13 @@
   border-radius: 50px;
   color: #999;
   cursor: pointer;
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    right: 1rem;
+    font-size: 1.25rem;
+  }
 }
 
 @media screen and (max-width: 786px) {
