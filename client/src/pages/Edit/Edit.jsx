@@ -76,14 +76,18 @@ const Edit = () => {
     }
   }
 
+  const handleLoading = () => {
+    return (
+      <div className='loading'>
+        <Loading />
+      </div>
+    )
+  }
+
   return (
     <div className='edit-page'>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
-      {!title && (
-        <p>
-          <Loading />
-        </p>
-      )}
+      {!title && handleLoading()}
       {title && (
         <form
           onSubmit={handleEdit}

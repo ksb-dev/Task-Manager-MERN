@@ -115,6 +115,8 @@
         height: 30px;
         border-radius: 50%;
         cursor: pointer;
+        text-decoration: none;
+        color: #fff;
 
         span {
           font-size: 1rem;
@@ -126,7 +128,7 @@
       }
 
       .down-icon:hover {
-        filter: brightness(90%);
+        filter: brightness(70%);
       }
     }
   }

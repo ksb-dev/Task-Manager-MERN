@@ -2,6 +2,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
 
+// react-router-dom
+import { Link } from 'react-router-dom'
+
 // context
 import { useTaskivityContext } from '../../context/context'
 
@@ -13,6 +16,7 @@ import Loading from '../Loading/Loading'
 
 // react-icons
 import { BiSearch } from 'react-icons/bi'
+import { LiaArrowRightSolid } from 'react-icons/lia'
 
 const SearchModal = () => {
   const token = localStorage.getItem('token')
@@ -200,19 +204,30 @@ const SearchModal = () => {
             {loading && handleLoading()}
             {!loading && error !== '' && handleError()}
             {
-              <p>
-                Search Results <span>{searchResults.length}</span>
-              </p>
+              <div className='length'>
+                Search Results
+                <p>
+                  <span>{searchResults.length}</span>
+                </p>
+              </div>
             }
             {!loading && error === '' && (
               <div className={'search-results scroll-1 '}>
                 {searchResults.map(task => (
-                  <span
-                    className={`${getPriorityColor(task.priority)}`}
+                  <div
                     key={task._id}
+                    className={'result ' + `${getPriorityColor(task.priority)}`}
                   >
-                    {task.title}
-                  </span>
+                    <span>{task.title}</span>
+                    <Link
+                      to={`/detail/${task._id}`}
+                      className={'icon ' + `${getPriorityColor(task.priority)}`}
+                    >
+                      <span>
+                        <LiaArrowRightSolid />
+                      </span>
+                    </Link>
+                  </div>
                 ))}
               </div>
             )}

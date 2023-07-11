@@ -118,11 +118,15 @@ const Task = ({ task }) => {
         <div className={'name ' + getClass(priority)}>
           {title}
 
-          <p ref={downBtnRef} className={'down-icon ' + getClass(priority)}>
+          <Link
+            to={`/detail/${_id}`}
+            ref={downBtnRef}
+            className={'down-icon ' + getClass(priority)}
+          >
             <span>
               <LiaArrowRightSolid />
             </span>
-          </p>
+          </Link>
         </div>
       </div>
 

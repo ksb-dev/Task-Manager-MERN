@@ -23,11 +23,12 @@
 
       input,
       textarea {
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         border-radius: var(--border-radius);
         outline: none;
         border: none;
         color: #999;
+        font-size: 1rem;
       }
 
       input:focus,

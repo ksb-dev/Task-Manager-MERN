@@ -1,0 +1,10 @@
+.task-detail {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 786px) {
+  .task-detail {
+    margin: 0 1rem;
+  }
+}
