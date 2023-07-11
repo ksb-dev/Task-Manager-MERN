@@ -203,33 +203,38 @@ const SearchModal = () => {
           <>
             {loading && handleLoading()}
             {!loading && error !== '' && handleError()}
-            {
-              <div className='length'>
-                Search Results
-                <p>
-                  <span>{searchResults.length}</span>
-                </p>
-              </div>
-            }
+
             {!loading && error === '' && (
-              <div className={'search-results scroll-1 '}>
-                {searchResults.map(task => (
-                  <div
-                    key={task._id}
-                    className={'result ' + `${getPriorityColor(task.priority)}`}
-                  >
-                    <span>{task.title}</span>
-                    <Link
-                      to={`/detail/${task._id}`}
-                      className={'icon ' + `${getPriorityColor(task.priority)}`}
+              <>
+                <div className='length'>
+                  Search Results
+                  <p>
+                    <span>{searchResults.length}</span>
+                  </p>
+                </div>
+                <div className={'search-results scroll-1 '}>
+                  {searchResults.map(task => (
+                    <div
+                      key={task._id}
+                      className={
+                        'result ' + `${getPriorityColor(task.priority)}`
+                      }
                     >
-                      <span>
-                        <LiaArrowRightSolid />
-                      </span>
-                    </Link>
-                  </div>
-                ))}
-              </div>
+                      <span>{task.title}</span>
+                      <Link
+                        to={`/detail/${task._id}`}
+                        className={
+                          'icon ' + `${getPriorityColor(task.priority)}`
+                        }
+                      >
+                        <span>
+                          <LiaArrowRightSolid />
+                        </span>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </>
             )}
           </>
         )}
