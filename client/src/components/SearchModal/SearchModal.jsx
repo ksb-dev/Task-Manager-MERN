@@ -205,11 +205,7 @@ const SearchModal = () => {
               </p>
             }
             {!loading && error === '' && (
-              <div
-                className={
-                  'search-results scroll-1 ' + (mode ? 'lightBg1' : 'darkBg2')
-                }
-              >
+              <div className={'search-results scroll-1 '}>
                 {searchResults.map(task => (
                   <span
                     className={`${getPriorityColor(task.priority)}`}

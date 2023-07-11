@@ -24,11 +24,18 @@ const GeneralInfo = () => {
       }
     >
       {user && (
-        <p className='user'>
+        <p className={'user'}>
           Welcome
-          <span style={{ fontWeight: '500', marginLeft: '0.25rem' }}>
-            {user.charAt(0).toUpperCase() + user.substring(1)}!
+          <span
+            style={{
+              marginLeft: '0.25rem'
+              // fontFamily: 'Cinzel Decorative, cursive',
+              // fontWeight: '700'
+            }}
+          >
+            {user.charAt(0).toUpperCase() + user.substring(1)}
           </span>
+          !
         </p>
       )}
 

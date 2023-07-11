@@ -51,7 +51,7 @@
       }
 
       p:hover {
-        color: var(--blue-2);
+        color: var(--blue);
       }
     }
 
@@ -81,7 +81,7 @@
       }
 
       input:focus {
-        box-shadow: 0 0 5px var(--blue-2);
+        box-shadow: 0 0 5px var(--blue);
       }
 
       .search-icon {
@@ -99,18 +99,18 @@
 
       span {
         font-weight: 500;
-        color: var(--blue-2);
+        color: var(--blue);
         padding-left: 0.25rem !important;
       }
     }
 
     .search-results {
       max-height: 300px;
-      border-radius: var(--border-radius);
+      //border-radius: var(--border-radius);
       margin-top: 1rem;
       display: flex;
       flex-direction: column;
-      padding: 1rem;
+      //padding: 1rem;
 
       span {
         color: #fff;

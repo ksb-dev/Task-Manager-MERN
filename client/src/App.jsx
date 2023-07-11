@@ -56,7 +56,7 @@ const App = () => {
         </BrowserRouter>
 
         <Toaster
-          position='bottom-center'
+          position='top-center'
           gutter={12}
           containerStyle={{ margin: '8px' }}
           toastOptions={{

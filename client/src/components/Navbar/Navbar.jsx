@@ -34,7 +34,7 @@ const Navbar = () => {
     } else {
       setTimeout(() => {
         if (navInnerRef.current !== null) {
-          navInnerRef.current.style.boxShadow = '0px 15px 10px -15px #555'
+          navInnerRef.current.style.boxShadow = '0px 15px 10px -15px #999'
         }
       }, 0)
     }

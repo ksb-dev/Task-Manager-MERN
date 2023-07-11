@@ -26,6 +26,8 @@ import { BsCheckCircleFill } from 'react-icons/bs'
 import { MdCancel } from 'react-icons/md'
 import { SlCalender } from 'react-icons/sl'
 import { LiaArrowRightSolid } from 'react-icons/lia'
+import { AiFillTags } from 'react-icons/ai'
+import { TbProgressX, TbProgressCheck } from 'react-icons/tb'
 
 /* eslint-disable react/prop-types */
 const Task = ({ task }) => {
@@ -78,23 +80,25 @@ const Task = ({ task }) => {
     <div
       className={'task ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')}
     >
-      <div className='container-1'>
-        {complete ? (
-          <p className='complete'>
-            <span className='check'>
-              <BsCheckCircleFill />
-            </span>
-            <span>Complete</span>
-          </p>
-        ) : (
-          <p className='complete'>
-            <span className='cancel'>
-              <MdCancel />
-            </span>{' '}
-            <span>Incomplete</span>
-          </p>
-        )}
+      {complete ? (
+        <p className={'complete'}>
+          <span className='check'>
+            <BsCheckCircleFill />
+            {/* <TbProgressCheck /> */}
+          </span>
+          <span>Complete</span>
+        </p>
+      ) : (
+        <p className={'incomplete'}>
+          <span className='cancel'>
+            <MdCancel />
+            {/* <TbProgressX /> */}
+          </span>
+          <span>Incomplete</span>
+        </p>
+      )}
 
+      <div className='container-1'>
         <div className='edit-delete'>
           <Link to={`/edit/${_id}`} className='editBtn'>
             <span>

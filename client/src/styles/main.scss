@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
 #root {
   --light-1: #fff;
   --light-2: rgb(230, 230, 230);
   //--dark-1: #23272f;
-  --dark-1: #2e3238;
-  --dark-2: #181a20;
+  --dark-2: #2e3238;
+  --dark-1: #181a20;
   //--dark-2: #222831;
   --blue-1: #0d253f;
   --blue-2: #01b4e4;
@@ -11,6 +13,11 @@
   --green-2: #7dd56f;
   --green-3: #28b487;
   --grey-1: #555;
+
+  --blue: #01b4e4;
+  --red: #ff5733;
+  --green: #1db954;
+  --orange: darkorange;
 
   --border-radius: 25px;
 
@@ -71,19 +78,19 @@ body {
 }
 
 .darkAlpha {
-  background: rgb(24, 26, 32, 0.95);
+  background: rgb(46, 50, 56, 0.95);
 }
 
 .lowPriority {
-  background: #1db954;
+  background: var(--green);
 }
 
 .mediumPriority {
-  background: orange;
+  background: var(--orange);
 }
 
 .highPriority {
-  background: tomato;
+  background: var(--red);
 }
 
 .lightCheckBorder {
@@ -99,15 +106,15 @@ body {
 }
 
 .lowActive {
-  background: #1db954;
+  background: var(--green);
 }
 
 .mediumActive {
-  background: orange;
+  background: var(--orange);
 }
 
 .highActive {
-  background: tomato;
+  background: var(--red);
 }
 
 .scroll-1 {

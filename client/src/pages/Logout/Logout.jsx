@@ -69,7 +69,7 @@ const Logout = () => {
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
       {/* <p>Logout / Delete</p> */}
 
-      <div className={'logout-options ' + (mode ? 'lightBg2' : 'darkBg1')}>
+      <div className={'logout-options '}>
         <div className='logoutBtn-1' onClick={handleLogout}>
           <span className='logout-icon-1'>
             <BiLogOutCircle />
@@ -91,15 +91,15 @@ const Logout = () => {
 
           <div className='options'>
             <p className='cancel-btn' onClick={() => setShow(!show)}>
-              <span>
+              {/* <span>
                 <MdOutlineCancel />
-              </span>
+              </span> */}
               Cancel
             </p>
             <p className='delete-btn' onClick={handleDeleteAccount}>
-              <span>
+              {/* <span>
                 <RiDeleteBin6Line />
-              </span>
+              </span> */}
               Delete
             </p>
           </div>
