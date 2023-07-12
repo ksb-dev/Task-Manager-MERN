@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-constant-condition */
 /* eslint-disable no-unused-vars */
 
@@ -17,23 +18,16 @@ import SearchModal from '../../components/SearchModal/SearchModal'
 
 // react-icons
 import { BiLogoMongodb } from 'react-icons/bi'
-import { SiExpress } from 'react-icons/si'
+import { SiExpress, SiReactquery } from 'react-icons/si'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 import { HiOutlinePlusSmall } from 'react-icons/hi2'
+import { LiaSass } from 'react-icons/lia'
 
 // context
 import { useTaskivityContext } from '../../context/context'
 
 // react-router-dom
 import { Link } from 'react-router-dom'
-
-// images
-import home from '../../images/1-home.png'
-import create from '../../images/2-create.png'
-import edit from '../../images/3-edit.png'
-import detail from '../../images/4-detail.png'
-import search from '../../images/5-search.png'
-import dark from '../../images/6-dark.png'
 
 const Home = () => {
   const token = localStorage.getItem('token')
@@ -58,6 +52,17 @@ const Home = () => {
     return <div className='loading'>Failed to fetch tasks</div>
   }
 
+  const Icon = ({ value, icon }) => {
+    return (
+      <div>
+        <p className={value}>
+          <span className={`${value}-icon`}>{icon}</span>
+        </p>
+        {/* MongoDB */}
+      </div>
+    )
+  }
+
   return (
     <div className='home'>
       {isLoading && handleLoading()}
@@ -67,44 +72,18 @@ const Home = () => {
 
           <div className='about'>
             <p>
-              Taskivity is a basic task manager web app, built using popular
-              <span> MERN </span>stack
+              Web technologies used to build this app.
+              {/* <span> MERN </span>stack */}
             </p>
           </div>
 
           <div className='stack'>
-            <div>
-              <p className='mongo'>
-                <span className='mongo-icon'>
-                  <BiLogoMongodb />
-                </span>
-              </p>
-              {/* MongoDB */}
-            </div>
-            <div>
-              <p className='express'>
-                <span className='express-icon'>
-                  <SiExpress />
-                </span>
-              </p>
-              {/* Express.js */}
-            </div>
-            <div>
-              <p className='react'>
-                <span className='react-icon'>
-                  <FaReact />
-                </span>
-              </p>
-              {/* React.js */}
-            </div>
-            <div>
-              <p className='node'>
-                <span className='node-icon'>
-                  <FaNodeJs />
-                </span>
-              </p>
-              {/* Node.js */}
-            </div>
+            <Icon value={'mongo'} icon={<BiLogoMongodb />} />
+            <Icon value={'express'} icon={<SiExpress />} />
+            <Icon value={'react'} icon={<FaReact />} />
+            <Icon value={'node'} icon={<FaNodeJs />} />
+            <Icon value={'query'} icon={<SiReactquery />} />
+            <Icon value={'sass'} icon={<LiaSass />} />
           </div>
         </div>
       )}
