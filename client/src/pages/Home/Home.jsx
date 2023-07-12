@@ -93,7 +93,7 @@ const Home = () => {
           <p>
             Welcome{' '}
             <span style={{ fontWeight: '500' }}>
-              {user.charAt(0).toUpperCase() + user.substring(1)}!
+              {user && user.charAt(0).toUpperCase() + user.substring(1)}!
             </span>{' '}
           </p>
           <p>Start using this web app by clicking below.</p>

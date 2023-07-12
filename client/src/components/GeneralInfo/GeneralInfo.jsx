@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 // context
 import { useTaskivityContext } from '../../context/context'
@@ -8,13 +9,13 @@ import ProgressBar from '../ProgressBar/ProgressBar'
 import PrimaryBtn from '../PrimaryBtn/PrimaryBtn'
 
 // images
-import profileImg from '../../images/profile.png'
 
 // react-icons
 import { HiOutlinePlusSmall } from 'react-icons/hi2'
 
 const GeneralInfo = () => {
   const user = localStorage.getItem('userName')
+  const profilePath = localStorage.getItem('profilePath')
   const { mode } = useTaskivityContext()
 
   return (
@@ -38,7 +39,7 @@ const GeneralInfo = () => {
       )}
 
       <div className='image-search-progress'>
-        <img src={profileImg} alt='profile-img' />
+        <img src={profilePath} alt='' />
 
         <div className='search-gt-640px'>
           <SearchBar />

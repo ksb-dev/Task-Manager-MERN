@@ -36,41 +36,17 @@
       }
     }
 
-    .priorities {
-      margin: 1rem 0;
+    .profile-upload {
+      display: flex;
+      flex-direction: column;
 
-      #title {
+      span {
         display: inline-block;
         margin-bottom: 1rem;
       }
 
-      .options {
-        display: flex;
-        padding: 1rem;
-        border-radius: var(--border-radius);
-
-        .option {
-          margin-right: 2rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-
-          span {
-            font-weight: 400;
-          }
-
-          .check {
-            height: 17.5px;
-            width: 17.5px;
-            border-radius: 50%;
-            margin-right: 0.25rem;
-          }
-        }
-
-        .option:hover {
-          color: var(--blue);
-        }
+      input {
+        margin-bottom: 1rem;
       }
     }
   }

@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react'
 
+// axios
+import axios from 'axios'
+
 // react-hot-toast
 import { toast } from 'react-hot-toast'
 
@@ -26,6 +29,7 @@ const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [image, setImage] = useState('')
   const { mode, rerenderNavBar, setRerenderNavBar } = useTaskivityContext()
   const navigate = useNavigate()
 
@@ -37,14 +41,11 @@ const Signup = () => {
     onSuccess: data => {
       localStorage.setItem('userName', data.user.name)
       localStorage.setItem('token', data.token)
+      localStorage.setItem('profilePath', data.image)
 
       setRerenderNavBar(!rerenderNavBar)
 
       toast.success(`Registration Successful.`)
-
-      //   queryClient.invalidateQueries({
-      //     queryKey: ['tasks']
-      //   })
 
       navigate('/')
     },
@@ -56,7 +57,27 @@ const Signup = () => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    registerMutation.mutate({ name, email, password })
+    registerMutation.mutate({ name, email, password, image })
+  }
+
+  const uploadImage = async e => {
+    const imageFile = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', imageFile)
+
+    try {
+      const data = await axios.post(`/url/api/v1/profile/upload`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+
+      if (data) {
+        setImage(data.data.image.src)
+      }
+    } catch (error) {
+      toast.success(error.response.data.message)
+    }
   }
 
   return (
@@ -93,6 +114,16 @@ const Signup = () => {
             className={mode ? 'lightBg1' : 'darkBg2'}
             value={password}
             onChange={e => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div className='profile-upload'>
+          <span>Upload profile picture</span>
+          <input
+            type='file'
+            id='image'
+            accept='image/*'
+            onChange={uploadImage}
           />
         </div>
 

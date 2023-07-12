@@ -6,23 +6,32 @@ const path = require('path')
 const app = express()
 app.use(cors())
 
+const fileUpload = require('express-fileupload')
+
+const cloudinary = require('cloudinary').v2
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET
+})
+
 const connectToDataBase = require('./db/mongoDB')
 
 // Routers
 const authenticationRouter = require('./routes/authenticationRouter')
 const taskRouter = require('./routes/taskRouter')
 const deleteAccountRouter = require('./routes/deleteAccountRouter')
+const uploadImageRouter = require('./routes/uploadImageRouter')
 
 //  Middleware
 const authenticationMiddleware = require('./middlewares/authenticationMiddleware')
 const notFoundMiddleware = require('./middlewares/notFoundMiddleware')
 const errorHandlerMiddleware = require('./middlewares/errorHandlerMiddleware')
 
-app.use(express.json())
+app.use(express.static('./public'))
 
-app.get('/api/v1/tasks/hello', (req, res) => {
-  res.status(201).json({ msg: 'Hello' })
-})
+app.use(express.json())
+app.use(fileUpload({ useTempFiles: true }))
 
 app.use('/api/v1/tasks/auth', authenticationRouter)
 app.use('/api/v1/tasks', authenticationMiddleware, taskRouter)
@@ -31,6 +40,7 @@ app.use(
   authenticationMiddleware,
   deleteAccountRouter
 )
+app.use('/api/v1/profile/upload', uploadImageRouter)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'dist')))

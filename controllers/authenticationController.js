@@ -2,8 +2,10 @@ const User = require('../models/User')
 const { StatusCodes } = require('http-status-codes')
 const { createJWT } = require('../utils')
 
-const register = async (req, res, next) => {
-  const { name, email, password } = req.body
+const register = async (req, res) => {
+  const { name, email, password, image } = req.body
+
+  console.log(image)
 
   //Check empty fields
   if (!name || !email || !password) {
@@ -54,7 +56,7 @@ const register = async (req, res, next) => {
   }
 
   // Register user
-  const user = await User.create({ name, email, password })
+  const user = await User.create({ name, email, password, image })
 
   // Generate token
   const tokenUser = { name: user.name, id: user._id }
@@ -62,7 +64,9 @@ const register = async (req, res, next) => {
   const token = createJWT({ res, payload: tokenUser })
 
   // Send user response
-  res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token })
+  res
+    .status(StatusCodes.CREATED)
+    .json({ user: { name: user.name }, token, image: user.image })
 }
 
 const login = async (req, res) => {
@@ -100,7 +104,9 @@ const login = async (req, res) => {
   const token = createJWT({ res, payload: tokenUser })
 
   // Send user response
-  res.status(StatusCodes.OK).json({ user: { name: user.name }, token })
+  res
+    .status(StatusCodes.OK)
+    .json({ user: { name: user.name }, token, image: user.image })
 }
 
 module.exports = { register, login }

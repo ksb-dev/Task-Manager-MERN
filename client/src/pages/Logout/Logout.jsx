@@ -55,6 +55,7 @@ const Logout = () => {
   const handleLogout = () => {
     localStorage.removeItem('userName')
     localStorage.removeItem('token')
+    localStorage.removeItem('profilePath')
 
     setRerenderNavBar(!rerenderNavBar)
 

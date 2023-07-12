@@ -33,9 +33,7 @@ const Login = () => {
     onSuccess: data => {
       localStorage.setItem('userName', data.user.name)
       localStorage.setItem('token', data.token)
-
-      // localStorage.setItem('userName', data.user.name)
-      // localStorage.setItem('token', data.token)
+      localStorage.setItem('profilePath', data.image)
 
       setRerenderNavBar(!rerenderNavBar)
 
