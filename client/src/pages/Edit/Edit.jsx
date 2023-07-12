@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react'
 
@@ -84,6 +85,26 @@ const Edit = () => {
     )
   }
 
+  // Priority Component
+  const Priority = ({ value, active }) => {
+    return (
+      <div className='option' onClick={() => setPriority(value)}>
+        {priority === value ? (
+          <span className={`check ${active}`}></span>
+        ) : (
+          <span
+            className={
+              'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
+            }
+          ></span>
+        )}
+        <span className='text'>
+          {value.charAt(0).toUpperCase() + value.substring(1)}
+        </span>
+      </div>
+    )
+  }
+
   return (
     <div className='edit-page'>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
@@ -118,46 +139,11 @@ const Edit = () => {
 
           <div className='priorities'>
             <span id='title'>Priority</span>
+
             <div className={'options ' + (mode ? 'lightBg1' : 'darkBg2')}>
-              <div className='option' onClick={() => setPriority('low')}>
-                {priority === 'low' ? (
-                  <span className='check lowActive'></span>
-                ) : (
-                  <span
-                    className={
-                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                    }
-                  ></span>
-                )}
-                <span className='text'>Low</span>
-              </div>
-
-              <div className='option' onClick={() => setPriority('medium')}>
-                {priority === 'medium' ? (
-                  <span className='check mediumActive'></span>
-                ) : (
-                  <span
-                    className={
-                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                    }
-                  ></span>
-                )}
-
-                <span className='text'>Medium</span>
-              </div>
-
-              <div className='option' onClick={() => setPriority('high')}>
-                {priority === 'high' ? (
-                  <span className='check highActive'></span>
-                ) : (
-                  <span
-                    className={
-                      'check ' + (mode ? 'darkCheckBorder' : 'lightCheckBorder')
-                    }
-                  ></span>
-                )}
-                <span className='text'>High</span>
-              </div>
+              <Priority value={'low'} active={'lowActive'} />
+              <Priority value={'medium'} active={'mediumActive'} />
+              <Priority value={'high'} active={'highActive'} />
             </div>
           </div>
 

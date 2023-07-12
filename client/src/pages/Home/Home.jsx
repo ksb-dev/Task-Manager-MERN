@@ -27,6 +27,14 @@ import { useTaskivityContext } from '../../context/context'
 // react-router-dom
 import { Link } from 'react-router-dom'
 
+// images
+import home from '../../images/1-home.png'
+import create from '../../images/2-create.png'
+import edit from '../../images/3-edit.png'
+import detail from '../../images/4-detail.png'
+import search from '../../images/5-search.png'
+import dark from '../../images/6-dark.png'
+
 const Home = () => {
   const token = localStorage.getItem('token')
   const user = localStorage.getItem('userName')
