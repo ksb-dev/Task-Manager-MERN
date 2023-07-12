@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 // react-router-dom
 import { Link } from 'react-router-dom'
 
@@ -7,47 +9,34 @@ import { useTaskivityContext } from '../../context/context'
 const Categories = () => {
   const { mode } = useTaskivityContext()
 
+  const CategoryLink = ({ path, text }) => {
+    return window.location.pathname === path ? (
+      <Link
+        to={path}
+        className={
+          'option ' + (mode ? 'darkColor darkActive' : 'lightColor lightActive')
+        }
+      >
+        {text}
+      </Link>
+    ) : (
+      <Link
+        to={path}
+        className={'option ' + (mode ? 'darkColor' : 'lightColor')}
+      >
+        {text}
+      </Link>
+    )
+  }
+
   return (
     <div className={'categories ' + (mode ? 'darkColor' : 'lightColor')}>
       <div className='options'>
-        {window.location.pathname === '/' ? (
-          <Link
-            to='/'
-            className={mode ? 'darkColor darkActive' : 'lightColor lightActive'}
-          >
-            Tasks
-          </Link>
-        ) : (
-          <Link to='/' className={mode ? 'darkColor' : 'lightColor'}>
-            Tasks
-          </Link>
-        )}
+        <CategoryLink path={'/'} text={'Tasks'} />
 
-        {window.location.pathname === '/incomplete' ? (
-          <Link
-            to='/incomplete'
-            className={mode ? 'darkColor darkActive' : 'lightColor lightActive'}
-          >
-            Incomplete
-          </Link>
-        ) : (
-          <Link to='/incomplete' className={mode ? 'darkColor' : 'lightColor'}>
-            Incomplete
-          </Link>
-        )}
+        <CategoryLink path={'/incomplete'} text={'Incomplete'} />
 
-        {window.location.pathname === '/complete' ? (
-          <Link
-            to='/complete'
-            className={mode ? 'darkColor darkActive' : 'lightColor lightActive'}
-          >
-            Complete
-          </Link>
-        ) : (
-          <Link to='/complete' className={mode ? 'darkColor' : 'lightColor'}>
-            Complete
-          </Link>
-        )}
+        <CategoryLink path={'/complete'} text={'Complete'} />
       </div>
     </div>
   )

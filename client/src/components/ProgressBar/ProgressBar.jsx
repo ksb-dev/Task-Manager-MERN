@@ -37,7 +37,7 @@ const ProgressBar = () => {
           pathColor: '#fff'
         })}
       />
-      <div>
+      <div className='percentage'>
         {all.data && all.data.tasks.length !== 0 && completed.data ? (
           <span>
             {(

@@ -52,7 +52,7 @@
 
       #title {
         display: inline-block;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
 
       .options {
@@ -90,5 +90,13 @@
 @media screen and (max-width: 786px) {
   .edit-page {
     margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .edit-page {
+    form {
+      padding: 1rem;
+    }
   }
 }

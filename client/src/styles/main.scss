@@ -78,7 +78,7 @@ body {
 }
 
 .darkAlpha {
-  background: rgb(46, 50, 56, 0.95);
+  background: rgba(24, 26, 32, 0.95);
 }
 
 .lowPriority {
@@ -157,5 +157,6 @@ body {
 @import '../components/ProgressBar/progressBar';
 @import '../components/Categories/categories';
 @import '../components/PrimaryBtn/primaryBtn';
-@import '../components/Description/description';
 @import '../components/SearchModal/searchModal';
+@import '../components/Date/date';
+@import '../components/ProgressTag/progressTag';

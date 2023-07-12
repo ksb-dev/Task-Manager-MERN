@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
@@ -8,8 +9,12 @@ import { Link } from 'react-router-dom'
 // context
 import { useTaskivityContext } from '../../context/context'
 
-// hooks
-import { useSearchAll } from '../../hooks/useSearch'
+// services
+import {
+  getSearchResults,
+  getIncompletedSearchResults,
+  getCompletedSearchResults
+} from '../../services/searchTasks'
 
 // components
 import Loading from '../Loading/Loading'
@@ -17,6 +22,9 @@ import Loading from '../Loading/Loading'
 // react-icons
 import { BiSearch } from 'react-icons/bi'
 import { LiaArrowRightSolid } from 'react-icons/lia'
+
+// utils
+import { getPriorityColor } from '../../utils/getPriorityColor'
 
 const SearchModal = () => {
   const token = localStorage.getItem('token')
@@ -30,12 +38,7 @@ const SearchModal = () => {
   const { mode, searchRef, searchModalRef, searchModalInnerRef } =
     useTaskivityContext()
 
-  const {
-    getSearchResults,
-    getIncompletedSearchResults,
-    getCompletedSearchResults
-  } = useSearchAll()
-
+  // Get search results
   useEffect(() => {
     if (query !== '') {
       if (progress === 'all') {
@@ -64,6 +67,7 @@ const SearchModal = () => {
     }
   }, [query])
 
+  // Toggle Modal
   useEffect(() => {
     const showHideSearchModal = e => {
       if (
@@ -84,6 +88,7 @@ const SearchModal = () => {
       ) {
         searchModalRef.current.style.transform = 'scaleY(0)'
         setQuery('')
+        setProgress('all')
       }
     }
 
@@ -92,16 +97,39 @@ const SearchModal = () => {
     return () => document.body.removeEventListener('click', showHideSearchModal)
   }, [])
 
-  const getPriorityColor = priority => {
-    if (priority === 'low') {
-      return 'lowPriority'
+  // Priority Component
+  const Priority = ({ text }) => {
+    let active = ''
+
+    if (text === 'all') {
+      active = 'active'
     }
-    if (priority === 'medium') {
-      return 'mediumPriority'
+    if (text === 'incomplete') {
+      active = 'highActive'
     }
-    if (priority === 'high') {
-      return 'highPriority'
+    if (text === 'complete') {
+      active = 'lowActive'
     }
+
+    return (
+      <p
+        onClick={() => {
+          setQuery('')
+          setProgress(text)
+        }}
+      >
+        <span
+          className={
+            progress === text
+              ? active
+              : mode
+              ? 'darkCheckBorder'
+              : 'lightCheckBorder'
+          }
+        ></span>
+        {text.charAt(0).toUpperCase() + text.substring(1)}
+      </p>
+    )
   }
 
   const handleLoading = () => {
@@ -129,61 +157,13 @@ const SearchModal = () => {
       ref={searchModalRef}
     >
       <div
-        className={'search-modal-inner ' + (mode ? 'lightBg2' : 'darkBg1')}
+        className={'inner ' + (mode ? 'lightBg2' : 'darkBg1')}
         ref={searchModalInnerRef}
       >
-        <div className='search-options'>
-          <p
-            onClick={() => {
-              setQuery('')
-              setProgress('all')
-            }}
-          >
-            <span
-              className={
-                progress === 'all'
-                  ? 'active'
-                  : mode
-                  ? 'darkCheckBorder'
-                  : 'lightCheckBorder'
-              }
-            ></span>
-            All
-          </p>
-          <p
-            onClick={() => {
-              setQuery('')
-              setProgress('incomplete')
-            }}
-          >
-            <span
-              className={
-                progress === 'incomplete'
-                  ? 'highActive'
-                  : mode
-                  ? 'darkCheckBorder'
-                  : 'lightCheckBorder'
-              }
-            ></span>
-            Incomplete
-          </p>
-          <p
-            onClick={() => {
-              setQuery('')
-              setProgress('complete')
-            }}
-          >
-            <span
-              className={
-                progress === 'complete'
-                  ? 'lowActive'
-                  : mode
-                  ? 'darkCheckBorder'
-                  : 'lightCheckBorder'
-              }
-            ></span>
-            Complete
-          </p>
+        <div className='options'>
+          <Priority text={'all'} />
+          <Priority text={'incomplete'} />
+          <Priority text={'complete'} />
         </div>
 
         <div className='input'>

@@ -82,3 +82,11 @@
     margin: 0 1rem;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .create-page {
+    form {
+      padding: 1rem;
+    }
+  }
+}

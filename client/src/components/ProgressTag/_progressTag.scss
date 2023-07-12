@@ -1,0 +1,48 @@
+.complete,
+.incomplete {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  top: 0rem;
+  left: 0rem;
+  padding: 0.25rem 1rem;
+  font-weight: 500;
+
+  .cancel,
+  .check {
+    margin-top: 0.35rem;
+    margin-right: 0.25rem;
+    font-size: 1rem;
+  }
+
+  .cancel {
+    color: var(--red);
+    font-size: 1.45rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .check {
+    color: var(--green);
+    margin-right: 0.35rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.1rem;
+  }
+}
+
+.incomplete {
+  border-top: 2px solid var(--red);
+  border-left: 2px solid var(--red);
+}
+
+.complete {
+  border-top: 2px solid var(--green);
+  border-left: 2px solid var(--green);
+  padding-top: 0.35rem;
+}

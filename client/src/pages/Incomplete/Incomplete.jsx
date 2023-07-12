@@ -36,7 +36,7 @@ const Incomplete = () => {
   }
 
   return (
-    <div className='incomplete'>
+    <div className='incomplete-tasks'>
       <GeneralInfo />
       <Categories />
       {isLoading && handleLoading()}

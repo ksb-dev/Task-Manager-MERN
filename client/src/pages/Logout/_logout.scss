@@ -56,6 +56,7 @@
 
     p {
       margin: 0;
+      line-height: 1.75rem;
     }
 
     .options {
@@ -72,7 +73,7 @@
         cursor: pointer;
         color: #fff;
         border-radius: var(--border-radius);
-        padding: 0.5rem 1rem;
+        padding: 0.25rem 1rem;
 
         span {
           margin-right: 0.25rem;

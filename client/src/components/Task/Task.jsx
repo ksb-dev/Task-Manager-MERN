@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { useRef } from 'react'
+/* eslint-disable react/prop-types */
 
-// moment
-import moment from 'moment'
+import { useRef } from 'react'
 
 // react-hot-toast
 import { toast } from 'react-hot-toast'
@@ -10,7 +9,7 @@ import { toast } from 'react-hot-toast'
 // react-query
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-// api
+// services
 import { deleteTask } from '../../services/tasks'
 
 // react-router-dom
@@ -24,16 +23,19 @@ import { FiEdit } from 'react-icons/fi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { MdCancel } from 'react-icons/md'
-import { SlCalender } from 'react-icons/sl'
 import { LiaArrowRightSolid } from 'react-icons/lia'
-import { AiFillTags } from 'react-icons/ai'
-import { TbProgressX, TbProgressCheck } from 'react-icons/tb'
 
-/* eslint-disable react/prop-types */
+// utils
+import { getPriorityColor } from '../../utils/getPriorityColor'
+
+// components
+import Date from '../Date/Date'
+import ProgressTag from '../ProgressTag/ProgressTag'
+
 const Task = ({ task }) => {
   const token = localStorage.getItem('token')
 
-  const { _id, title, priority, complete, date } = task
+  const { _id, title, priority, complete, date, description } = task
   const { mode } = useTaskivityContext()
   const downBtnRef = useRef(null)
 
@@ -41,14 +43,7 @@ const Task = ({ task }) => {
 
   const deleteMutation = useMutation({
     mutationFn: () => deleteTask(_id, token),
-    // onSuccess: () => {
-    //   toast.success(`Task deleted`)
 
-    //   queryClient.invalidateQueries({
-    //     queryKey: ['tasks']
-    //   }),
-
-    // },
     onSuccess: () =>
       Promise.all([
         toast.success(`Task deleted successfully`),
@@ -66,76 +61,45 @@ const Task = ({ task }) => {
     deleteMutation.mutate()
   }
 
-  const getClass = priority => {
-    if (priority === 'low') {
-      return 'lowPriority'
-    } else if (priority === 'medium') {
-      return 'mediumPriority'
-    } else {
-      return 'highPriority'
-    }
-  }
-
   return (
     <div
       className={'task ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')}
     >
-      {complete ? (
-        <p className={'complete'}>
-          <span className='check'>
-            <BsCheckCircleFill />
-            {/* <TbProgressCheck /> */}
-          </span>
-          <span>Complete</span>
-        </p>
-      ) : (
-        <p className={'incomplete'}>
-          <span className='cancel'>
-            <MdCancel />
-            {/* <TbProgressX /> */}
-          </span>
-          <span>Incomplete</span>
-        </p>
-      )}
+      <ProgressTag complete={complete} />
 
-      <div className='container-1'>
-        <div className='edit-delete'>
-          <Link to={`/edit/${_id}`} className='editBtn'>
-            <span>
-              <FiEdit />
-            </span>
-          </Link>
+      <div className='edit-delete'>
+        <Link to={`/edit/${_id}`} className='editBtn'>
+          <span>
+            <FiEdit />
+          </span>
+        </Link>
 
-          <p onClick={handleDelete} className='deleteBtn'>
-            <span className='deleteIcon'>
-              <RiDeleteBin6Line />
-            </span>
-          </p>
-        </div>
+        <p onClick={handleDelete} className='deleteBtn'>
+          <span className='deleteIcon'>
+            <RiDeleteBin6Line />
+          </span>
+        </p>
       </div>
 
       <div className='container-2'>
-        <div className={'name ' + getClass(priority)}>
+        <div className={'name ' + getPriorityColor(priority)}>
           {title}
 
-          <Link
-            to={`/detail/${_id}`}
-            ref={downBtnRef}
-            className={'down-icon ' + getClass(priority)}
-          >
-            <span>
-              <LiaArrowRightSolid />
-            </span>
-          </Link>
+          {description && (
+            <Link
+              to={`/detail/${_id}`}
+              ref={downBtnRef}
+              className={'down-icon ' + getPriorityColor(priority)}
+            >
+              <span>
+                <LiaArrowRightSolid />
+              </span>
+            </Link>
+          )}
         </div>
       </div>
 
-      <div className='date'>
-        <span>
-          <SlCalender />
-        </span>
-        <span>{moment(date).format('Do MMMM, YYYY')}</span>
-      </div>
+      <Date date={date} />
     </div>
   )
 }

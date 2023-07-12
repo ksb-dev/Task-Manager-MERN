@@ -56,19 +56,8 @@
         color: var(--blue);
       }
 
-      .user {
-        display: flex;
-        align-items: center;
-
-        span {
-          margin-top: 0.25rem;
-          margin-right: 0.25rem;
-          font-size: 1.25rem;
-        }
-      }
-
-      .sun,
-      .moon {
+      .sun-icon,
+      .moon-icon {
         font-size: 1.25rem;
         margin-top: 0.5rem;
       }

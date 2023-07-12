@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useRef, useEffect } from 'react'
 
@@ -19,12 +20,7 @@ const Navbar = () => {
 
   useEffect(() => {}, [rerenderNavBar])
 
-  //Window Scroll Function
   window.onscroll = () => {
-    scrollFunction()
-  }
-
-  const scrollFunction = () => {
     if (window.scrollY === 0) {
       setTimeout(() => {
         if (navInnerRef.current !== null) {
@@ -44,6 +40,25 @@ const Navbar = () => {
     setMode(!mode)
   }
 
+  const NavLink = ({ path, text }) => {
+    return (
+      <Link
+        to={path}
+        className={'option ' + (mode ? 'darkColor' : 'lightColor')}
+      >
+        {text}
+      </Link>
+    )
+  }
+
+  const NavIcon = ({ name }) => {
+    return (
+      <span className={`option ${name}-icon`} onClick={() => toggleMode()}>
+        {name === 'moon' ? <BiSolidMoon /> : <BsSunFill />}
+      </span>
+    )
+  }
+
   return (
     <div className={'nav ' + (mode ? 'lightBg1' : 'darkBg2')}>
       <div className='inner' ref={navInnerRef}>
@@ -58,37 +73,15 @@ const Navbar = () => {
 
         <div className={'options ' + (mode ? 'darkColor' : 'lightColor')}>
           {user ? (
-            <Link
-              to='/logout'
-              className={'option user ' + (mode ? 'darkColor' : 'lightColor')}
-            >
-              Logout
-            </Link>
+            <NavLink path={'/logout'} text={'Logout'} />
           ) : (
             <>
-              <Link
-                to='/login'
-                className={'option ' + (mode ? 'darkColor' : 'lightColor')}
-              >
-                Login
-              </Link>
-              <Link
-                to='/signup'
-                className={'option ' + (mode ? 'darkColor' : 'lightColor')}
-              >
-                Signup
-              </Link>
+              <NavLink path={'/login'} text={'Login'} />
+              <NavLink path={'/signup'} text={'Signup'} />
             </>
           )}
-          {mode ? (
-            <span className='option moon' onClick={() => toggleMode()}>
-              <BiSolidMoon />
-            </span>
-          ) : (
-            <span className='option sun' onClick={() => toggleMode()}>
-              <BsSunFill />
-            </span>
-          )}
+
+          {mode ? <NavIcon name={'moon'} /> : <NavIcon name={'sun'} />}
         </div>
       </div>
     </div>

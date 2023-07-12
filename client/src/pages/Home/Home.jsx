@@ -98,21 +98,6 @@ const Home = () => {
               {/* Node.js */}
             </div>
           </div>
-
-          {/* <div className='functionalities'>
-            <p>Functionalities</p>
-            <div className='functions'>
-              <p>1. CRUD (Create, Read, Delete, Update) operations.</p>
-              <p>2. Authentication using JWT (JSON Web Token)</p>
-              <p>3. Authentication using google.</p>
-              <p>4. Light / Dark mode. </p>
-              <p>5. Filter tasks. </p>
-              <p>6. Pagination.</p>
-              <p>7. Image upload.</p>
-              <p>8. Forgot password.</p>
-              <p>& more...</p>
-            </div>
-          </div> */}
         </div>
       )}
 

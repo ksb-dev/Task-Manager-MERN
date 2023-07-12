@@ -20,17 +20,15 @@ const GeneralInfo = () => {
   return (
     <div
       className={
-        'general-info ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')
+        'dashboard ' + (mode ? 'lightBg2 darkColor' : 'darkBg1 lightColor')
       }
     >
       {user && (
-        <p className={'user'}>
+        <p className='user-name'>
           Welcome
           <span
             style={{
               marginLeft: '0.25rem'
-              // fontFamily: 'Cinzel Decorative, cursive',
-              // fontWeight: '700'
             }}
           >
             {user.charAt(0).toUpperCase() + user.substring(1)}
@@ -39,17 +37,17 @@ const GeneralInfo = () => {
         </p>
       )}
 
-      <div className='image-search-progress-container'>
+      <div className='image-search-progress'>
         <img src={profileImg} alt='profile-img' />
 
-        <div className='search-container-1'>
+        <div className='search-gt-640px'>
           <SearchBar />
         </div>
 
         <ProgressBar />
       </div>
 
-      <div className='search-container-2'>
+      <div className='search-st-640px'>
         <SearchBar />
       </div>
 

@@ -36,7 +36,7 @@ const Complete = () => {
   }
 
   return (
-    <div className='complete'>
+    <div className='complete-tasks'>
       <GeneralInfo />
       <Categories />
       {isLoading && handleLoading()}

@@ -1,0 +1,12 @@
+.date {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-family: monospace;
+
+  span:first-child {
+    font-size: 1rem;
+    margin-top: 0.05rem;
+    margin-right: 0.5rem;
+  }
+}

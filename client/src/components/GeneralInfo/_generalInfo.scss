@@ -1,16 +1,16 @@
-.general-info {
+.dashboard {
   margin: 0 auto 0 auto;
   padding: 1rem;
   border-radius: var(--border-radius);
   max-width: 750px;
 
-  .user {
+  .user-name {
     text-align: center;
     margin-bottom: 1rem;
     font-weight: 500;
   }
 
-  .image-search-progress-container {
+  .image-search-progress {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,24 +23,24 @@
     }
   }
 
-  .search-container-2 {
+  .search-st-640px{
     display: none;
   }
 }
 
 @media screen and (max-width: 640px) {
-  .general-info {
-    .image-search-progress-container {
+  .dashboard {
+    .image-search-progress {
       img {
         width: 75px;
         height: 75px;
       }
-      .search-container-1 {
+      .search-gt-640px {
         display: none;
       }
     }
 
-    .search-container-2 {
+    .search-st-640px {
       margin: 1rem 0;
       display: block;
     }

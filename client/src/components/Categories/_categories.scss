@@ -5,34 +5,26 @@
   justify-content: center;
 
   .options {
-    a {
+    .option {
       text-decoration: none;
       margin-right: 1rem;
       padding-bottom: 0.25rem;
     }
 
-    a:last-child {
+    .option:last-child {
       margin-right: 0;
     }
 
-    // a:hover {
-    //   color: var(--blue);
-    // }
+    
   }
 }
 
 .lightActive {
   font-weight: 500;
-  //font-size: 1.1rem;
-  //color: var(--blue);
   border-bottom: 2px solid #fff;
-  //text-transform: uppercase;
 }
 
 .darkActive {
   font-weight: 500;
-  //font-size: 1.1rem;
-  //color: var(--blue);
   border-bottom: 2px solid var(--dark-2);
-  //text-transform: uppercase;
 }
