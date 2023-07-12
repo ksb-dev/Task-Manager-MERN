@@ -5,7 +5,6 @@ import axios from 'axios'
 const auth_url = '/api/v1/tasks/auth'
 
 export const signup = async ({ name, email, password, image }) => {
-  console.log(image)
   const response = await axios.post(auth_url + '/register', {
     name,
     email,
