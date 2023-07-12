@@ -25,6 +25,9 @@ import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
 // context
 import { useTaskivityContext } from '../../context/context'
 
+//const url = '/url/api/v1/profile/upload'
+const url = '/api/v1/profile/upload'
+
 const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -66,7 +69,7 @@ const Signup = () => {
     formData.append('image', imageFile)
 
     try {
-      const data = await axios.post(`/url/api/v1/profile/upload`, formData, {
+      const data = await axios.post(url, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -74,9 +77,10 @@ const Signup = () => {
 
       if (data) {
         setImage(data.data.image.src)
+        toast.success('Image uploaded!')
       }
     } catch (error) {
-      toast.success(error.response.data.message)
+      toast.error(error.response.data.message)
     }
   }
 
