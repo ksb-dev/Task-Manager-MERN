@@ -37,16 +37,35 @@ const uploadProfilePictureLocal = async (req, res) => {
     .json({ image: { src: `/uploads/${productImage.name}` } })
 }
 
-const uploadProfilePictureCloud = async (req, res) => {
-  const result = await cloudinary.uploader.upload(
-    req.files.image.tempFilePath,
-    {
-      use_filename: true,
-      folder: 'file-upload'
+const uploadProfilePictureCloud = async (req, res, next) => {
+  try {
+    const result = await cloudinary.uploader.upload(
+      req.files.image.tempFilePath,
+      {
+        use_filename: true,
+        folder: 'file-upload'
+      }
+    )
+
+    if (!result) {
+      next({
+        statusCode: StatusCodes.BAD_REQUEST,
+        message: 'Failed to upload image - 1'
+      })
+      return
     }
-  )
-  fs.unlinkSync(req.files.image.tempFilePath)
-  return res.status(StatusCodes.OK).json({ image: { src: result.secure_url } })
+
+    fs.unlinkSync(req.files.image.tempFilePath)
+
+    return res
+      .status(StatusCodes.OK)
+      .json({ image: { src: result.secure_url } })
+  } catch (error) {
+    next({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to upload image - 2'
+    })
+  }
 }
 
 module.exports = {
