@@ -92,9 +92,15 @@ const Logout = () => {
             <p className='cancel-btn' onClick={() => setShow(!show)}>
               Cancel
             </p>
-            <p className='delete-btn' onClick={handleDeleteAccount}>
-              Delete
-            </p>
+            {!deleteAccountMutation.isLoading ? (
+              <p className='delete-btn' onClick={handleDeleteAccount}>
+                Delete
+              </p>
+            ) : (
+              <p className='delete-btn' onClick={handleDeleteAccount}>
+                Deleting...
+              </p>
+            )}
           </div>
         </div>
       )}

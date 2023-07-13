@@ -21,6 +21,7 @@ import { useNavigate } from 'react-router-dom'
 
 // components
 import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
+import Loading from '../../components/Loading/Loading'
 
 // context
 import { useTaskivityContext } from '../../context/context'
@@ -34,6 +35,7 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [image, setImage] = useState('')
+  const [isUploading, setIsUploading] = useState(false)
   const { mode, rerenderNavBar, setRerenderNavBar } = useTaskivityContext()
   const navigate = useNavigate()
 
@@ -58,10 +60,24 @@ const Signup = () => {
     }
   })
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
 
-    registerMutation.mutate({ name, email, password, image })
+    if (name !== '' && email !== '' && password !== '') {
+      const result = await uploadImage()
+
+      if (result) {
+        console.log(true)
+        registerMutation.mutate({
+          name,
+          email,
+          password,
+          image: result.data.secure_url
+        })
+      }
+    } else {
+      toast.error('Please fill out all the fields.')
+    }
   }
 
   const previewFiles = image => {
@@ -80,14 +96,18 @@ const Signup = () => {
 
   const uploadImage = async () => {
     try {
+      setIsUploading(true)
       const result = await axios.post(url, {
         image
       })
       if (result) {
         setImage(result.data.secure_url)
         toast.success('Image uploaded!')
+        setIsUploading(false)
+        return result
       }
     } catch (err) {
+      setIsUploading(false)
       console.log(err)
       toast.error(
         err.response.data.message.charAt(0).toUpperCase() +
@@ -134,7 +154,7 @@ const Signup = () => {
         </div>
 
         <div className='profile-upload'>
-          <p>Upload profile picture</p>
+          <p>Picture</p>
           <div>
             <input
               type='file'
@@ -142,12 +162,11 @@ const Signup = () => {
               accept='image/*'
               onChange={e => handleChange(e)}
             />
-            <span
-              onClick={uploadImage}
-              style={{ background: 'var(--blue)', color: '#fff' }}
-            >
-              Upload
-            </span>
+            {isUploading && (
+              <p>
+                <span>Picture Uploading</span> <Loading value={'light'} />
+              </p>
+            )}
           </div>
         </div>
 
