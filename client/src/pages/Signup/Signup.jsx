@@ -64,25 +64,35 @@ const Signup = () => {
     registerMutation.mutate({ name, email, password, image })
   }
 
-  const uploadImage = async e => {
-    const imageFile = e.target.files[0]
-    const formData = new FormData()
-    formData.append('image', imageFile)
+  const previewFiles = image => {
+    const reader = new FileReader()
+    reader.readAsDataURL(image)
 
+    reader.onloadend = () => {
+      setImage(reader.result)
+    }
+  }
+
+  const handleChange = e => {
+    const image = e.target.files[0]
+    previewFiles(image)
+  }
+
+  const uploadImage = async () => {
     try {
-      const data = await axios.post(url, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+      const result = await axios.post(url, {
+        image
       })
-
-      if (data) {
-        console.log(data)
-        setImage(data.data.image.src)
+      if (result) {
+        setImage(result.data.secure_url)
         toast.success('Image uploaded!')
       }
-    } catch (error) {
-      toast.error(error.response.data.message)
+    } catch (err) {
+      console.log(err)
+      toast.error(
+        err.response.data.message.charAt(0).toUpperCase() +
+          err.response.data.message.substring(1)
+      )
     }
   }
 
@@ -124,13 +134,21 @@ const Signup = () => {
         </div>
 
         <div className='profile-upload'>
-          <span>Upload profile picture</span>
-          <input
-            type='file'
-            id='image'
-            accept='image/*'
-            onChange={uploadImage}
-          />
+          <p>Upload profile picture</p>
+          <div>
+            <input
+              type='file'
+              id='image'
+              accept='image/*'
+              onChange={e => handleChange(e)}
+            />
+            <span
+              onClick={uploadImage}
+              style={{ background: 'var(--blue)', color: '#fff' }}
+            >
+              Upload
+            </span>
+          </div>
         </div>
 
         <PrimaryBtn

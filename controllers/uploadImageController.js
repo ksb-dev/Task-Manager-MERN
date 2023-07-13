@@ -38,34 +38,49 @@ const uploadProfilePictureLocal = async (req, res) => {
 }
 
 const uploadProfilePictureCloud = async (req, res, next) => {
-  try {
-    const result = await cloudinary.uploader.upload(
-      req.files.image.tempFilePath,
-      {
-        use_filename: true,
-        folder: 'file-upload'
+  const { image } = req.body
+
+  await cloudinary.uploader.upload(
+    image,
+    {
+      upload_preset: 'unsigned_uploads',
+      allowed_formats: ['png', 'svg', 'jpg', 'webp', 'jpeg', 'ico', 'jfif']
+    },
+    function (error, result) {
+      if (error) {
+        console.log(error)
       }
-    )
-
-    if (!result) {
-      next({
-        statusCode: StatusCodes.BAD_REQUEST,
-        message: 'Failed to upload image - 1'
-      })
-      return
+      res.status(StatusCodes.OK).json(result)
     }
+  )
 
-    fs.unlinkSync(req.files.image.tempFilePath)
+  //res.status(StatusCodes.OK).json(result)
 
-    return res
-      .status(StatusCodes.OK)
-      .json({ image: { src: result.secure_url } })
-  } catch (error) {
-    next({
-      statusCode: StatusCodes.BAD_REQUEST,
-      message: 'Failed to upload image - 2'
-    })
-  }
+  // try {
+  //   const result = await cloudinary.uploader.upload(
+  //     req.files.image.tempFilePath,
+  //     {
+  //       use_filename: true,
+  //       folder: 'file-upload'
+  //     }
+  //   )
+  //   if (!result) {
+  //     next({
+  //       statusCode: StatusCodes.BAD_REQUEST,
+  //       message: 'Failed to upload image - 1'
+  //     })
+  //     return
+  //   }
+  //   fs.unlinkSync(req.files.image.tempFilePath)
+  //   return res
+  //     .status(StatusCodes.OK)
+  //     .json({ image: { src: result.secure_url } })
+  // } catch (error) {
+  //   next({
+  //     statusCode: StatusCodes.BAD_REQUEST,
+  //     message: 'Failed to upload image - 2'
+  //   })
+  // }
 }
 
 module.exports = {

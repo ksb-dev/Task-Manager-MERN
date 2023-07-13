@@ -38,15 +38,30 @@
 
     .profile-upload {
       display: flex;
+      //align-items: center;
+      justify-content: center;
       flex-direction: column;
 
-      span {
-        display: inline-block;
+      p {
         margin-bottom: 1rem;
       }
 
-      input {
-        margin-bottom: 1rem;
+      div {
+        display: flex;
+        align-items: center;
+
+        span {
+          display: inline-block;
+          margin-bottom: 1rem;
+          padding: 0rem 0.5rem;
+          padding-bottom: 0.2rem;
+          border-radius: var(--border-radius);
+          cursor: pointer;
+        }
+
+        input {
+          margin-bottom: 1rem;
+        }
       }
     }
   }
