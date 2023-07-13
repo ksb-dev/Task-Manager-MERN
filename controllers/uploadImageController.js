@@ -1,41 +1,41 @@
-//const path = require('path')
+const path = require('path')
 const { StatusCodes } = require('http-status-codes')
 const cloudinary = require('cloudinary').v2
 const fs = require('fs')
 
-// const uploadProfilePictureLocal = async (req, res, next) => {
-//   if (!req.files) {
-//     res.status(StatusCodes.BAD_REQUEST).json({ message: 'No image uploaded' })
-//     return
-//   }
+const uploadProfilePictureLocal = async (req, res) => {
+  if (!req.files) {
+    res.status(StatusCodes.BAD_REQUEST).json({ message: 'No file uploaded' })
+    return
+  }
 
-//   const productImage = req.files.image
+  const productImage = req.files.image
 
-//   if (!productImage.mimetype.startsWith('image')) {
-//     res.status(StatusCodes.BAD_REQUEST).json({ message: 'Please upload image' })
-//     return
-//   }
+  if (!productImage.mimetype.startsWith('image')) {
+    res.status(StatusCodes.BAD_REQUEST).json({ message: 'Please upload image' })
+    return
+  }
 
-//   const maxSize = 1024 * 1024
+  const maxSize = 1024 * 1024
 
-//   if (productImage.size > maxSize) {
-//     res
-//       .status(StatusCodes.BAD_REQUEST)
-//       .json({ message: 'Please upload image smaller than 1MB' })
-//     return
-//   }
+  if (productImage.size > maxSize) {
+    res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: 'Please upload image smaller than 1MB' })
+    return
+  }
 
-//   const imagePath = path.join(
-//     __dirname,
-//     '../public/uploads/' + `${productImage.name}`
-//   )
+  const imagePath = path.join(
+    __dirname,
+    '../public/uploads/' + `${productImage.name}`
+  )
 
-//   await productImage.mv(imagePath)
+  await productImage.mv(imagePath)
 
-//   return res
-//     .status(StatusCodes.OK)
-//     .json({ image: { src: `/uploads/${productImage.name}` } })
-// }
+  return res
+    .status(StatusCodes.OK)
+    .json({ image: { src: `/uploads/${productImage.name}` } })
+}
 
 const uploadProfilePictureCloud = async (req, res) => {
   const result = await cloudinary.uploader.upload(
@@ -50,6 +50,6 @@ const uploadProfilePictureCloud = async (req, res) => {
 }
 
 module.exports = {
+  uploadProfilePictureLocal,
   uploadProfilePictureCloud
-  //uploadProfilePictureLocal
 }

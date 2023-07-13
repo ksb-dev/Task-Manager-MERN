@@ -11,7 +11,7 @@ import { toast } from 'react-hot-toast'
 import { BiArrowBack, BiUserPlus } from 'react-icons/bi'
 
 // tanstack-query
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 
 // api
 import { signup } from '../../services/authentication'
@@ -25,8 +25,9 @@ import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
 // context
 import { useTaskivityContext } from '../../context/context'
 
-//const url = '/url/api/v1/profile/upload'
-const url = '/api/v1/profile/upload'
+//const url = '/url/api/v1/profile/upload/cloud'
+//const url = 'http://localhost:5000/api/v1/profile/upload/cloud'
+const url = '/api/v1/profile/upload/cloud'
 
 const Signup = () => {
   const [name, setName] = useState('')
@@ -76,6 +77,7 @@ const Signup = () => {
       })
 
       if (data) {
+        console.log(data)
         setImage(data.data.image.src)
         toast.success('Image uploaded!')
       }
