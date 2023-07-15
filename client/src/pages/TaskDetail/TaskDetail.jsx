@@ -114,17 +114,23 @@ const TaskDetail = () => {
             </span>
           </div>
 
-          <p className={'title ' + (mode ? 'lightBg1' : 'darkBg2')}>
-            {data.task.title}
-          </p>
+          <div className='title-description'>
+            <div className='title'>
+              <span className=''>Title</span>
+              <p>{data.task.title}</p>
+            </div>
 
-          {data.task.description && (
-            <p className={'description ' + (mode ? 'lightBg1' : 'darkBg2')}>
-              {getDescription(data.task.description).map((el, i) => (
-                <span key={i}>{el}</span>
-              ))}
-            </p>
-          )}
+            <div className='description'>
+              <span className='desc'>Description</span>
+              {data.task.description && (
+                <p>
+                  {getDescription(data.task.description).map((el, i) => (
+                    <span key={i}>{el}</span>
+                  ))}
+                </p>
+              )}
+            </div>
+          </div>
 
           <PrimaryBtn
             path={`/edit/${data && data.task._id}`}

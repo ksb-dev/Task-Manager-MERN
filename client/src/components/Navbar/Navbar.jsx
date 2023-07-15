@@ -3,9 +3,9 @@
 import { useRef, useEffect } from 'react'
 
 // react-icons
-import { BsSunFill } from 'react-icons/bs'
+import { BsSun } from 'react-icons/bs'
 import { MdOutlineAddTask } from 'react-icons/md'
-import { BiSolidMoon } from 'react-icons/bi'
+import { BsMoonStars } from 'react-icons/bs'
 
 // context
 import { useTaskivityContext } from '../../context/context'
@@ -54,7 +54,7 @@ const Navbar = () => {
   const NavIcon = ({ name }) => {
     return (
       <span className={`option ${name}-icon`} onClick={() => toggleMode()}>
-        {name === 'moon' ? <BiSolidMoon /> : <BsSunFill />}
+        {name === 'moon' ? <BsMoonStars /> : <BsSun />}
       </span>
     )
   }
