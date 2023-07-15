@@ -11,7 +11,9 @@ const SearchBar = () => {
   const { mode, searchRef, searchModalRef } = useTaskivityContext()
 
   const showSearchModal = () => {
-    searchModalRef.current.style.transform = 'scaleY(1)'
+    if (searchModalRef && searchModalRef.current) {
+      searchModalRef.current.style.transform = 'scaleY(1)'
+    }
   }
 
   return (

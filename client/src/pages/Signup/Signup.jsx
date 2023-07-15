@@ -27,7 +27,6 @@ import Loading from '../../components/Loading/Loading'
 import { useTaskivityContext } from '../../context/context'
 
 //const url = '/url/api/v1/profile/upload/cloud'
-//const url = 'http://localhost:5000/api/v1/profile/upload/cloud'
 const url = '/api/v1/profile/upload/cloud'
 
 const Signup = () => {
@@ -102,7 +101,7 @@ const Signup = () => {
       })
       if (result) {
         setImage(result.data.secure_url)
-        toast.success('Image uploaded!')
+        toast.success('Picture uploaded!')
         setIsUploading(false)
         return result
       }

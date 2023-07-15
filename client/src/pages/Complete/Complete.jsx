@@ -10,6 +10,7 @@ import GeneralInfo from '../../components/GeneralInfo/GeneralInfo'
 import Categories from '../../components/Categories/Categories'
 import Loading from '../../components/Loading/Loading'
 import Task from '../../components/Task/Task'
+import SearchModal from '../../components/SearchModal/SearchModal'
 
 const Complete = () => {
   const token = localStorage.getItem('token')
@@ -37,6 +38,7 @@ const Complete = () => {
 
   return (
     <div className='complete-tasks'>
+      <SearchModal />
       <GeneralInfo />
       <Categories />
       {isLoading && handleLoading()}

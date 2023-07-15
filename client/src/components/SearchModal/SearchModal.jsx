@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 // react-router-dom
 import { Link } from 'react-router-dom'
@@ -22,6 +22,7 @@ import Loading from '../Loading/Loading'
 // react-icons
 import { BiSearch } from 'react-icons/bi'
 import { LiaArrowRightSolid } from 'react-icons/lia'
+import { IoMdClose } from 'react-icons/io'
 
 // utils
 import { getPriorityColor } from '../../utils/getPriorityColor'
@@ -34,6 +35,8 @@ const SearchModal = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [progress, setProgress] = useState('all')
+
+  const closeBtnRef = useRef(null)
 
   const { mode, searchRef, searchModalRef, searchModalInnerRef } =
     useTaskivityContext()
@@ -85,6 +88,16 @@ const SearchModal = () => {
         searchModalInnerRef &&
         searchModalInnerRef.current &&
         !searchModalInnerRef.current.contains(e.target)
+      ) {
+        searchModalRef.current.style.transform = 'scaleY(0)'
+        setQuery('')
+        setProgress('all')
+      }
+
+      if (
+        closeBtnRef &&
+        closeBtnRef.current &&
+        closeBtnRef.current.contains(e.target)
       ) {
         searchModalRef.current.style.transform = 'scaleY(0)'
         setQuery('')
@@ -160,6 +173,11 @@ const SearchModal = () => {
         className={'inner ' + (mode ? 'lightBg2' : 'darkBg1')}
         ref={searchModalInnerRef}
       >
+        <p className='close' ref={closeBtnRef}>
+          <span>
+            <IoMdClose />
+          </span>
+        </p>
         <div className='options'>
           <Priority text={'all'} />
           <Priority text={'incomplete'} />
@@ -179,43 +197,38 @@ const SearchModal = () => {
           </span>
         </div>
 
-        {searchResults?.length > 0 && (
-          <>
-            {loading && handleLoading()}
-            {!loading && error !== '' && handleError()}
+        {loading && handleLoading()}
+        {!loading && error !== '' && handleError()}
 
-            {!loading && error === '' && (
-              <>
-                <div className='length'>
-                  Search Results
-                  <p>
-                    <span>{searchResults.length}</span>
-                  </p>
-                </div>
-                <div className={'search-results scroll-1 '}>
-                  {searchResults.map(task => (
-                    <div
-                      key={task._id}
-                      className={
-                        'result ' + `${getPriorityColor(task.priority)}`
-                      }
-                    >
-                      <span>{task.title}</span>
-                      <Link
-                        to={`/detail/${task._id}`}
-                        className={
-                          'icon ' + `${getPriorityColor(task.priority)}`
-                        }
-                      >
-                        <span>
-                          <LiaArrowRightSolid />
-                        </span>
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </>
+        {!loading && error === '' && (
+          <>
+            {query && (
+              <div className='length'>
+                Search Results
+                <p>
+                  <span>{searchResults.length}</span>
+                </p>
+              </div>
             )}
+            <div className={'search-results scroll-1 '}>
+              {searchResults.length > 0 &&
+                searchResults.map(task => (
+                  <div
+                    key={task._id}
+                    className={'result ' + `${getPriorityColor(task.priority)}`}
+                  >
+                    <span>{task.title}</span>
+                    <Link
+                      to={`/detail/${task._id}`}
+                      className={'icon ' + `${getPriorityColor(task.priority)}`}
+                    >
+                      <span>
+                        <LiaArrowRightSolid />
+                      </span>
+                    </Link>
+                  </div>
+                ))}
+            </div>
           </>
         )}
       </div>

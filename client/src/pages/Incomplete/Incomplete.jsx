@@ -10,6 +10,7 @@ import Loading from '../../components/Loading/Loading'
 import Task from '../../components/Task/Task'
 import GeneralInfo from '../../components/GeneralInfo/GeneralInfo'
 import Categories from '../../components/Categories/Categories'
+import SearchModal from '../../components/SearchModal/SearchModal'
 
 const Incomplete = () => {
   const token = localStorage.getItem('token')
@@ -37,6 +38,7 @@ const Incomplete = () => {
 
   return (
     <div className='incomplete-tasks'>
+      <SearchModal />
       <GeneralInfo />
       <Categories />
       {isLoading && handleLoading()}

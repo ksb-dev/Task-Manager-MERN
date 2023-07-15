@@ -2,7 +2,6 @@
 import axios from 'axios'
 
 //const taskivity_url = '/url/api/v1/tasks'
-//const taskivity_url = 'http://localhost:5000/api/v1/tasks'
 const taskivity_url = '/api/v1/tasks'
 
 export const getSearchResults = async (
