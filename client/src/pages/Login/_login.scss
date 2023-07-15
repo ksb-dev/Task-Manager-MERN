@@ -15,6 +15,7 @@
 
       span {
         margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
       }
 
       input {
@@ -78,5 +79,13 @@
 @media screen and (max-width: 786px) {
   .login-page {
     margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .login-page {
+    form {
+      padding: 1rem;
+    }
   }
 }

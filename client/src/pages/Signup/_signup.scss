@@ -16,6 +16,7 @@
 
       span {
         margin-bottom: 0.5rem;
+        margin-left: 0.5rem;
       }
 
       input {
@@ -38,21 +39,17 @@
 
     .profile-upload {
       display: flex;
-      //align-items: center;
       justify-content: center;
       flex-direction: column;
+      margin-left: 0.5rem;
 
       p {
         margin-bottom: 1rem;
       }
 
       div {
-        // display: flex;
-        // align-items: center;
-
         input {
           margin-bottom: 1rem;
-          //border-radius: var(--border-radius);
         }
 
         p {
@@ -80,5 +77,13 @@
 @media screen and (max-width: 786px) {
   .signup-page {
     margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .signup-page {
+    form {
+      padding: 1rem;
+    }
   }
 }
