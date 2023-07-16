@@ -15,8 +15,12 @@
   --blue-gradient: linear-gradient(#95c9d7, #01b4e4);
   --light-gradient: linear-gradient(rgb(220, 220, 220), #fff);
   --dark-gradient: linear-gradient(#2e3238, #181a20);
+  --dark-gradient: linear-gradient(#3b3b3b, #181a20);
   --border-radius: 25px;
   --transition: all 0.3s ease;
+  --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-1: 0 3px 5px -1px rgba(0, 0, 0, 0.1), 0 1px 3px -1px rgba(0, 0, 0, 1);
 }
 
 * {
@@ -35,6 +39,10 @@ body {
       -ms-user-select: none;
           user-select: none;
   overflow-x: hidden;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #999;
 }
 
 .loading {
