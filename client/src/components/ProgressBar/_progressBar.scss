@@ -5,18 +5,18 @@
   padding: 0.25rem;
   font-weight: 500;
   z-index: 1;
-  background: var(--blue);
+  background: var(--blue-1);
   border-radius: 50%;
 
   .percentage {
     span {
-    font-size: 1rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-  }
+      font-size: 1rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+    }
   }
 }
 
@@ -27,8 +27,8 @@
 
     .percentage {
       span {
-      font-size: 0.8rem;
-    }
+        font-size: 0.8rem;
+      }
     }
   }
 }

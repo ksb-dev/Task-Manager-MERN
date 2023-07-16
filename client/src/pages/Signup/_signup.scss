@@ -5,7 +5,8 @@
   form {
     margin-top: 1rem;
     border-radius: var(--border-radius);
-    padding: 2rem;
+    padding: 1rem;
+    box-shadow: var(--shadow-1);
 
     .name-field,
     .email-field,
@@ -33,7 +34,7 @@
       }
 
       input:focus {
-        box-shadow: 0 0 5px var(--blue);
+        box-shadow: 0 0 5px var(--blue-1);
       }
     }
 
@@ -102,11 +103,6 @@
           border-radius: 0;
           transition: all 0.3s ease;
         }
-
-        /* file upload button active state */
-        // input[type='file']::file-selector-button:active {
-        //   background-color: #e5e7eb;
-        // }
 
         p {
           display: block;

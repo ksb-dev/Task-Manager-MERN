@@ -2,7 +2,7 @@
   padding: 1rem;
   border-radius: var(--border-radius);
   position: relative;
-  //margin-bottom: 1rem;
+  box-shadow: var(--shadow-1);
 
   .edit-delete {
     display: flex;
@@ -30,11 +30,11 @@
 
     .editBtn {
       text-decoration: none;
-      background: var(--blue);
+      background: var(--blue-1);
     }
 
     .deleteBtn {
-      background: var(--red);
+      background: var(--red-2);
       margin-left: 1rem;
     }
 

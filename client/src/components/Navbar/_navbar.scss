@@ -27,13 +27,16 @@
         span:first-child {
           margin-top: 0.45rem;
           margin-right: 0.25rem;
-          color: var(--blue);
+          color: var(--blue-1);
         }
 
         span {
-          font-weight: 700;
+          font-weight: 900;
           font-size: 1.75rem;
-          color: var(--blue);
+          background: var(--blue-1);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
       }
 

@@ -2,28 +2,30 @@
 
 #root {
   --light-1: #fff;
-  --light-2: rgb(230, 230, 230);
-  //--dark-1: #23272f;
-  --dark-1: #2e3238;
   --dark-2: #181a20;
-  --blue-1: #0d253f;
-  --blue-2: #01b4e4;
-  --green-1: #90cea1;
-  --green-2: #7dd56f;
-  --green-3: #28b487;
-  --grey-1: #555;
+  --blue-1: #01b4e4;
+  --blue-2: rgb(68, 114, 198);
+  --green-1: #7dd56f;
+  --green-2: #28b487;
+  --green-3: rgb(60, 178, 60);
+  --orange-1: orangered;
+  --gold-1: rgb(215, 154, 0);
+  --grey-1: #999;
+  --red-1: tomato;
+  --red-2: #f40009;
 
-  --blue: #01b4e4;
-  --red: #ff5733;
-  --green: #1db954;
-  --orange: darkorange;
+  --blue-gradient: linear-gradient(#95c9d7, #01b4e4);
+  --light-gradient: linear-gradient(rgb(220, 220, 220), #fff);
+  --dark-gradient: linear-gradient(#2e3238, #181a20);
 
   --border-radius: 25px;
 
   --transition: all 0.3s ease;
 
-  --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  // --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  //   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  // --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  //   0 2px 4px -1px rgba(0, 0, 0, 0.75);
 }
 
 * {
@@ -56,11 +58,11 @@ body {
 }
 
 .darkBg1 {
-  background: var(--dark-1);
+  background: var(--dark-gradient);
 }
 
 .lightBg2 {
-  background: var(--light-2);
+  background: var(--light-gradient);
 }
 
 .darkBg2 {
@@ -84,39 +86,39 @@ body {
 }
 
 .lowPriority {
-  background: var(--green);
+  background: var(--green-2);
 }
 
 .mediumPriority {
-  background: var(--orange);
+  background: var(--gold-1);
 }
 
 .highPriority {
-  background: var(--red);
+  background: var(--orange-1);
 }
 
 .lightCheckBorder {
-  border: 1px solid var(--light-1);
+  border: 1px solid #fff;
 }
 
 .darkCheckBorder {
-  border: 1px solid var(--dark-1);
+  border: 1px solid #222;
 }
 
 .active {
-  background: var(--blue-2);
+  background: var(--blue-1);
 }
 
 .lowActive {
-  background: var(--green);
+  background: var(--green-2);
 }
 
 .mediumActive {
-  background: var(--orange);
+  background: var(--gold-1);
 }
 
 .highActive {
-  background: var(--red);
+  background: var(--orange-1);
 }
 
 .scroll-1 {

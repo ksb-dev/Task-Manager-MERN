@@ -5,7 +5,8 @@
   form {
     margin-top: 1rem;
     border-radius: var(--border-radius);
-    padding: 2rem;
+    padding: 1rem;
+    box-shadow: var(--shadow-1);
 
     .email-field,
     .password-field {
@@ -32,7 +33,7 @@
       }
 
       input:focus {
-        box-shadow: 0 0 5px var(--blue);
+        box-shadow: 0 0 5px var(--blue-1);
       }
     }
 

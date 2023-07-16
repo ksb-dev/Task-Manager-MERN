@@ -12,38 +12,42 @@
   font-size: 0.8rem;
   top: 0rem;
   left: 0rem;
-  padding: 0.25rem 1rem;
+  padding: 0.75rem 1rem;
   font-family: monospace;
   font-weight: 500;
 
   .cancel,
   .check {
-    margin-top: 0.35rem;
-    margin-right: 0.25rem;
-    font-size: 1rem;
-  }
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    margin-right: 0.5rem;
 
-  .cancel {
-    color: var(--red);
-    font-size: 1.45rem;
-    margin-bottom: 0.1rem;
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      font-size: 1.25rem;
+      color: var(--red-1);
+    }
   }
 
   .check {
-    color: var(--green);
-    margin-right: 0.35rem;
-    font-size: 1.25rem;
-    margin-bottom: 0.1rem;
+    span {
+      font-size: 1.05rem;
+      color: var(--green-3);
+    }
   }
 }
 
 .incomplete {
-  border-top: 2px solid var(--red);
-  border-left: 2px solid var(--red);
+  border-top: 2px solid var(--red-1);
+  border-left: 2px solid var(--red-1);
 }
 
 .complete {
-  border-top: 2px solid var(--green);
-  border-left: 2px solid var(--green);
-  padding-top: 0.35rem;
+  border-top: 2px solid var(--green-3);
+  border-left: 2px solid var(--green-3);
 }

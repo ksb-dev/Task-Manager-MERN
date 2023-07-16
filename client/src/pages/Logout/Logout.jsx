@@ -86,7 +86,7 @@ const Logout = () => {
         </div>
 
         {show && (
-          <div className={'confirm ' + (mode ? 'lightBg1' : 'darkBg2')}>
+          <div className='confirm'>
             <p>Do you really want to delete your account permanently ?</p>
 
             <div className='options'>

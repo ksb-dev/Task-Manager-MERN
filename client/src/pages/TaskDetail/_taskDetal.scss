@@ -4,9 +4,10 @@
 
   &-inner {
     margin: 1rem 0;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: var(--border-radius);
     position: relative;
+    box-shadow: var(--shadow-1);
 
     .date-priority {
       display: flex;
@@ -69,7 +70,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--red);
+      background: var(--red-2);
       color: #fff;
       height: 40px;
       border-radius: var(--border-radius);
