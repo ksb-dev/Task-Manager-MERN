@@ -1451,7 +1451,7 @@ body {
 }
 
 .nav .inner .options .option:hover {
-  color: var(--blue);
+  color: var(--blue-1);
 }
 
 .nav .inner .options .sun-icon,
@@ -1659,6 +1659,10 @@ body {
 
 .categories .options .option:last-child {
   margin-right: 0;
+}
+
+.categories .options .option:hover {
+  color: var(--blue-1);
 }
 
 .lightActive {
