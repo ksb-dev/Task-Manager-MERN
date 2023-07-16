@@ -26,9 +26,6 @@ import Loading from '../../components/Loading/Loading'
 // context
 import { useTaskivityContext } from '../../context/context'
 
-//const url = '/url/api/v1/profile/upload/cloud'
-const url = '/api/v1/profile/upload/cloud'
-
 const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -63,17 +60,12 @@ const Signup = () => {
     e.preventDefault()
 
     if (name !== '' && email !== '' && password !== '') {
-      const result = await uploadImage()
-
-      if (result) {
-        console.log(true)
-        registerMutation.mutate({
-          name,
-          email,
-          password,
-          image: result.data.secure_url
-        })
-      }
+      registerMutation.mutate({
+        name,
+        email,
+        password,
+        image
+      })
     } else {
       toast.error('Please fill out all the fields.')
     }
@@ -91,28 +83,6 @@ const Signup = () => {
   const handleChange = e => {
     const image = e.target.files[0]
     previewFiles(image)
-  }
-
-  const uploadImage = async () => {
-    try {
-      setIsUploading(true)
-      const result = await axios.post(url, {
-        image
-      })
-      if (result) {
-        setImage(result.data.secure_url)
-        toast.success('Picture uploaded!')
-        setIsUploading(false)
-        return result
-      }
-    } catch (err) {
-      setIsUploading(false)
-      console.log(err)
-      toast.error(
-        err.response.data.message.charAt(0).toUpperCase() +
-          err.response.data.message.substring(1)
-      )
-    }
   }
 
   return (
@@ -175,6 +145,7 @@ const Signup = () => {
           text={'Signup'}
           value='btn'
           fn={handleSubmit}
+          isLoading={registerMutation.isLoading}
         />
       </form>
     </div>

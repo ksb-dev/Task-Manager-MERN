@@ -71,10 +71,7 @@ const Home = () => {
           <Link to='/login'>Login / Signup </Link>
 
           <div className='about'>
-            <p>
-              Web technologies used to build this app.
-              {/* <span> MERN </span>stack */}
-            </p>
+            <p>Web technologies used to build this app.</p>
           </div>
 
           <div className='stack'>

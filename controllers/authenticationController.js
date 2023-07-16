@@ -1,11 +1,10 @@
 const User = require('../models/User')
 const { StatusCodes } = require('http-status-codes')
 const { createJWT } = require('../utils')
+const cloudinary = require('cloudinary').v2
 
 const register = async (req, res) => {
   const { name, email, password, image } = req.body
-
-  console.log(image)
 
   //Check empty fields
   if (!name || !email || !password) {
@@ -55,18 +54,48 @@ const register = async (req, res) => {
     return
   }
 
-  // Register user
-  const user = await User.create({ name, email, password, image })
+  try {
+    const result = await uploadProfilePictureCloud(image)
 
-  // Generate token
-  const tokenUser = { name: user.name, id: user._id }
+    if (result) {
+      // Register user
+      const user = await User.create({
+        name,
+        email,
+        password,
+        image: result.secure_url
+      })
 
-  const token = createJWT({ res, payload: tokenUser })
+      // Generate token
+      const tokenUser = { name: user.name, id: user._id }
 
-  // Send user response
-  res
-    .status(StatusCodes.CREATED)
-    .json({ user: { name: user.name }, token, image: user.image })
+      const token = createJWT({ res, payload: tokenUser })
+
+      // Send user response
+      res
+        .status(StatusCodes.CREATED)
+        .json({ user: { name: user.name }, token, image: user.image })
+    }
+  } catch (e) {
+    res.status(StatusCodes.BAD_REQUEST).json({ message: 'Failed to register' })
+  }
+}
+
+const uploadProfilePictureCloud = async image => {
+  const uploaded = await cloudinary.uploader.upload(
+    image,
+    {
+      upload_preset: 'unsigned_uploads',
+      allowed_formats: ['png', 'svg', 'jpg', 'webp', 'jpeg', 'ico', 'jfif']
+    },
+    function (error, result) {
+      if (error) {
+        console.log(error)
+      }
+      return result
+    }
+  )
+  return uploaded
 }
 
 const login = async (req, res) => {

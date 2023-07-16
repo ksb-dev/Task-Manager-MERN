@@ -52,34 +52,6 @@ const uploadProfilePictureCloud = async (req, res, next) => {
       res.status(StatusCodes.OK).json(result)
     }
   )
-
-  //res.status(StatusCodes.OK).json(result)
-
-  // try {
-  //   const result = await cloudinary.uploader.upload(
-  //     req.files.image.tempFilePath,
-  //     {
-  //       use_filename: true,
-  //       folder: 'file-upload'
-  //     }
-  //   )
-  //   if (!result) {
-  //     next({
-  //       statusCode: StatusCodes.BAD_REQUEST,
-  //       message: 'Failed to upload image - 1'
-  //     })
-  //     return
-  //   }
-  //   fs.unlinkSync(req.files.image.tempFilePath)
-  //   return res
-  //     .status(StatusCodes.OK)
-  //     .json({ image: { src: result.secure_url } })
-  // } catch (error) {
-  //   next({
-  //     statusCode: StatusCodes.BAD_REQUEST,
-  //     message: 'Failed to upload image - 2'
-  //   })
-  // }
 }
 
 module.exports = {

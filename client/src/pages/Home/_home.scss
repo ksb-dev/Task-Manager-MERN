@@ -76,6 +76,7 @@
 
         .mongo {
           background: #116149;
+          margin-left: 0;
 
           .mongo-icon {
             color: #00ed64;
@@ -122,6 +123,7 @@
 
         .sass {
           background: #bf4080;
+          //margin-right: 0;
 
           .sass-icon {
             color: #fff;
@@ -190,6 +192,10 @@
           .node {
             margin: 0 1.25rem;
             margin-bottom: 2rem;
+          }
+
+          .mongo {
+            // margin-left: 0;
           }
         }
       }
