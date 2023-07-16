@@ -1156,8 +1156,6 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin: 1rem 0;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #999;
 }
 
 .task-detail-inner .date-priority .priority {
@@ -1177,14 +1175,18 @@ body {
 }
 
 .task-detail-inner .title-description .title span {
-  display: inline-block;
+  display: block;
+  padding: 0.25rem 0.75rem;
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  background: #999;
+  color: #fff;
+  border-radius: var(--border-radius);
 }
 
 .task-detail-inner .title-description .title p {
   border-radius: var(--border-radius);
   margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .task-detail-inner .title-description .description {
@@ -1192,14 +1194,18 @@ body {
 }
 
 .task-detail-inner .title-description .description .desc {
-  display: inline-block;
+  display: block;
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  background: #999;
+  color: #fff;
+  border-radius: var(--border-radius);
 }
 
 .task-detail-inner .title-description .description p {
   border-radius: var(--border-radius);
   margin: 0;
+  margin-left: 0.5rem;
 }
 
 .task-detail-inner .title-description .description p span {
