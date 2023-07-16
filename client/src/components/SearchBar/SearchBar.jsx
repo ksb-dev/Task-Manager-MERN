@@ -12,7 +12,7 @@ const SearchBar = () => {
 
   const showSearchModal = () => {
     if (searchModalRef && searchModalRef.current) {
-      searchModalRef.current.style.transform = 'scaleY(1)'
+      searchModalRef.current.style.transform = 'scale(1)'
     }
   }
 

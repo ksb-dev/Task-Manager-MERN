@@ -39,6 +39,7 @@
         p {
           border-radius: var(--border-radius);
           margin-bottom: 0.5rem;
+          //color: #999;
         }
       }
 
@@ -54,6 +55,12 @@
         p {
           border-radius: var(--border-radius);
           margin: 0;
+          //color: #999;
+
+          span {
+            display: block;
+            margin-bottom: 0.5rem;
+          }
         }
       }
     }

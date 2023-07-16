@@ -6,7 +6,6 @@
   //--dark-1: #23272f;
   --dark-1: #2e3238;
   --dark-2: #181a20;
-  //--dark-2: #222831;
   --blue-1: #0d253f;
   --blue-2: #01b4e4;
   --green-1: #90cea1;
@@ -22,6 +21,9 @@
   --border-radius: 25px;
 
   --transition: all 0.3s ease;
+
+  --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 * {
@@ -78,7 +80,7 @@ body {
 }
 
 .darkAlpha {
-  background: rgba(24, 26, 32, 0.95);
+  background: rgba(24, 26, 32, 0.9);
 }
 
 .lowPriority {

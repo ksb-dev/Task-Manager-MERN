@@ -14,7 +14,7 @@
   left: 0;
   z-index: 2;
   display: flex;
-  transform: scaleY(0);
+  transform: scale(0);
   transition: var(--transition);
 
   .inner {

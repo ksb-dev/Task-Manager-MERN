@@ -68,42 +68,44 @@ const Logout = () => {
     <div className={'logout-page ' + (mode ? 'darkColor' : 'lightColor')}>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
 
-      <div className='logout-options'>
-        <div className='logoutBtn-1' onClick={handleLogout}>
-          <span className='logout-icon-1'>
-            <BiLogOutCircle />
-          </span>
-          Logout
-        </div>
+      <div className={'inner ' + (mode ? 'lightBg2' : 'darkBg1')}>
+        <div className='logout-options'>
+          <div className='logoutBtn-1' onClick={handleLogout}>
+            <span className='logout-icon-1'>
+              <BiLogOutCircle />
+            </span>
+            Logout
+          </div>
 
-        <div className='logoutBtn-2' onClick={() => setShow(!show)}>
-          <span className='logout-icon-2'>
-            <RiDeleteBin6Line />
-          </span>
-          Delete Account
-        </div>
-      </div>
-
-      {show && (
-        <div className={'confirm ' + (mode ? 'lightBg2' : 'darkBg1')}>
-          <p>Do you really want to delete your account permanently ?</p>
-
-          <div className='options'>
-            <p className='cancel-btn' onClick={() => setShow(!show)}>
-              Cancel
-            </p>
-            {!deleteAccountMutation.isLoading ? (
-              <p className='delete-btn' onClick={handleDeleteAccount}>
-                Delete
-              </p>
-            ) : (
-              <p className='delete-btn' onClick={handleDeleteAccount}>
-                Deleting...
-              </p>
-            )}
+          <div className='logoutBtn-2' onClick={() => setShow(!show)}>
+            <span className='logout-icon-2'>
+              <RiDeleteBin6Line />
+            </span>
+            Delete Account
           </div>
         </div>
-      )}
+
+        {show && (
+          <div className={'confirm ' + (mode ? 'lightBg1' : 'darkBg2')}>
+            <p>Do you really want to delete your account permanently ?</p>
+
+            <div className='options'>
+              <p className='cancel-btn' onClick={() => setShow(!show)}>
+                Cancel
+              </p>
+              {!deleteAccountMutation.isLoading ? (
+                <p className='delete-btn' onClick={handleDeleteAccount}>
+                  Delete
+                </p>
+              ) : (
+                <p className='delete-btn' onClick={handleDeleteAccount}>
+                  Deleting...
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

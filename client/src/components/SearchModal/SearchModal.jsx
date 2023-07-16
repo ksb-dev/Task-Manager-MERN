@@ -89,7 +89,7 @@ const SearchModal = () => {
         searchModalInnerRef.current &&
         !searchModalInnerRef.current.contains(e.target)
       ) {
-        searchModalRef.current.style.transform = 'scaleY(0)'
+        searchModalRef.current.style.transform = 'scale(0)'
         setQuery('')
         setProgress('all')
       }
@@ -99,7 +99,7 @@ const SearchModal = () => {
         closeBtnRef.current &&
         closeBtnRef.current.contains(e.target)
       ) {
-        searchModalRef.current.style.transform = 'scaleY(0)'
+        searchModalRef.current.style.transform = 'scale(0)'
         setQuery('')
         setProgress('all')
       }
