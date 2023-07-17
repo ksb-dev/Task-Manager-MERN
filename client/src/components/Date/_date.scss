@@ -1,12 +1,13 @@
 .date {
   display: flex;
   align-items: center;
-  margin-top: 1rem;
-  //font-family: monospace;
-  //font-weight: 500;
+  //margin-top: 1rem;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
   color: #999;
+  border-radius: var(--border-radius);
+  padding: 0.25rem 1rem;
+  width: fit-content;
 
   span:first-child {
     font-size: 1rem;

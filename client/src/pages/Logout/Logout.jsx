@@ -68,7 +68,7 @@ const Logout = () => {
     <div className={'logout-page ' + (mode ? 'darkColor' : 'lightColor')}>
       <PrimaryBtn path={'/'} icon={<BiArrowBack />} text={'Back To Home'} />
 
-      <div className={'inner ' + (mode ? 'lightBg2' : 'darkBg1')}>
+      <div className='inner'>
         <div className='logout-options'>
           <div className='logoutBtn-1' onClick={handleLogout}>
             <span className='logout-icon-1'>

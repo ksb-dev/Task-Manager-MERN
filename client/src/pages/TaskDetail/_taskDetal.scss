@@ -14,9 +14,8 @@
       align-items: center;
       justify-content: space-between;
       margin: 1rem 0;
-      //padding-bottom: 1rem;
+      margin-top: 0;
       border-bottom: 1px solid #999;
-      padding-top: 1rem;
       padding-bottom: 1rem;
 
       .priority {
@@ -30,10 +29,6 @@
 
     .title-description {
       margin-bottom: 1rem;
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
-      // justify-content: center;
 
       .title {
         margin-bottom: 1rem;
@@ -42,17 +37,11 @@
           display: block;
           padding: 0.25rem 0.75rem;
           margin-bottom: 0.5rem;
-          //margin-left: 0.25rem;
-          //font-weight: 500;
-          //background: #999;
-          //color: #999;
           border-radius: var(--border-radius);
         }
         p {
           border-radius: var(--border-radius);
           margin-bottom: 0.5rem;
-          //color: #999;
-          //margin-left: 0.5rem;
           height: 40px;
           padding: 0 1rem;
           display: flex;
@@ -67,12 +56,7 @@
         .desc {
           display: block;
           margin-bottom: 0.5rem;
-          //margin-left: 0.25rem;
-
-          //font-weight: 500;
           padding: 0.25rem 0.75rem;
-          //background: #999;
-          //color: #999;
           border-radius: var(--border-radius);
         }
 
@@ -80,7 +64,6 @@
           border-radius: var(--border-radius);
           margin: 0;
           color: #999;
-          //margin-left: 0.5rem;
           padding: 1rem;
 
           span {
@@ -121,13 +104,13 @@
   }
 }
 
-@media screen and (max-width: 640px) {
-  .task-detail {
-    &-inner {
-      padding: 2rem 1rem 1rem 1rem;
-    }
-  }
-}
+// @media screen and (max-width: 640px) {
+//   .task-detail {
+//     &-inner {
+//       padding: 2rem 1rem 1rem 1rem;
+//     }
+//   }
+// }
 
 .lightBorderBottom {
   border-bottom: 1px solid #fff;

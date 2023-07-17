@@ -1,55 +1,25 @@
 .complete,
 .incomplete {
   position: absolute;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  border-top-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.7rem;
   top: 0rem;
   left: 0rem;
-  padding: 0.75rem 1rem;
-  //font-family: monospace;
-  //font-weight: 500;
+  background: #fff;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
 
   .cancel,
   .check {
-    position: relative;
-    width: 10px;
-    height: 10px;
-    background: #fff;
-    margin-right: 0.5rem;
-
-    span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -40%);
-      font-size: 1.25rem;
-      color: var(--red-2);
-    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate((-50%, -50%));
+    color: var(--red-1);
+    font-size: 1.5rem;
   }
 
   .check {
-    span {
-      font-size: 1.05rem;
-      color: var(--green-3);
-    }
+    font-size: 20px;
+    color: var(--green-3);
   }
-}
-
-.incomplete {
-  border-top: 2px solid var(--red-2);
-  border-left: 2px solid var(--red-2);
-  //color: var(--red-2);
-}
-
-.complete {
-  border-top: 2px solid var(--green-3);
-  border-left: 2px solid var(--green-3);
-  //color: var(--green-3);
 }

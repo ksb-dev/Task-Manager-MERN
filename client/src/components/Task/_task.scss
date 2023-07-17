@@ -4,44 +4,46 @@
   position: relative;
   box-shadow: var(--shadow-1);
 
-  .edit-delete {
+  .date-edit-delete {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
 
-    .editBtn,
-    .deleteBtn,
-    .completeBtn {
-      position: relative;
-      border-radius: 50%;
-      cursor: pointer;
-      color: white;
-      height: 35px;
-      width: 35px;
+    .edit-delete {
+      .editBtn,
+      .deleteBtn {
+        position: relative;
+        border-radius: 50%;
+        cursor: pointer;
+        color: white;
+        height: 35px;
+        width: 35px;
+        display: inline-block;
 
-      span {
-        font-size: 1rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        span {
+          font-size: 1rem;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
-    }
 
-    .editBtn {
-      text-decoration: none;
-      background: var(--blue-1);
-    }
+      .editBtn {
+        text-decoration: none;
+        color: var(--blue-1);
+      }
 
-    .deleteBtn {
-      background: var(--red-2);
-      margin-left: 1rem;
-    }
+      .deleteBtn {
+        color: var(--red-2);
+        margin-left: 1rem;
+      }
 
-    .editBtn:hover,
-    .deleteBtn:hover {
-      transform: rotate(-15deg);
-      transition: var(--transition);
+      .editBtn:hover,
+      .deleteBtn:hover {
+        transform: rotate(-15deg);
+        transition: var(--transition);
+      }
     }
   }
 

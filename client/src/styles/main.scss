@@ -2,13 +2,14 @@
 
 #root {
   --light-1: #fff;
+  --light-2: rgb(220, 220, 220);
+  --dark-1: #2e3238;
   --dark-2: #181a20;
   //--dark-2: #3b3b3b;
   --blue-1: #01b4e4;
   --blue-2: rgb(68, 114, 198);
   --green-1: #7dd56f;
   --green-2: #28b487;
-  --green-2: rgb(60, 178, 60);
   --green-3: rgb(60, 178, 60);
   --orange-1: tomato;
   --gold-1: orange;
@@ -16,22 +17,24 @@
   --red-1: tomato;
   --red-2: #f40009;
 
+  --red-2: rgb(239, 26, 45);
+
   --blue-gradient: linear-gradient(#95c9d7, #01b4e4);
   --light-gradient: linear-gradient(rgb(220, 220, 220), #fff);
   --dark-gradient: linear-gradient(#2e3238, #181a20);
   --dark-gradient: linear-gradient(#3b3b3b, #181a20);
   //--dark-gradient: linear-gradient(#181a20 30%, #3b3b3b);
-  --light-gradient-1: linear-gradient(#fff, rgb(220, 220, 220));
+  --light-gradient-1: linear-gradient(rgb(220, 220, 220) #fff);
   --dark-gradient-1: linear-gradient(#181a20, #3b3b3b);
 
   --border-radius: 25px;
 
   --transition: all 0.3s ease;
 
-  --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-1: 0 3px 5px -1px rgba(0, 0, 0, 0.1),
-    0 1px 3px -1px rgba(0, 0, 0, 0.5);
+  // --shadow-1: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  //   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  // --shadow-1: 0 3px 5px -1px rgba(0, 0, 0, 0.1),
+  //   0 1px 3px -1px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -68,11 +71,11 @@ body {
 }
 
 .darkBg1 {
-  background: var(--dark-gradient);
+  background: var(--dark-1);
 }
 
 .lightBg2 {
-  background: var(--light-gradient);
+  background: var(--light-2);
 }
 
 .darkBg2 {
@@ -104,7 +107,7 @@ body {
 }
 
 .lowPriority {
-  background: var(--green-2);
+  background: var(--green-3);
 }
 
 .mediumPriority {

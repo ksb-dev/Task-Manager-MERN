@@ -67,18 +67,27 @@ const Task = ({ task }) => {
     >
       <ProgressTag complete={complete} />
 
-      <div className='edit-delete'>
-        <Link to={`/edit/${_id}`} className='editBtn'>
-          <span>
-            <FiEdit />
-          </span>
-        </Link>
+      <div className='date-edit-delete'>
+        <Date date={date} />
+        <div className='edit-delete'>
+          <Link
+            to={`/edit/${_id}`}
+            className={'editBtn ' + (mode ? 'lightBg1' : 'darkBg2')}
+          >
+            <span>
+              <FiEdit />
+            </span>
+          </Link>
 
-        <p onClick={handleDelete} className='deleteBtn'>
-          <span className='deleteIcon'>
-            <RiDeleteBin6Line />
-          </span>
-        </p>
+          <p
+            onClick={handleDelete}
+            className={'deleteBtn ' + (mode ? 'lightBg1' : 'darkBg2')}
+          >
+            <span className='deleteIcon'>
+              <RiDeleteBin6Line />
+            </span>
+          </p>
+        </div>
       </div>
 
       <div className='container-2'>
@@ -98,8 +107,6 @@ const Task = ({ task }) => {
           )}
         </div>
       </div>
-
-      <Date date={date} />
     </div>
   )
 }

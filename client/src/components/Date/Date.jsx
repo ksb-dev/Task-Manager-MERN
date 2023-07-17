@@ -5,15 +5,16 @@
 import moment from 'moment'
 
 // react-icons
-import { SlCalender } from 'react-icons/sl'
 import { BsCalendarDate } from 'react-icons/bs'
 
-// images
-import DateIcon from '../../images/icons8-calendar-30.png'
+// context
+import { useTaskivityContext } from '../../context/context'
 
 const Date = ({ date }) => {
+  const { mode } = useTaskivityContext()
+
   return (
-    <div className='date'>
+    <div className={'date ' + (mode ? 'lightBg1' : 'darkBg2')}>
       <span>
         <BsCalendarDate />
       </span>

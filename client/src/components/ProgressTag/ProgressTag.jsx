@@ -7,22 +7,32 @@ import { MdCancel } from 'react-icons/md'
 
 const ProgressTag = ({ complete }) => {
   return complete ? (
+    // <div className='complete'>
+    //   <p className='check'>
+    //     <span>
+    //       <BsCheckCircleFill />
+    //     </span>
+    //   </p>
+    //   <span>Complete</span>
+    // </div>
     <div className='complete'>
-      <p className='check'>
-        <span>
-          <BsCheckCircleFill />
-        </span>
-      </p>
-      <span>Complete</span>
+      <span className='check'>
+        <BsCheckCircleFill />
+      </span>
     </div>
   ) : (
+    // <div className='incomplete'>
+    //   <p className='cancel'>
+    //     <span>
+    //       <MdCancel />
+    //     </span>
+    //   </p>
+    //   <span>Incomplete</span>
+    // </div>
     <div className='incomplete'>
-      <p className='cancel'>
-        <span>
-          <MdCancel />
-        </span>
-      </p>
-      <span>Incomplete</span>
+      <span className='cancel'>
+        <MdCancel />
+      </span>
     </div>
   )
 }
