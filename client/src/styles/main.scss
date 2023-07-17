@@ -3,13 +3,15 @@
 #root {
   --light-1: #fff;
   --dark-2: #181a20;
+  //--dark-2: #3b3b3b;
   --blue-1: #01b4e4;
   --blue-2: rgb(68, 114, 198);
   --green-1: #7dd56f;
   --green-2: #28b487;
+  --green-2: rgb(60, 178, 60);
   --green-3: rgb(60, 178, 60);
-  --orange-1: orangered;
-  --gold-1: rgb(215, 154, 0);
+  --orange-1: tomato;
+  --gold-1: orange;
   --grey-1: #999;
   --red-1: tomato;
   --red-2: #f40009;
@@ -18,6 +20,9 @@
   --light-gradient: linear-gradient(rgb(220, 220, 220), #fff);
   --dark-gradient: linear-gradient(#2e3238, #181a20);
   --dark-gradient: linear-gradient(#3b3b3b, #181a20);
+  //--dark-gradient: linear-gradient(#181a20 30%, #3b3b3b);
+  --light-gradient-1: linear-gradient(#fff, rgb(220, 220, 220));
+  --dark-gradient-1: linear-gradient(#181a20, #3b3b3b);
 
   --border-radius: 25px;
 
@@ -74,6 +79,14 @@ body {
   background: var(--dark-2);
 }
 
+.lightBg3 {
+  background: var(--light-gradient-1);
+}
+
+.darkBg3 {
+  background: var(--dark-gradient-1);
+}
+
 .lightColor {
   color: var(--light-1);
 }
@@ -115,7 +128,7 @@ body {
 }
 
 .lowActive {
-  background: var(--green-2);
+  background: var(--green-3);
 }
 
 .mediumActive {
@@ -123,7 +136,7 @@ body {
 }
 
 .highActive {
-  background: var(--orange-1);
+  background: var(--red-2);
 }
 
 .scroll-1 {
