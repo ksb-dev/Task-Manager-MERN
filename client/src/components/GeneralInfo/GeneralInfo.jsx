@@ -57,6 +57,8 @@ const GeneralInfo = () => {
         icon={<HiOutlinePlusSmall />}
         text={'Create New Task'}
       />
+
+      {/* <SearchBar /> */}
     </div>
   )
 }

@@ -5,8 +5,9 @@
   --light-2: rgb(220, 220, 220);
   --dark-1: #2e3238;
   --dark-2: #181a20;
-  //--dark-2: #3b3b3b;
+
   --blue-1: #01b4e4;
+  --blue-1: cornflowerblue;
   --blue-2: rgb(68, 114, 198);
   --green-1: #7dd56f;
   --green-2: #28b487;
@@ -99,11 +100,11 @@ body {
 }
 
 .lightAlpha {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .darkAlpha {
-  background: rgba(24, 26, 32, 0.9);
+  background: rgba(24, 26, 32, 0.5);
 }
 
 .lowPriority {

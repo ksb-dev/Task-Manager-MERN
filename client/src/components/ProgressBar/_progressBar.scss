@@ -32,3 +32,29 @@
     }
   }
 }
+
+// .progress-bar {
+//   height: 4px;
+//   width: 100%;
+//   margin-left: 1rem;
+//   border-radius: var(--border-radius);
+//   position: relative;
+
+//   &-inner {
+//     position: absolute;
+//     top: 50%;
+//     left: 0rem;
+//     transform: translate(0, -50%);
+//     height: 4px;
+//     background: var(--blue-1);
+//     border-radius: var(--border-radius);
+//   }
+
+//   .info {
+//     margin-top: 1rem;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//   }
+// }

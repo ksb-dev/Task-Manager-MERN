@@ -1,9 +1,11 @@
 .dashboard {
   margin: 0 auto 0 auto;
+  margin-bottom: 2rem;
   padding: 1rem;
   border-radius: var(--border-radius);
   max-width: 750px;
   box-shadow: var(--shadow-1);
+  position: relative;
 
   .user-name {
     text-align: center;

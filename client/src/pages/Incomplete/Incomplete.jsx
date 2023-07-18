@@ -12,8 +12,12 @@ import GeneralInfo from '../../components/GeneralInfo/GeneralInfo'
 import Categories from '../../components/Categories/Categories'
 import SearchModal from '../../components/SearchModal/SearchModal'
 
+// context
+import { useTaskivityContext } from '../../context/context'
+
 const Incomplete = () => {
   const token = localStorage.getItem('token')
+  const { mode } = useTaskivityContext()
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['incomplete'],
@@ -37,7 +41,7 @@ const Incomplete = () => {
   }
 
   return (
-    <div className='incomplete-tasks'>
+    <div className={'incomplete-tasks ' + (mode ? 'darkColor' : 'lightColor')}>
       <SearchModal />
       <GeneralInfo />
       <Categories />

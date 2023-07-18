@@ -12,8 +12,12 @@ import Loading from '../../components/Loading/Loading'
 import Task from '../../components/Task/Task'
 import SearchModal from '../../components/SearchModal/SearchModal'
 
+// context
+import { useTaskivityContext } from '../../context/context'
+
 const Complete = () => {
   const token = localStorage.getItem('token')
+  const { mode } = useTaskivityContext()
 
   const { isLoading, error, data } = useQuery({
     queryKey: ['complete'],
@@ -37,7 +41,7 @@ const Complete = () => {
   }
 
   return (
-    <div className='complete-tasks'>
+    <div className={'complete-tasks ' + (mode ? 'darkColor' : 'lightColor')}>
       <SearchModal />
       <GeneralInfo />
       <Categories />

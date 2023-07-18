@@ -90,7 +90,7 @@ const Task = ({ task }) => {
         </div>
       </div>
 
-      <div className='container-2'>
+      <div className='container-2 '>
         <div className={'name ' + getPriorityColor(priority)}>
           {title}
 
