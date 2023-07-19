@@ -5,7 +5,7 @@
   form {
     margin-top: 1rem;
     border-radius: var(--border-radius);
-    padding: 1rem;
+    padding: 2rem;
     box-shadow: var(--shadow-1);
 
     .email-field,
@@ -16,7 +16,8 @@
 
       span {
         margin-bottom: 0.5rem;
-        margin-left: 0.5rem;
+        //font-size: 1.1rem;
+        font-weight: 500;
       }
 
       input {

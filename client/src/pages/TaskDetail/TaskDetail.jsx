@@ -24,7 +24,7 @@ import { useTaskivityContext } from '../../context/context'
 import { getSingleTask, deleteTask } from '../../services/tasks'
 
 // utils
-import { getPriorityColor } from '../../utils/getPriorityColor'
+import { getPriorityBg } from '../../utils/getPriorityBg'
 
 // components
 import PrimaryBtn from '../../components/PrimaryBtn/PrimaryBtn'
@@ -105,9 +105,7 @@ const TaskDetail = () => {
           <div className='date-priority'>
             <Date date={data.task.date} />
             <span
-              className={
-                'priority ' + `${getPriorityColor(data.task.priority)}`
-              }
+              className={'priority ' + `${getPriorityBg(data.task.priority)}`}
             >
               {data.task.priority.charAt(0).toUpperCase() +
                 data.task.priority.substring(1)}
@@ -117,7 +115,7 @@ const TaskDetail = () => {
           <div className='title-description'>
             <div className='title'>
               <span
-              //className={`${getPriorityColor(data.task.priority)}`}
+              //className={`${getPriorityBg(data.task.priority)}`}
               >
                 Title
               </span>
@@ -126,7 +124,7 @@ const TaskDetail = () => {
 
             <div className='description'>
               <span
-                //className={'desc ' + `${getPriorityColor(data.task.priority)}`}
+                //className={'desc ' + `${getPriorityBg(data.task.priority)}`}
                 className='desc'
               >
                 Description

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 
 // react-query
-import { useQuery, useMutation } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 
 // react-hot-toast
 import { toast } from 'react-hot-toast'

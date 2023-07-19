@@ -26,7 +26,7 @@ import { MdCancel } from 'react-icons/md'
 import { LiaArrowRightSolid } from 'react-icons/lia'
 
 // utils
-import { getPriorityColor } from '../../utils/getPriorityColor'
+import { getPriorityBg } from '../../utils/getPriorityBg'
 
 // components
 import Date from '../Date/Date'
@@ -91,14 +91,14 @@ const Task = ({ task }) => {
       </div>
 
       <div className='container-2 '>
-        <div className={'name ' + getPriorityColor(priority)}>
+        <div className={'name ' + getPriorityBg(priority)}>
           {title}
 
           {description && (
             <Link
               to={`/detail/${_id}`}
               ref={downBtnRef}
-              className={'down-icon ' + getPriorityColor(priority)}
+              className={'down-icon ' + getPriorityBg(priority)}
             >
               <span>
                 <LiaArrowRightSolid />

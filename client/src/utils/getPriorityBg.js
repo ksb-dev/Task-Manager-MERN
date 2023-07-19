@@ -1,4 +1,4 @@
-export const getPriorityColor = priority => {
+export const getPriorityBg = priority => {
   if (priority === 'low') {
     return 'lowPriority'
   }

@@ -25,7 +25,7 @@ import { LiaArrowRightSolid } from 'react-icons/lia'
 import { IoMdClose } from 'react-icons/io'
 
 // utils
-import { getPriorityColor } from '../../utils/getPriorityColor'
+import { getPriorityBg } from '../../utils/getPriorityBg'
 
 const SearchModal = () => {
   const token = localStorage.getItem('token')
@@ -215,12 +215,12 @@ const SearchModal = () => {
                 searchResults.map(task => (
                   <div
                     key={task._id}
-                    className={'result ' + `${getPriorityColor(task.priority)}`}
+                    className={'result ' + `${getPriorityBg(task.priority)}`}
                   >
                     <span>{task.title}</span>
                     <Link
                       to={`/detail/${task._id}`}
-                      className={'icon ' + `${getPriorityColor(task.priority)}`}
+                      className={'icon ' + `${getPriorityBg(task.priority)}`}
                     >
                       <span>
                         <LiaArrowRightSolid />

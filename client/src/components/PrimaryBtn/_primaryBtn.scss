@@ -15,15 +15,15 @@
   outline: none;
   border: none;
 
-  span {
-    margin-top: 0.25rem;
-    margin-right: 0.25rem;
-    font-size: 1.5rem;
-  }
-
   #icon-1 {
     margin-top: 0.4rem;
     font-size: 1.2rem;
+  }
+
+  span:first-child {
+    margin-top: 0.25rem;
+    margin-right: 0.25rem;
+    font-size: 1.5rem;
   }
 }
 

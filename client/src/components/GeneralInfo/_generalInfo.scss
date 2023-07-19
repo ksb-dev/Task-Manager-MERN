@@ -29,6 +29,15 @@
   .search-st-640px {
     display: none;
   }
+
+  .gap {
+    display: inline-block;
+    margin: 1.5rem 0;
+    margin-bottom: 1.1rem;
+    width: 100%;
+    height: 1px;
+    background: #999;
+  }
 }
 
 @media screen and (max-width: 640px) {

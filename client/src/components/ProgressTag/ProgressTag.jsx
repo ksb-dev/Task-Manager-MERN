@@ -2,36 +2,19 @@
 /* eslint-disable no-unused-vars */
 
 // react-icons
-import { BsCheckCircleFill } from 'react-icons/bs'
-import { MdCancel } from 'react-icons/md'
+import { TbProgressX, TbProgressCheck } from 'react-icons/tb'
 
 const ProgressTag = ({ complete }) => {
   return complete ? (
-    // <div className='complete'>
-    //   <p className='check'>
-    //     <span>
-    //       <BsCheckCircleFill />
-    //     </span>
-    //   </p>
-    //   <span>Complete</span>
-    // </div>
-    <div className='complete'>
-      <span className='check'>
-        <BsCheckCircleFill />
+    <div className='complete-tag'>
+      <span className='check-icon'>
+        <TbProgressCheck />
       </span>
     </div>
   ) : (
-    // <div className='incomplete'>
-    //   <p className='cancel'>
-    //     <span>
-    //       <MdCancel />
-    //     </span>
-    //   </p>
-    //   <span>Incomplete</span>
-    // </div>
-    <div className='incomplete'>
-      <span className='cancel'>
-        <MdCancel />
+    <div className='incomplete-tag'>
+      <span className='cancel-icon'>
+        <TbProgressX />
       </span>
     </div>
   )

@@ -17,7 +17,7 @@ const PrimaryBtn = ({
   return value === 'link' ? (
     <Link to={path} className='primary-btn'>
       <span id='icon-1'>{icon}</span>
-      {text}
+      <span>{text}</span>
     </Link>
   ) : isLoading ? (
     <button className='primary-btn' onClick={fn}>
@@ -26,7 +26,7 @@ const PrimaryBtn = ({
   ) : (
     <button className='primary-btn' onClick={fn}>
       <span>{icon}</span>
-      {text}
+      <span>{text}</span>
     </button>
   )
 }

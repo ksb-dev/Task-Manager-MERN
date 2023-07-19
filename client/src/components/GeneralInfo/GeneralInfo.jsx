@@ -7,6 +7,7 @@ import { useTaskivityContext } from '../../context/context'
 import SearchBar from '../SearchBar/SearchBar'
 import ProgressBar from '../ProgressBar/ProgressBar'
 import PrimaryBtn from '../PrimaryBtn/PrimaryBtn'
+import Categories from '../Categories/Categories'
 
 // images
 
@@ -58,6 +59,9 @@ const GeneralInfo = () => {
         text={'Create New Task'}
       />
 
+      <span className='gap'></span>
+
+      <Categories />
       {/* <SearchBar /> */}
     </div>
   )
