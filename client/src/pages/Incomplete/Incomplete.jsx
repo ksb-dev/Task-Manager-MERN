@@ -44,7 +44,7 @@ const Incomplete = () => {
     <div className={'incomplete-tasks ' + (mode ? 'darkColor' : 'lightColor')}>
       <SearchModal />
       <GeneralInfo />
-      {/* <Categories /> */}
+      <Categories />
       {isLoading && handleLoading()}
       {error && handleError()}
       {data && data.tasks.length === 0 && noTasks()}

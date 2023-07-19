@@ -59,9 +59,9 @@ const GeneralInfo = () => {
         text={'Create New Task'}
       />
 
-      <span className='gap'></span>
+      {/* <span className='gap'></span> */}
 
-      <Categories />
+      {/* <Categories /> */}
       {/* <SearchBar /> */}
     </div>
   )

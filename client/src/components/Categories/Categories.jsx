@@ -23,7 +23,7 @@ const Categories = () => {
       <Link
         to={path}
         className={
-          'option ' + (mode ? 'lightBg1  darkColor' : 'darkBg2 lightColor')
+          'option ' + (mode ? 'lightBg2  darkColor' : 'darkBg1 lightColor')
         }
       >
         {text}

@@ -106,7 +106,7 @@ const Home = () => {
         <>
           <SearchModal />
           <GeneralInfo />
-          {/* <Categories /> */}
+          <Categories />
           {isLoading && handleLoading()}
           {isError && handleError()}
 
