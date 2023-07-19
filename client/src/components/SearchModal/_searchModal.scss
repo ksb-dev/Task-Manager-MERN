@@ -67,7 +67,7 @@
           display: inline-block;
           height: 15px;
           width: 15px;
-          border-radius: 3px;
+          border-radius: var(--border-radius);
           margin-right: 0.25rem;
         }
       }
