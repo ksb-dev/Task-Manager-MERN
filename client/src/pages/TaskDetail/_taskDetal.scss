@@ -20,8 +20,11 @@
 
       .priority {
         color: #fff;
-        padding: 0.25rem 1rem;
+        padding: 0 1rem;
         border-radius: var(--border-radius);
+        height: 40px;
+        display: flex;
+        align-items: center;
       }
     }
 

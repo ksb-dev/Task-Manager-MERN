@@ -108,7 +108,8 @@ const TaskDetail = () => {
               className={'priority ' + `${getPriorityBg(data.task.priority)}`}
             >
               {data.task.priority.charAt(0).toUpperCase() +
-                data.task.priority.substring(1)}
+                data.task.priority.substring(1)}{' '}
+              Priority
             </span>
           </div>
 
