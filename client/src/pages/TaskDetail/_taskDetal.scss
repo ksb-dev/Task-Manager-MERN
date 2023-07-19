@@ -44,8 +44,6 @@
         p {
           border-radius: var(--border-radius);
           margin-bottom: 0.5rem;
-          height: 40px;
-          padding: 0 1rem;
           display: flex;
           align-items: center;
           color: #999;
@@ -58,7 +56,6 @@
         .desc {
           display: block;
           padding: 0 0 0.5rem 0;
-          //font-size: 1.1rem;
           font-weight: 500;
           border-radius: var(--border-radius);
         }
@@ -67,7 +64,6 @@
           border-radius: var(--border-radius);
           margin: 0;
           color: #999;
-          padding: 1rem;
 
           span {
             display: block;

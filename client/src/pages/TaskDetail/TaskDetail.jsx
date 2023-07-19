@@ -115,23 +115,14 @@ const TaskDetail = () => {
 
           <div className='title-description'>
             <div className='title'>
-              <span
-              //className={`${getPriorityBg(data.task.priority)}`}
-              >
-                Title
-              </span>
-              <p className={mode ? 'lightBg1' : 'darkBg2'}>{data.task.title}</p>
+              <span>Title</span>
+              <p>{data.task.title}</p>
             </div>
 
             <div className='description'>
-              <span
-                //className={'desc ' + `${getPriorityBg(data.task.priority)}`}
-                className='desc'
-              >
-                Description
-              </span>
+              <span className='desc'>Description</span>
               {data.task.description && (
-                <p className={mode ? 'lightBg1' : 'darkBg2'}>
+                <p>
                   {getDescription(data.task.description).map((el, i) => (
                     <span key={i}>{el}</span>
                   ))}

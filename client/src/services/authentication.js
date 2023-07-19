@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios'
 
-//const auth_url = '/url/api/v1/tasks/auth'
-const auth_url = '/api/v1/tasks/auth'
-//const delete_account = '/url/api/v1/tasks/delete/account'
-const delete_account = '/api/v1/tasks/delete/account'
+const auth_url = '/url/api/v1/tasks/auth'
+//const auth_url = '/api/v1/tasks/auth'
+const delete_account = '/url/api/v1/tasks/delete/account'
+//const delete_account = '/api/v1/tasks/delete/account'
 
 export const signup = async ({ name, email, password, image }) => {
   const response = await axios.post(auth_url + '/register', {
