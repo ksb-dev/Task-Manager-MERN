@@ -15,7 +15,10 @@
       //padding-bottom: 0.25rem;
       text-align: center;
       margin: 0 2px 0 2px;
-      height: 25px;
+      padding: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .option:first-child {
